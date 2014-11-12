@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:paddingTop="20dp"
             android:scaleType="fitStart"
-            android:src="@drawable/login_header_image" />
+            android:src="@drawable/login_activity_header_image" />
 
         <com.wrapp.floatlabelededittext.FloatLabeledEditText
             android:layout_width="match_parent"
