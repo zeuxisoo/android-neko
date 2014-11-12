@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="login_white_transparent">#CCFFFFFF</color>
+    <color name="login_float_label_color">#FF3F9FE0</color>
+</resources>

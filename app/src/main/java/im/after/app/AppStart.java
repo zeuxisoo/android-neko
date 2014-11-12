@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
-import im.after.app.ui.MainActivity;
+import im.after.app.ui.LoginActivity;
 
 public class AppStart extends Activity {
 
@@ -44,7 +44,7 @@ public class AppStart extends Activity {
     }
 
     private void redirectTo() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         this.startActivity(intent);
         this.finish();
     }
