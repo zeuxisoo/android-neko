@@ -4,12 +4,17 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import im.after.app.AppManager;
+import im.after.app.helper.UIHelper;
 
 public class BaseActivity extends Activity {
+
+    protected UIHelper uiHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        this.uiHelper = new UIHelper(this);
 
         AppManager.getInstance().addActivity(this);
     }
@@ -20,4 +25,5 @@ public class BaseActivity extends Activity {
 
         AppManager.getInstance().finishActivity(this);
     }
+
 }

@@ -27,12 +27,12 @@
             custom:fletTextAppearance="@style/TText"
             custom:fletPaddingLeft="5dp">
             <EditText
-                android:id="@+id/editTextUsername"
+                android:id="@+id/editTextAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/login_white_transparent"
                 android:textColorHint="@color/login_white_transparent"
-                android:hint="Username" />
+                android:hint="Account" />
         </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
         <com.wrapp.floatlabelededittext.FloatLabeledEditText

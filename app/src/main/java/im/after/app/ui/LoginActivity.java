@@ -6,27 +6,24 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.dd.processbutton.iml.ActionProcessButton;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
-import org.apache.http.Header;
-import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
 import im.after.app.R;
-import im.after.app.helper.APIHelper;
-import im.after.app.helper.HttpHelper;
-import im.after.app.helper.UIHelper;
+import im.after.app.api.MainAPI;
+import im.after.app.api.listener.JSONFailureListener;
+import im.after.app.api.listener.JSONSuccessListener;
 
 
 public class LoginActivity extends BaseActivity {
 
     private static final String TAG  = "LoginActivity";
 
-    EditText editTextUsername;
+    EditText editTextAccount;
     EditText editTextPassword;
     ActionProcessButton buttonSignIn;
-    UIHelper uiHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +35,7 @@ public class LoginActivity extends BaseActivity {
 
         this.setContentView(R.layout.activity_login);
 
-        this.uiHelper = new UIHelper(this);
-
-        this.editTextUsername = (EditText) this.findViewById(R.id.editTextUsername);
+        this.editTextAccount = (EditText) this.findViewById(R.id.editTextAccount);
         this.editTextPassword = (EditText) this.findViewById(R.id.editTextPassword);
 
         this.buttonSignIn = (ActionProcessButton) this.findViewById(R.id.buttonSignIn);
@@ -48,14 +43,14 @@ public class LoginActivity extends BaseActivity {
         this.buttonSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setAllControlsEnabled(false);
-                doSignIn();
+            setAllControlsEnabled(false);
+            doSignIn();
             }
         });
     }
 
     private void setAllControlsEnabled(boolean status) {
-        editTextUsername.setEnabled(status);
+        editTextAccount.setEnabled(status);
         editTextPassword.setEnabled(status);
         buttonSignIn.setEnabled(status);
     }
@@ -64,45 +59,43 @@ public class LoginActivity extends BaseActivity {
         // Start progress animation (Start at 0 will not show animation)
         buttonSignIn.setProgress(1);
 
-        // Set post parameters
-        RequestParams params = new RequestParams();
-        params.put("account", editTextUsername.getText());
-        params.put("password", editTextPassword.getText());
-        params.put("permanent", true);
+        // Call sign in api
+        MainAPI mainAPI = new MainAPI(this);
 
-        // Make sign in request
-        HttpHelper httpHelper = new HttpHelper(getApplicationContext());
-        httpHelper.post(APIHelper.signInUrl(), params, new JsonHttpResponseHandler() {
+        mainAPI.signIn(new HashMap<String, String>() {{
+            put("account", editTextAccount.getText().toString());
+            put("password", editTextPassword.getText().toString());
+            put("permanent", "1");
+        }}, new JSONSuccessListener() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+            public void onJSON(JSONObject response) {
                 try {
-                    String username = response.getString("username");
-
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     finish();
-                }catch(JSONException e) {
-                    uiHelper.alertError("Oops", "Unknown sign in error (doSignIn::onSuccess)");
+                }catch(Exception e) {
+                    uiHelper.alertError("Oops", "Unknown sign in error (doSignIn::JSONSuccessListener)");
                 }finally{
                     buttonSignIn.setProgress(0);
                     setAllControlsEnabled(true);
                 }
             }
-
+        }, new JSONFailureListener() {
             @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+            public void onJSON(JSONObject response) {
                 try {
-                    String message = errorResponse.getJSONObject("error").getString("message");
+                    String message = response.getJSONObject("error").getString("message");
 
                     uiHelper.alertError("Oops", message);
-                }catch(JSONException e) {
-                    uiHelper.alertError("Oops", "Unknown sign in error (doSignIn::onFailure)");
+                }catch(Exception e) {
+                    uiHelper.alertError("Oops", "Unknown sign in error (doSignIn::JSONFailureListener)");
                 }finally{
                     buttonSignIn.setProgress(0);
                     setAllControlsEnabled(true);
                 }
             }
         });
+
     }
 
 }
