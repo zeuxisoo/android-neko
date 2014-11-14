@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            custom:fletTextAppearance="@style/TText"
+            custom:fletTextAppearance="@style/FletTextAppearance"
             custom:fletPaddingLeft="5dp">
             <EditText
                 android:id="@+id/editTextAccount"
@@ -32,38 +32,38 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/login_white_transparent"
                 android:textColorHint="@color/login_white_transparent"
-                android:hint="Account" />
+                android:hint="@string/login_activity_account_hint" />
         </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
         <com.wrapp.floatlabelededittext.FloatLabeledEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            custom:fletTextAppearance="@style/TText"
+            custom:fletTextAppearance="@style/FletTextAppearance"
             custom:fletPaddingLeft="5dp">
             <EditText
                 android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="@string/login_activity_password_hint"
                 android:textColor="@color/login_white_transparent"
                 android:textColorHint="@color/login_white_transparent"
                 android:inputType="textPassword" />
         </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
         <com.dd.processbutton.iml.ActionProcessButton
-            android:id="@+id/buttonSignIn"
+            android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginBottom="16dp"
             android:textColor="@android:color/white"
             android:textSize="18sp"
-            android:text="Sign in"
+            android:text="@string/login_activity_login_button"
             custom:pb_colorComplete="@color/green_complete"
             custom:pb_colorNormal="@color/blue_normal"
             custom:pb_colorPressed="@color/blue_pressed"
             custom:pb_colorProgress="@color/purple_progress"
-            custom:pb_textComplete="Success"
-            custom:pb_textProgress="Loading" />
+            custom:pb_textComplete="@string/login_activity_login_success"
+            custom:pb_textProgress="@string/login_activity_login_loading" />
     </LinearLayout>
 </ScrollView>

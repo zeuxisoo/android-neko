@@ -21,7 +21,7 @@ public class LoginActivity extends BaseActivity {
 
     EditText editTextAccount;
     EditText editTextPassword;
-    ActionProcessButton buttonSignIn;
+    ActionProcessButton buttonLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,23 +36,23 @@ public class LoginActivity extends BaseActivity {
         this.editTextAccount = (EditText) this.findViewById(R.id.editTextAccount);
         this.editTextPassword = (EditText) this.findViewById(R.id.editTextPassword);
 
-        this.buttonSignIn = (ActionProcessButton) this.findViewById(R.id.buttonSignIn);
-        this.buttonSignIn.setMode(ActionProcessButton.Mode.ENDLESS);
-        this.buttonSignIn.setOnClickListener((View v) -> {
+        this.buttonLogin = (ActionProcessButton) this.findViewById(R.id.buttonLogin);
+        this.buttonLogin.setMode(ActionProcessButton.Mode.ENDLESS);
+        this.buttonLogin.setOnClickListener((View v) -> {
             setAllControlsEnabled(false);
-            doSignIn();
+            doLogin();
         });
     }
 
     private void setAllControlsEnabled(boolean status) {
         editTextAccount.setEnabled(status);
         editTextPassword.setEnabled(status);
-        buttonSignIn.setEnabled(status);
+        buttonLogin.setEnabled(status);
     }
 
-    private void doSignIn() {
+    private void doLogin() {
         // Start progress animation (Start at 0 will not show animation)
-        buttonSignIn.setProgress(1);
+        buttonLogin.setProgress(1);
 
         // Call sign in api
         MainAPI mainAPI = new MainAPI(this);
@@ -67,9 +67,9 @@ public class LoginActivity extends BaseActivity {
                 startActivity(intent);
                 finish();
             } catch (Exception e) {
-                uiHelper.alertError("Oops", "Unknown sign in error (doSignIn::JSONSuccessListener)");
+                uiHelper.alertError("Oops", String.format(locale(R.string.login_activity_login_error), "doSignIn::JSONSuccessListener"));
             } finally {
-                buttonSignIn.setProgress(0);
+                buttonLogin.setProgress(0);
                 setAllControlsEnabled(true);
             }
         }, (JSONObject response) -> {
@@ -78,9 +78,9 @@ public class LoginActivity extends BaseActivity {
 
                 uiHelper.alertError("Oops", message);
             }catch(Exception e) {
-                uiHelper.alertError("Oops", "Unknown sign in error (doSignIn::JSONFailureListener)");
+                uiHelper.alertError("Oops", String.format(locale(R.string.login_activity_login_error), "doSignIn::JSONFailureListener"));
             }finally{
-                buttonSignIn.setProgress(0);
+                buttonLogin.setProgress(0);
                 setAllControlsEnabled(true);
             }
         });

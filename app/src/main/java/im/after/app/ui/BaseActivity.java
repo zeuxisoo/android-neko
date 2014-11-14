@@ -26,4 +26,8 @@ public class BaseActivity extends Activity {
         AppManager.getInstance().finishActivity(this);
     }
 
+    protected String locale(int stringId) {
+        return this.getResources().getString(stringId);
+    }
+
 }
