@@ -9,6 +9,7 @@
     <string name="login_activity_login_success">Success</string>
     <string name="login_activity_login_loading">Loading</string>
     <string name="login_activity_login_error">Unknown sign in error (%s)</string>
+    <string name="login_activity_save_login_info">"Save login info</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>

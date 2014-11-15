@@ -3,6 +3,7 @@ package im.after.app.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.dd.processbutton.iml.ActionProcessButton;
@@ -13,6 +14,8 @@ import java.util.HashMap;
 
 import im.after.app.R;
 import im.after.app.api.MainAPI;
+import im.after.app.entity.LoginEntity;
+import im.after.app.helper.DaoHelper;
 
 
 public class LoginActivity extends BaseActivity {
@@ -22,6 +25,7 @@ public class LoginActivity extends BaseActivity {
     EditText editTextAccount;
     EditText editTextPassword;
     ActionProcessButton buttonLogin;
+    CheckBox checkboxSaveLoginInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,18 +40,53 @@ public class LoginActivity extends BaseActivity {
         this.editTextAccount = (EditText) this.findViewById(R.id.editTextAccount);
         this.editTextPassword = (EditText) this.findViewById(R.id.editTextPassword);
 
+        this.checkboxSaveLoginInfo = (CheckBox) this.findViewById(R.id.checkboxSaveLoginInfo);
+
         this.buttonLogin = (ActionProcessButton) this.findViewById(R.id.buttonLogin);
         this.buttonLogin.setMode(ActionProcessButton.Mode.ENDLESS);
         this.buttonLogin.setOnClickListener((View v) -> {
             setAllControlsEnabled(false);
+            saveLoginInfo();
             doLogin();
         });
+
+        this.setLoginInfo();
     }
 
     private void setAllControlsEnabled(boolean status) {
         editTextAccount.setEnabled(status);
         editTextPassword.setEnabled(status);
+        checkboxSaveLoginInfo.setEnabled(status);
         buttonLogin.setEnabled(status);
+    }
+
+    private void setLoginInfo() {
+        DaoHelper daoHelper = new DaoHelper<LoginEntity>(this, LoginEntity.class);
+        LoginEntity loginEntity = (LoginEntity) daoHelper.findFirst();
+
+        if (loginEntity != null) {
+            this.editTextAccount.setText(loginEntity.getAccount());
+            this.editTextPassword.setText(loginEntity.getPassword());
+            this.checkboxSaveLoginInfo.setChecked(true);
+        }
+    }
+
+    private void saveLoginInfo() {
+        // Clear info first
+        DaoHelper daoHelper = new DaoHelper<LoginEntity>(this, LoginEntity.class);
+        daoHelper.deleteAll();
+
+        // If save, create info again
+        if (this.checkboxSaveLoginInfo.isChecked()) {
+            String account = this.editTextAccount.getText().toString().trim();
+            String password = this.editTextPassword.getText().toString().trim();
+
+            LoginEntity loginEntity = new LoginEntity();
+            loginEntity.setAccount(account);
+            loginEntity.setPassword(password);
+
+            daoHelper.create(loginEntity);
+        }
     }
 
     private void doLogin() {
