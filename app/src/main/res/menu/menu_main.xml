@@ -3,7 +3,7 @@
     xmlns:custom="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/action_settings"
-        android:title="@string/main_activity_menu_item_settings"
+        android:title="@string/main_activity_menu_item_about"
         android:orderInCategory="0"
         custom:showAsAction="never" />
 

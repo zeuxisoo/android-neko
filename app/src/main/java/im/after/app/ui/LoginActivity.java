@@ -20,7 +20,6 @@ import im.after.app.entity.UserEntity;
 import im.after.app.helper.DaoHelper;
 import im.after.app.helper.UIHelper;
 
-
 public class LoginActivity extends BaseActivity {
 
     private static final String TAG  = "LoginActivity";

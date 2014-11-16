@@ -15,7 +15,7 @@
     <!-- Login activity edit text style -->
     <style name="FletTextAppearance" parent="@android:style/TextAppearance.Small">
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/login_float_label_color</item>
+        <item name="android:textColor">@color/login_float_label</item>
         <item name="android:textStyle">normal</item>
         <item name="android:typeface">sans</item>
     </style>

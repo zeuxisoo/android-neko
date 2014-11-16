@@ -55,6 +55,8 @@ public class MainActivity extends BaseActionBarActivity {
     private Handler handler;
     private UIHelper uiHelper;
 
+    private int currentSelectedDrawerMenuItem = Integer.MIN_VALUE;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,10 +103,18 @@ public class MainActivity extends BaseActionBarActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            new UIHelper(this).alertSuccess("Master", "I am settings");
+            new UIHelper(this).alertSuccess("About", "Call me, Master :)");
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private int getCurrentSelectedDrawerMenuItem() {
+        return this.currentSelectedDrawerMenuItem;
+    }
+
+    private void setCurrentSelectedDrawerMenuItem(int itemId) {
+        this.currentSelectedDrawerMenuItem = itemId;
     }
 
     private void setUserInfo() {
@@ -135,7 +145,7 @@ public class MainActivity extends BaseActionBarActivity {
 
             int i = 0;
             for (int itemId : this.drawerMenuItems) {
-                this.drawerMenuItemViews[i] = createDrawerMenuItem(itemId, this.linearLayoutDrawerMenuItemList);
+                this.drawerMenuItemViews[i] = this.createDrawerMenuItem(itemId, this.linearLayoutDrawerMenuItemList);
                 this.linearLayoutDrawerMenuItemList.addView(this.drawerMenuItemViews[i]);
                 ++i;
             }
@@ -143,7 +153,9 @@ public class MainActivity extends BaseActionBarActivity {
     }
 
     private View createDrawerMenuItem(int itemId, ViewGroup drawerMenuItemList) {
-        int resource = 0;
+        boolean selected = this.getCurrentSelectedDrawerMenuItem() == itemId;
+
+        int resource;
 
         if (itemId == DRAWER_MENU_ITEM_SEPARATOR) {
             resource = R.layout.include_drawer_menu_separator;
@@ -171,9 +183,11 @@ public class MainActivity extends BaseActionBarActivity {
 
             textViewDrawMenuItemSubject.setText(this.getString(subjectText));
 
+            renderSelectedDrawerMenuItemStyle(view, itemId, selected);
+
             // Set click listener
             view.setOnClickListener((View v) -> {
-                onDrawerMenuItemClicked(itemId);
+                this.onDrawerMenuItemClicked(itemId);
             });
 
             return view;
@@ -181,9 +195,12 @@ public class MainActivity extends BaseActionBarActivity {
     }
 
     private void onDrawerMenuItemClicked(int itemId) {
+        // Make drawer menu closed before call item activity
         this.handler.postDelayed(() -> {
             openDrawerMenuItem(itemId);
-        }, 250);
+        }, 300);
+
+        this.setSelectedDrawerMenuItem(itemId);
 
         this.drawerLayout.closeDrawer(Gravity.START);
     }
@@ -202,6 +219,29 @@ public class MainActivity extends BaseActionBarActivity {
             case DRAWER_MENU_ITEM_SETTINGS:
                 uiHelper.alertSuccess("Master", "I am settings");
                 break;
+        }
+    }
+
+    private void setSelectedDrawerMenuItem(int itemId) {
+        if (this.drawerMenuItemViews != null) {
+            for(int i=0; i<this.drawerMenuItemViews.length; i++) {
+                if (i < this.drawerMenuItems.size()) {
+                    int currentItemId = this.drawerMenuItems.get(i);
+                    this.renderSelectedDrawerMenuItemStyle(this.drawerMenuItemViews[i], currentItemId, currentItemId == itemId);
+                }
+            }
+        }
+    }
+
+    private void renderSelectedDrawerMenuItemStyle(View drawMenuItemView, int itemId, boolean selected) {
+        if (itemId != DRAWER_MENU_ITEM_SEPARATOR) {
+            ImageView imageViewDrawerMenuItemIcon = (ImageView) drawMenuItemView.findViewById(R.id.imageViewDrawerMenuItemIcon);
+            TextView textViewDrawMenuItemSubject  = (TextView) drawMenuItemView.findViewById(R.id.textViewDrawMenuItemSubject);
+
+            imageViewDrawerMenuItemIcon.setColorFilter(selected ? getResources().getColor(R.color.drawer_menu_item_icon_tint_selected) : getResources().getColor(R.color.drawer_menu_item_icon_tint));
+            textViewDrawMenuItemSubject.setTextColor(selected ? getResources().getColor(R.color.drawer_menu_item_text_selected) : getResources().getColor(R.color.drawer_menu_item_text));
+
+            this.setCurrentSelectedDrawerMenuItem(itemId);
         }
     }
 }
