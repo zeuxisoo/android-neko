@@ -7,6 +7,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.dd.processbutton.iml.ActionProcessButton;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.json.JSONObject;
 
@@ -15,6 +16,7 @@ import java.util.HashMap;
 import im.after.app.R;
 import im.after.app.api.MainAPI;
 import im.after.app.entity.LoginEntity;
+import im.after.app.entity.UserEntity;
 import im.after.app.helper.DaoHelper;
 
 
@@ -102,7 +104,13 @@ public class LoginActivity extends BaseActivity {
             put("permanent", "1");
         }}, (JSONObject response) -> {
             try {
+                buttonLogin.setProgress(100);
+
+                ObjectMapper objectMapper = new ObjectMapper();
+                UserEntity userEntity = objectMapper.readValue(response.toString(), UserEntity.class);
+
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("userEntity", userEntity);
                 startActivity(intent);
                 finish();
             } catch (Exception e) {

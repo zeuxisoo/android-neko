@@ -4,7 +4,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "login")
-public class LoginEntity {
+public class LoginEntity extends BaseEntity {
 
     @DatabaseField(generatedId = true)
     private int id;
