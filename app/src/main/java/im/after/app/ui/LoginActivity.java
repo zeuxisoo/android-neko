@@ -18,16 +18,19 @@ import im.after.app.api.MainAPI;
 import im.after.app.entity.LoginEntity;
 import im.after.app.entity.UserEntity;
 import im.after.app.helper.DaoHelper;
+import im.after.app.helper.UIHelper;
 
 
 public class LoginActivity extends BaseActivity {
 
     private static final String TAG  = "LoginActivity";
 
-    EditText editTextAccount;
-    EditText editTextPassword;
-    ActionProcessButton buttonLogin;
-    CheckBox checkboxSaveLoginInfo;
+    private EditText editTextAccount;
+    private EditText editTextPassword;
+    private ActionProcessButton buttonLogin;
+    private CheckBox checkboxSaveLoginInfo;
+
+    private UIHelper uiHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,8 @@ public class LoginActivity extends BaseActivity {
         this.getActionBar().setDisplayShowTitleEnabled(false);
 
         this.setContentView(R.layout.activity_login);
+
+        this.uiHelper = new UIHelper(this);
 
         this.editTextAccount = (EditText) this.findViewById(R.id.editTextAccount);
         this.editTextPassword = (EditText) this.findViewById(R.id.editTextPassword);

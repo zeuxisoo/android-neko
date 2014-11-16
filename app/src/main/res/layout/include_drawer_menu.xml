@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:id="@+id/drawerMenu"
-    android:background="#88FFFFFF"
+    android:background="#D8FFFFFF"
     android:fitsSystemWindows="true">
 
     <LinearLayout
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:id="@+id/navdrawer_items_list"
+                android:id="@+id/linearLayoutDrawerMenuItemList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
