@@ -24,10 +24,12 @@
     </style>
 
     <!-- Main activity view pager tab size and color -->
-    <!-- Ref: http://goo.gl/TYHuHr -->
+    <!-- Ref: http://goo.gl/oefRU1 -->
     <style name="TabPageIndicatorStyle" parent="@style/Widget.TabPageIndicator">
         <item name="android:textSize">15dip</item>
         <item name="android:textColor">#D8FFFFFF</item>
+
+        <item name="android:background">@drawable/main_activity_view_pager_tab_indicator_background</item>
     </style>
 
 </resources>
