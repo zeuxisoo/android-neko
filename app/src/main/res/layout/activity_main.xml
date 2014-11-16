@@ -15,15 +15,6 @@
             android:minHeight="?attr/actionBarSize">
         </android.support.v7.widget.Toolbar>
 
-        <TextView
-            android:layout_below="@+id/toolbar"
-            android:layout_margin="20dp"
-            android:text="HelloWorld"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:background="@android:color/black" />
-
     </RelativeLayout>
 
     <include layout="@layout/include_drawer_menu" />
