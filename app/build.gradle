@@ -36,4 +36,6 @@ dependencies {
     compile 'com.j256.ormlite:ormlite-android:4.48'
     compile 'com.android.support:appcompat-v7:21.0.+'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.4.3'
+    compile 'com.makeramen:roundedimageview:1.5.0'
+    compile 'com.squareup.picasso:picasso:2.4.0'
 }

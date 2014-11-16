@@ -13,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.makeramen.RoundedTransformationBuilder;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import im.after.app.R;
@@ -47,6 +50,7 @@ public class MainActivity extends BaseActionBarActivity {
 
     private TextView textViewAccountUsername;
     private TextView textViewAccountEmail;
+    private ImageView imageViewUserAvatar;
 
     private ViewGroup linearLayoutDrawerMenuItemList;
     private View drawerMenuItemViews[];
@@ -85,6 +89,7 @@ public class MainActivity extends BaseActionBarActivity {
         // Set base control
         this.textViewAccountUsername = (TextView) this.findViewById(R.id.textViewAccountUsername);
         this.textViewAccountEmail    = (TextView) this.findViewById(R.id.textViewAccountEmail);
+        this.imageViewUserAvatar     = (ImageView) this.findViewById(R.id.imageViewUserAvatar);
 
         // Set user info
         this.setUserInfo();
@@ -103,7 +108,7 @@ public class MainActivity extends BaseActionBarActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            new UIHelper(this).alertSuccess("About", "Call me, Master :)");
+            new UIHelper(this).alertSuccess("About", "Servant! Call me, Master :)");
         }
 
         return super.onOptionsItemSelected(item);
@@ -121,6 +126,10 @@ public class MainActivity extends BaseActionBarActivity {
         UserEntity userEntity = (UserEntity) this.getIntent().getSerializableExtra("userEntity");
 
         if (userEntity != null) {
+            Picasso.with(this).load(userEntity.getAvatar()).fit().transform(
+                new RoundedTransformationBuilder().borderColor(R.color.drawer_menu_user_avatar_border).borderWidthDp(1).cornerRadiusDp(30).oval(false).build()
+            ).into(this.imageViewUserAvatar);
+
             this.textViewAccountUsername.setText(userEntity.getUsername());
             this.textViewAccountEmail.setText(userEntity.getEmail());
         }

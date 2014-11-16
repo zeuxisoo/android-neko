@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="260dp"
     android:layout_height="match_parent"
     android:layout_gravity="start"
@@ -31,11 +32,15 @@
                 android:paddingTop="16dp">
 
                 <!-- Profile > Username > Email -->
-                <ImageView android:layout_width="40dp"
+                <com.makeramen.RoundedImageView
+                    android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/include_drawer_menu_user_default_avatar_image"
                     android:scaleType="centerCrop"
-                    android:id="@+id/imageViewUserAvatar" />
+                    android:id="@+id/imageViewUserAvatar"
+                    custom:riv_corner_radius="30dp"
+                    custom:riv_border_width="1dp"
+                    custom:riv_border_color="@color/drawer_menu_user_avatar_border"/>
 
                 <TextView
                     android:id="@+id/textViewAccountEmail"
