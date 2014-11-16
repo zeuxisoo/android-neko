@@ -2,6 +2,7 @@ package im.after.app.ui;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
@@ -15,12 +16,14 @@ import android.widget.TextView;
 
 import com.makeramen.RoundedTransformationBuilder;
 import com.squareup.picasso.Picasso;
+import com.viewpagerindicator.TabPageIndicator;
 
 import java.util.ArrayList;
 
 import im.after.app.R;
 import im.after.app.entity.UserEntity;
 import im.after.app.helper.UIHelper;
+import im.after.app.ui.adapter.SectionsPagerAdapter;
 
 public class MainActivity extends BaseActionBarActivity {
 
@@ -51,6 +54,8 @@ public class MainActivity extends BaseActionBarActivity {
     private TextView textViewAccountUsername;
     private TextView textViewAccountEmail;
     private ImageView imageViewUserAvatar;
+    private ViewPager viewPagerMainNavigation;
+    private TabPageIndicator pageIndicatorMainNavigation;
 
     private ViewGroup linearLayoutDrawerMenuItemList;
     private View drawerMenuItemViews[];
@@ -87,13 +92,16 @@ public class MainActivity extends BaseActionBarActivity {
         this.drawerLayout.setDrawerListener(this.actionBarDrawerToggle);
 
         // Set base control
-        this.textViewAccountUsername = (TextView) this.findViewById(R.id.textViewAccountUsername);
-        this.textViewAccountEmail    = (TextView) this.findViewById(R.id.textViewAccountEmail);
-        this.imageViewUserAvatar     = (ImageView) this.findViewById(R.id.imageViewUserAvatar);
+        this.textViewAccountUsername     = (TextView) this.findViewById(R.id.textViewAccountUsername);
+        this.textViewAccountEmail        = (TextView) this.findViewById(R.id.textViewAccountEmail);
+        this.imageViewUserAvatar         = (ImageView) this.findViewById(R.id.imageViewUserAvatar);
+        this.viewPagerMainNavigation     = (ViewPager) this.findViewById(R.id.viewPagerMainNavigation);
+        this.pageIndicatorMainNavigation = (TabPageIndicator) this.findViewById(R.id.pageIndicatorMainNavigation);
 
         // Set user info
         this.setUserInfo();
         this.setDrawerMenuItems();
+        this.setViewPager();
     }
 
     @Override
@@ -159,6 +167,11 @@ public class MainActivity extends BaseActionBarActivity {
                 ++i;
             }
         }
+    }
+
+    private void setViewPager() {
+        this.viewPagerMainNavigation.setAdapter(new SectionsPagerAdapter(this, this.getSupportFragmentManager()));
+        this.pageIndicatorMainNavigation.setViewPager(this.viewPagerMainNavigation);
     }
 
     private View createDrawerMenuItem(int itemId, ViewGroup drawerMenuItemList) {
