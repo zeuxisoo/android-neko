@@ -35,10 +35,6 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.getActionBar().hide();
-        this.getActionBar().setDisplayUseLogoEnabled(true);
-        this.getActionBar().setDisplayShowTitleEnabled(false);
-
         this.setContentView(R.layout.activity_login);
 
         this.uiHelper = new UIHelper(this);
