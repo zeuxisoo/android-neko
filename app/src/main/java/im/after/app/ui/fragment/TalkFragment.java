@@ -1,41 +1,50 @@
 package im.after.app.ui.fragment;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.TypedValue;
-import android.view.Gravity;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.RadioGroup;
-import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import im.after.app.R;
+import im.after.app.entity.TalkEntity;
+import im.after.app.ui.adapter.FragmentTalkAdapter;
 
 public class TalkFragment extends Fragment {
 
+    private SwipeRefreshLayout swipeRefreshLayoutFragmentTalk;
+    private RecyclerView recyclerViewFragmentTalk;
+
+    private FragmentTalkAdapter fragmentTalkAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ActionBar.LayoutParams params = new ActionBar.LayoutParams(RadioGroup.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
+        View viewFragmentTalk = inflater.inflate(R.layout.fragment_talk, container, false);
 
-        FrameLayout fl = new FrameLayout(getActivity());
-        fl.setLayoutParams(params);
+        //
+        this.swipeRefreshLayoutFragmentTalk = (SwipeRefreshLayout) viewFragmentTalk.findViewById(R.id.swipeRefreshLayoutFragmentTalk);
+        this.recyclerViewFragmentTalk       = (RecyclerView) viewFragmentTalk.findViewById(R.id.recyclerViewFragmentTalk);
 
-        final int margin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources()
-            .getDisplayMetrics());
+        //
+        this.recyclerViewFragmentTalk.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        this.recyclerViewFragmentTalk.setItemAnimator(new DefaultItemAnimator());
 
-        TextView v = new TextView(getActivity());
-        params.setMargins(margin, margin, margin, margin);
-        v.setLayoutParams(params);
-        v.setLayoutParams(params);
-        v.setGravity(Gravity.CENTER);
-        v.setTextColor(getResources().getColor(android.R.color.holo_orange_dark));
-        v.setText("Fragment TALK");
+        //
+        ArrayList<TalkEntity> talkEntities = new ArrayList<>();
+        talkEntities.add(0, new TalkEntity("Apple"));
+        talkEntities.add(1, new TalkEntity("Banana"));
 
-        fl.addView(v);
+        FragmentTalkAdapter fragmentTalkAdapter = new FragmentTalkAdapter(talkEntities);
 
-        return fl;
+        this.recyclerViewFragmentTalk.setAdapter(fragmentTalkAdapter);
+
+        return viewFragmentTalk;
     }
-
 }
