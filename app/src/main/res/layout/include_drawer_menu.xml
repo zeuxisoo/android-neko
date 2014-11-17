@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:id="@+id/drawerMenu"
-    android:background="#D8FFFFFF"
+    android:background="@color/drawer_menu_background"
     android:fitsSystemWindows="true">
 
     <LinearLayout
@@ -51,7 +51,7 @@
                     android:layout_alignParentBottom="true"
                     android:paddingBottom="16dp"
                     android:textSize="14sp"
-                    android:textColor="#deffffff"
+                    android:textColor="@color/drawer_menu_user_account_email"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:ellipsize="end" />
@@ -64,7 +64,7 @@
                     android:layout_above="@id/textViewAccountEmail"
                     android:layout_toRightOf="@id/imageViewUserAvatar"
                     android:textSize="18sp"
-                    android:textColor="#FFFFFFFF"
+                    android:textColor="@color/drawer_menu_user_account_username"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:ellipsize="end" />

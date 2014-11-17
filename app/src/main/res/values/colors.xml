@@ -4,9 +4,12 @@
     <color name="login_float_label">#FF3F9FE0</color>
     <color name="login_background">#FF323a45</color>
 
+    <color name="drawer_menu_background">#D8FFFFFF</color>
     <color name="drawer_menu_item_icon_tint_selected">#FF3f51b5</color>
     <color name="drawer_menu_item_icon_tint">#FF888888</color>
     <color name="drawer_menu_item_text_selected">#FF3f51b5</color>
     <color name="drawer_menu_item_text">#de000000</color>
-    <color name="drawer_menu_user_avatar_border">#FFFFFF</color>
+    <color name="drawer_menu_user_avatar_border">@android:color/white</color>
+    <color name="drawer_menu_user_account_username">@android:color/white</color>
+    <color name="drawer_menu_user_account_email">#DEFFFFFF</color>
 </resources>
