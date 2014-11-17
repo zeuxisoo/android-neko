@@ -38,8 +38,5 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.4.3'
     compile 'com.makeramen:roundedimageview:1.5.0'
     compile 'com.squareup.picasso:picasso:2.4.0'
-    compile ('com.viewpagerindicator:library:2.4.1') {
-        exclude module: 'support-v4'
-
-    }
+    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
 }

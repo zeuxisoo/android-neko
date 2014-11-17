@@ -14,9 +14,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.astuetz.PagerSlidingTabStrip;
 import com.makeramen.RoundedTransformationBuilder;
 import com.squareup.picasso.Picasso;
-import com.viewpagerindicator.TabPageIndicator;
 
 import java.util.ArrayList;
 
@@ -55,7 +55,7 @@ public class MainActivity extends BaseActionBarActivity {
     private TextView textViewAccountEmail;
     private ImageView imageViewUserAvatar;
     private ViewPager viewPagerMainNavigation;
-    private TabPageIndicator pageIndicatorMainNavigation;
+    private PagerSlidingTabStrip pageIndicatorMainNavigation;
 
     private ViewGroup linearLayoutDrawerMenuItemList;
     private View drawerMenuItemViews[];
@@ -96,7 +96,7 @@ public class MainActivity extends BaseActionBarActivity {
         this.textViewAccountEmail        = (TextView) this.findViewById(R.id.textViewAccountEmail);
         this.imageViewUserAvatar         = (ImageView) this.findViewById(R.id.imageViewUserAvatar);
         this.viewPagerMainNavigation     = (ViewPager) this.findViewById(R.id.viewPagerMainNavigation);
-        this.pageIndicatorMainNavigation = (TabPageIndicator) this.findViewById(R.id.pageIndicatorMainNavigation);
+        this.pageIndicatorMainNavigation = (PagerSlidingTabStrip) this.findViewById(R.id.pageIndicatorMainNavigation);
 
         // Set user info
         this.setUserInfo();

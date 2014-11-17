@@ -10,9 +10,6 @@
         <item name="windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBarOverlay">true</item>
-
-        <!-- TabPageIndicator style -->
-        <item name="vpiTabPageIndicatorStyle">@style/TabPageIndicatorStyle</item>
     </style>
 
     <!-- Login activity edit text style -->
@@ -21,15 +18,6 @@
         <item name="android:textColor">@color/login_float_label</item>
         <item name="android:textStyle">normal</item>
         <item name="android:typeface">sans</item>
-    </style>
-
-    <!-- Main activity view pager tab size and color -->
-    <!-- Ref: http://goo.gl/oefRU1 -->
-    <style name="TabPageIndicatorStyle" parent="@style/Widget.TabPageIndicator">
-        <item name="android:textSize">15dip</item>
-        <item name="android:textColor">#D8FFFFFF</item>
-
-        <item name="android:background">@drawable/main_activity_view_pager_tab_indicator_background</item>
     </style>
 
 </resources>
