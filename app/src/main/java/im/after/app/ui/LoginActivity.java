@@ -107,9 +107,9 @@ public class LoginActivity extends BaseActivity {
             put("password", editTextPassword.getText().toString());
             put("permanent", "1");
         }}, (JSONObject response) -> {
-            try {
-                buttonLogin.setProgress(100);
+            buttonLogin.setProgress(100);
 
+            try {
                 ObjectMapper objectMapper = new ObjectMapper();
                 UserEntity userEntity = objectMapper.readValue(response.toString(), UserEntity.class);
 
@@ -119,7 +119,7 @@ public class LoginActivity extends BaseActivity {
                 finish();
             } catch (Exception e) {
                 uiHelper.alertError("Oops", String.format(locale(R.string.login_activity_login_error), "doSignIn::JSONSuccessListener"));
-            } finally {
+
                 buttonLogin.setProgress(0);
                 setAllControlsEnabled(true);
             }
