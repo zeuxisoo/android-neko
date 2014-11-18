@@ -170,6 +170,7 @@ public class MainActivity extends BaseActionBarActivity {
     }
 
     private void setViewPager() {
+        this.viewPagerMainNavigation.setOffscreenPageLimit(2);
         this.viewPagerMainNavigation.setAdapter(new SectionsPagerAdapter(this, this.getSupportFragmentManager()));
         this.pageIndicatorMainNavigation.setViewPager(this.viewPagerMainNavigation);
     }
