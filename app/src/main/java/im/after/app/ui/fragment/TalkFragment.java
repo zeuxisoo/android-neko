@@ -58,12 +58,12 @@ public class TalkFragment extends BaseFragment {
         this.handler  = new Handler();
 
         // Set recycler view is not fixed size, layout manager and adapter
-        this.recyclerViewFragmentTalk.setHasFixedSize(false);
-        this.recyclerViewFragmentTalk.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-        this.recyclerViewFragmentTalk.setItemAnimator(new DefaultItemAnimator());
-
         this.fragmentTalkItemAdapter = new FragmentTalkItemAdapter();
+
+        this.recyclerViewFragmentTalk.setHasFixedSize(false);
         this.recyclerViewFragmentTalk.setAdapter(this.fragmentTalkItemAdapter);
+        this.recyclerViewFragmentTalk.setItemAnimator(new DefaultItemAnimator());
+        this.recyclerViewFragmentTalk.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
         // Set action
         this.setLoadMoreEvent();

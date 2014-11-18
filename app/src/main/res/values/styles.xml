@@ -8,8 +8,6 @@
     <!-- Main activity theme, drawer layout must render from theme.appcompat (AndroidManifest set) -->
     <style name="AppTheme.MainActivity" parent="@style/Theme.AppCompat">
         <item name="windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowActionBarOverlay">true</item>
     </style>
 
     <!-- Login activity edit text style -->
