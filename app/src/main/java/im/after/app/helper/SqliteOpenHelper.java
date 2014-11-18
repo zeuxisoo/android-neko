@@ -11,12 +11,12 @@ import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 
 import im.after.app.AppConfig;
-import im.after.app.entity.LoginEntity;
+import im.after.app.entity.table.LoginTable;
 
 public class SqliteOpenHelper extends OrmLiteSqliteOpenHelper {
 
     private final String TAG  = this.getClass().getSimpleName();
-    private Class<?> objects[] = new Class<?>[] { LoginEntity.class };
+    private Class<?> objects[] = new Class<?>[] { LoginTable.class };
 
     public SqliteOpenHelper(Context context) {
         super(context, FileHelper.databaseFilePath(), null, AppConfig.Database.VERSION);

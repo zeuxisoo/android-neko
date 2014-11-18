@@ -21,7 +21,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import im.after.app.R;
-import im.after.app.entity.UserEntity;
+import im.after.app.entity.bean.UserBean;
 import im.after.app.helper.UIHelper;
 import im.after.app.ui.adapter.SectionsPagerAdapter;
 
@@ -131,15 +131,15 @@ public class MainActivity extends BaseActionBarActivity {
     }
 
     private void setUserInfo() {
-        UserEntity userEntity = (UserEntity) this.getIntent().getSerializableExtra("userEntity");
+        UserBean userBean = (UserBean) this.getIntent().getSerializableExtra("userBean");
 
-        if (userEntity != null) {
-            Picasso.with(this).load(userEntity.getAvatar()).fit().transform(
+        if (userBean != null) {
+            Picasso.with(this).load(userBean.getAvatar()).fit().transform(
                 new RoundedTransformationBuilder().borderColor(R.color.drawer_menu_user_avatar_border).borderWidthDp(1).cornerRadiusDp(30).oval(false).build()
             ).into(this.imageViewUserAvatar);
 
-            this.textViewAccountUsername.setText(userEntity.getUsername());
-            this.textViewAccountEmail.setText(userEntity.getEmail());
+            this.textViewAccountUsername.setText(userBean.getUsername());
+            this.textViewAccountEmail.setText(userBean.getEmail());
         }
     }
 

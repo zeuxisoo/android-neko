@@ -9,14 +9,14 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import im.after.app.R;
-import im.after.app.entity.TalkEntity;
+import im.after.app.entity.bean.TalkBean;
 
 public class FragmentTalkItemAdapter extends RecyclerView.Adapter<FragmentTalkItemAdapter.ViewHolder> {
 
-    private ArrayList<TalkEntity> talkEntities;
+    private ArrayList<TalkBean> talkBeans;
 
-    public FragmentTalkItemAdapter(ArrayList<TalkEntity> talkEntities) {
-        this.talkEntities = talkEntities;
+    public FragmentTalkItemAdapter(ArrayList<TalkBean> talkBean) {
+        this.talkBeans = talkBean;
     }
 
     @Override
@@ -28,14 +28,14 @@ public class FragmentTalkItemAdapter extends RecyclerView.Adapter<FragmentTalkIt
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        TalkEntity talkEntity = this.talkEntities.get(i);
+        TalkBean talkBean = this.talkBeans.get(i);
 
-        viewHolder.subject.setText(talkEntity.getSubject());
+        viewHolder.subject.setText(talkBean.getSubject());
     }
 
     @Override
     public int getItemCount() {
-        return this.talkEntities.size();
+        return this.talkBeans.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

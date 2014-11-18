@@ -15,8 +15,8 @@ import java.util.HashMap;
 
 import im.after.app.R;
 import im.after.app.api.MainAPI;
-import im.after.app.entity.LoginEntity;
-import im.after.app.entity.UserEntity;
+import im.after.app.entity.bean.UserBean;
+import im.after.app.entity.table.LoginTable;
 import im.after.app.helper.DaoHelper;
 import im.after.app.helper.UIHelper;
 
@@ -63,19 +63,19 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void setLoginInfo() {
-        DaoHelper daoHelper = new DaoHelper<LoginEntity>(this, LoginEntity.class);
-        LoginEntity loginEntity = (LoginEntity) daoHelper.findFirst();
+        DaoHelper daoHelper = new DaoHelper<LoginTable>(this, LoginTable.class);
+        LoginTable loginTable = (LoginTable) daoHelper.findFirst();
 
-        if (loginEntity != null) {
-            this.editTextLoginAccount.setText(loginEntity.getAccount());
-            this.editTextLoginPassword.setText(loginEntity.getPassword());
+        if (loginTable != null) {
+            this.editTextLoginAccount.setText(loginTable.getAccount());
+            this.editTextLoginPassword.setText(loginTable.getPassword());
             this.checkboxSaveLoginInfo.setChecked(true);
         }
     }
 
     private void saveLoginInfo() {
         // Clear info first
-        DaoHelper daoHelper = new DaoHelper<LoginEntity>(this, LoginEntity.class);
+        DaoHelper daoHelper = new DaoHelper<LoginTable>(this, LoginTable.class);
         daoHelper.deleteAll();
 
         // If save, create info again
@@ -83,11 +83,11 @@ public class LoginActivity extends BaseActivity {
             String account = this.editTextLoginAccount.getText().toString().trim();
             String password = this.editTextLoginPassword.getText().toString().trim();
 
-            LoginEntity loginEntity = new LoginEntity();
-            loginEntity.setAccount(account);
-            loginEntity.setPassword(password);
+            LoginTable loginTable = new LoginTable();
+            loginTable.setAccount(account);
+            loginTable.setPassword(password);
 
-            daoHelper.create(loginEntity);
+            daoHelper.create(loginTable);
         }
     }
 
@@ -107,10 +107,10 @@ public class LoginActivity extends BaseActivity {
 
             try {
                 ObjectMapper objectMapper = new ObjectMapper();
-                UserEntity userEntity = objectMapper.readValue(response.toString(), UserEntity.class);
+                UserBean userBean = objectMapper.readValue(response.toString(), UserBean.class);
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("userEntity", userEntity);
+                intent.putExtra("userBean", userBean);
                 startActivity(intent);
                 finish();
             } catch (Exception e) {

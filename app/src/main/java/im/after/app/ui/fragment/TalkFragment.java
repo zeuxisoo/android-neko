@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import im.after.app.R;
-import im.after.app.entity.TalkEntity;
+import im.after.app.entity.bean.TalkBean;
 import im.after.app.ui.adapter.FragmentTalkItemAdapter;
 
 public class TalkFragment extends Fragment {
@@ -35,11 +35,11 @@ public class TalkFragment extends Fragment {
         this.recyclerViewFragmentTalk.setItemAnimator(new DefaultItemAnimator());
 
         //
-        ArrayList<TalkEntity> talkEntities = new ArrayList<>();
-        talkEntities.add(0, new TalkEntity("Apple"));
-        talkEntities.add(1, new TalkEntity("Banana"));
+        ArrayList<TalkBean> talkBeans = new ArrayList<>();
+        talkBeans.add(0, new TalkBean("Apple"));
+        talkBeans.add(1, new TalkBean("Banana"));
 
-        this.recyclerViewFragmentTalk.setAdapter(new FragmentTalkItemAdapter(talkEntities));
+        this.recyclerViewFragmentTalk.setAdapter(new FragmentTalkItemAdapter(talkBeans));
 
         return viewFragmentTalk;
     }

@@ -1,10 +1,12 @@
-package im.after.app.entity;
+package im.after.app.entity.table;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import im.after.app.entity.BaseEntity;
+
 @DatabaseTable(tableName = "login")
-public class LoginEntity extends BaseEntity {
+public class LoginTable extends BaseEntity {
 
     @DatabaseField(generatedId = true)
     private int id;

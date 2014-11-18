@@ -1,10 +1,12 @@
-package im.after.app.entity;
+package im.after.app.entity.bean;
 
-public class TalkEntity extends BaseEntity {
+import im.after.app.entity.BaseEntity;
+
+public class TalkBean extends BaseEntity {
 
     private String subject;
 
-    public TalkEntity(String subject) {
+    public TalkBean(String subject) {
         this.setSubject(subject);
     }
 
