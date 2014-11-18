@@ -73,36 +73,40 @@ public class TalkFragment extends BaseFragment {
     private void setLoadMoreEvent() {
         this.recyclerViewFragmentTalk.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerViewFragmentTalk.getLayoutManager();
+
+                if (!pageIsLoading && pageHasNext && fragmentTalkItemAdapter.getItemCount() ==  layoutManager.findLastVisibleItemPosition() + 1) {
+                    pageIsLoading = true;
+
+                    currentPageNo = currentPageNo + 1;
+
+                    ToastHelper.show(
+                        getActivity(),
+                        String.format(getActivity().getString(R.string.talk_fragment_current_loading_page), currentPageNo)
+                    );
+
+                    requestTalkPage(currentPageNo);
+                }
+
+                if (!showingNoMore && !pageHasNext && fragmentTalkItemAdapter.getItemCount() ==  layoutManager.findLastVisibleItemPosition() + 1) {
+                    showingNoMore = true;
+
+                    ToastHelper.show(getActivity(), R.string.talk_fragment_no_more_page);
+
+                    handler.postDelayed(() -> showingNoMore = false, 2000);
+                }
+            }
+
+            @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 
-                LinearLayoutManager layoutManager = ((LinearLayoutManager) recyclerViewFragmentTalk.getLayoutManager());
+                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerViewFragmentTalk.getLayoutManager();
 
-                int visibleItemCount = layoutManager.getChildCount();
-                int totalItemCount   = layoutManager.getItemCount();
-                int lastVisibleItems = layoutManager.findFirstVisibleItemPosition();
-
-                if ((visibleItemCount + lastVisibleItems) >= totalItemCount) {
-                    if (!pageIsLoading && pageHasNext) {
-                        currentPageNo = currentPageNo + 1;
-
-                        ToastHelper.show(
-                            getActivity(),
-                            String.format(getActivity().getString(R.string.talk_fragment_current_loading_page), currentPageNo)
-                        );
-
-                        requestTalkPage(currentPageNo);
-                    }
-
-                    if (!pageHasNext && !showingNoMore && dy > 0) {
-                        showingNoMore = true;
-
-                        ToastHelper.show(getActivity(), R.string.talk_fragment_no_more_page);
-
-                        // reset the showing no more state
-                        handler.postDelayed(() -> showingNoMore = false, 2000);
-                    }
-                }
+                swipeRefreshLayoutFragmentTalk.setEnabled(layoutManager.findFirstCompletelyVisibleItemPosition() == 0);
             }
         });
     }
