@@ -1,81 +1,45 @@
 package im.after.app.entity.bean;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.util.Date;
+import java.util.ArrayList;
 
 import im.after.app.entity.BaseEntity;
 
 public class TalkBean extends BaseEntity {
 
-    private int id;
+    private int count;
+    private ArrayList<TalkItemBean> items;
+    private String next;
+    private String prev;
 
-    @JsonProperty("user_id")
-    private int userId;
-
-    private String username;
-    private String service;
-    private String content;
-
-    @JsonProperty("create_at")
-    private Date createAt;
-
-    @JsonProperty("update_at")
-    private Date updateAt;
-
-    public int getId() {
-        return id;
+    public int getCount() {
+        return count;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCount(int count) {
+        this.count = count;
     }
 
-    public int getUserId() {
-        return this.userId;
+    public ArrayList<TalkItemBean> getItems() {
+        return items;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setItems(ArrayList<TalkItemBean> items) {
+        this.items = items;
     }
 
-    public String getUsername() {
-        return username;
+    public String getNext() {
+        return next;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNext(String next) {
+        this.next = next;
     }
 
-    public String getService() {
-        return service;
+    public String getPrev() {
+        return prev;
     }
 
-    public void setService(String service) {
-        this.service = service;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Date getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
-    }
-
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
+    public void setPrev(String prev) {
+        this.prev = prev;
     }
 }
