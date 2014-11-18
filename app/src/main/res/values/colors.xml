@@ -18,4 +18,8 @@
     <color name="main_tab_text">@android:color/white</color>
     <color name="main_tab_indicator">#FF984bc0</color>
     <color name="main_tab_underline">#FFc69bd7</color>
+
+    <color name="fragment_background">#FF455262</color>
+    <color name="fragment_item_card_view_background">#FF27394E</color>
+    <color name="fragment_item_card_view_text">#FFDAE0E7</color>
 </resources>
