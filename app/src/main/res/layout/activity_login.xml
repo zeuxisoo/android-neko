@@ -31,7 +31,7 @@
             custom:fletTextAppearance="@style/FletTextAppearance"
             custom:fletPaddingLeft="5dp">
             <EditText
-                android:id="@+id/editTextAccount"
+                android:id="@+id/editTextLoginAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/login_white_transparent"
@@ -48,7 +48,7 @@
             custom:fletTextAppearance="@style/FletTextAppearance"
             custom:fletPaddingLeft="5dp">
             <EditText
-                android:id="@+id/editTextPassword"
+                android:id="@+id/editTextLoginPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login_activity_password_hint"

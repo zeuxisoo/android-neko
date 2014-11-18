@@ -24,8 +24,8 @@ public class LoginActivity extends BaseActivity {
 
     private static final String TAG  = "LoginActivity";
 
-    private EditText editTextAccount;
-    private EditText editTextPassword;
+    private EditText editTextLoginAccount;
+    private EditText editTextLoginPassword;
     private ActionProcessButton buttonLogin;
     private CheckBox checkboxSaveLoginInfo;
 
@@ -39,8 +39,8 @@ public class LoginActivity extends BaseActivity {
 
         this.uiHelper = new UIHelper(this);
 
-        this.editTextAccount = (EditText) this.findViewById(R.id.editTextAccount);
-        this.editTextPassword = (EditText) this.findViewById(R.id.editTextPassword);
+        this.editTextLoginAccount = (EditText) this.findViewById(R.id.editTextLoginAccount);
+        this.editTextLoginPassword = (EditText) this.findViewById(R.id.editTextLoginPassword);
 
         this.checkboxSaveLoginInfo = (CheckBox) this.findViewById(R.id.checkboxSaveLoginInfo);
 
@@ -56,8 +56,8 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void setAllControlsEnabled(boolean status) {
-        editTextAccount.setEnabled(status);
-        editTextPassword.setEnabled(status);
+        editTextLoginAccount.setEnabled(status);
+        editTextLoginPassword.setEnabled(status);
         checkboxSaveLoginInfo.setEnabled(status);
         buttonLogin.setEnabled(status);
     }
@@ -67,8 +67,8 @@ public class LoginActivity extends BaseActivity {
         LoginEntity loginEntity = (LoginEntity) daoHelper.findFirst();
 
         if (loginEntity != null) {
-            this.editTextAccount.setText(loginEntity.getAccount());
-            this.editTextPassword.setText(loginEntity.getPassword());
+            this.editTextLoginAccount.setText(loginEntity.getAccount());
+            this.editTextLoginPassword.setText(loginEntity.getPassword());
             this.checkboxSaveLoginInfo.setChecked(true);
         }
     }
@@ -80,8 +80,8 @@ public class LoginActivity extends BaseActivity {
 
         // If save, create info again
         if (this.checkboxSaveLoginInfo.isChecked()) {
-            String account = this.editTextAccount.getText().toString().trim();
-            String password = this.editTextPassword.getText().toString().trim();
+            String account = this.editTextLoginAccount.getText().toString().trim();
+            String password = this.editTextLoginPassword.getText().toString().trim();
 
             LoginEntity loginEntity = new LoginEntity();
             loginEntity.setAccount(account);
@@ -99,8 +99,8 @@ public class LoginActivity extends BaseActivity {
         MainAPI mainAPI = new MainAPI(this);
 
         mainAPI.signIn(new HashMap<String, String>() {{
-            put("account", editTextAccount.getText().toString());
-            put("password", editTextPassword.getText().toString());
+            put("account", editTextLoginAccount.getText().toString());
+            put("password", editTextLoginPassword.getText().toString());
             put("permanent", "1");
         }}, (JSONObject response) -> {
             buttonLogin.setProgress(100);
