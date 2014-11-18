@@ -13,6 +13,7 @@ public class HttpHelper {
 
     public HttpHelper(Context context) {
         this.client.setCookieStore(new PersistentCookieStore(context));
+        this.client.setEnableRedirects(true);
     }
 
     public void get(String url, RequestParams params, JsonHttpResponseHandler responseHandler) {
