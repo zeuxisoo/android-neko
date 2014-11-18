@@ -41,10 +41,17 @@ public class TalkFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        // Set layout control
         View viewFragmentTalk = inflater.inflate(R.layout.fragment_talk, container, false);
 
         this.swipeRefreshLayoutFragmentTalk = (SwipeRefreshLayout) viewFragmentTalk.findViewById(R.id.swipeRefreshLayoutFragmentTalk);
         this.recyclerViewFragmentTalk       = (RecyclerView) viewFragmentTalk.findViewById(R.id.recyclerViewFragmentTalk);
+
+        // Reset all state variable, when fragment view create again if not change by setOffscreenPageLimit
+        this.currentPageNo = 1;
+        this.pageHasNext   = false;
+        this.pageIsLoading = false;
+        this.showingNoMore = false;
 
         return viewFragmentTalk;
     }
