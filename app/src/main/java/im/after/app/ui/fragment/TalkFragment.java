@@ -15,14 +15,12 @@ import java.util.ArrayList;
 
 import im.after.app.R;
 import im.after.app.entity.TalkEntity;
-import im.after.app.ui.adapter.FragmentTalkAdapter;
+import im.after.app.ui.adapter.FragmentTalkItemAdapter;
 
 public class TalkFragment extends Fragment {
 
     private SwipeRefreshLayout swipeRefreshLayoutFragmentTalk;
     private RecyclerView recyclerViewFragmentTalk;
-
-    private FragmentTalkAdapter fragmentTalkAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,9 +39,7 @@ public class TalkFragment extends Fragment {
         talkEntities.add(0, new TalkEntity("Apple"));
         talkEntities.add(1, new TalkEntity("Banana"));
 
-        FragmentTalkAdapter fragmentTalkAdapter = new FragmentTalkAdapter(talkEntities);
-
-        this.recyclerViewFragmentTalk.setAdapter(fragmentTalkAdapter);
+        this.recyclerViewFragmentTalk.setAdapter(new FragmentTalkItemAdapter(talkEntities));
 
         return viewFragmentTalk;
     }

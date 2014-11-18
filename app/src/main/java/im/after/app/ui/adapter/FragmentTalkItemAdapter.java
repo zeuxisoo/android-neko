@@ -11,16 +11,16 @@ import java.util.ArrayList;
 import im.after.app.R;
 import im.after.app.entity.TalkEntity;
 
-public class FragmentTalkAdapter extends RecyclerView.Adapter<FragmentTalkAdapter.ViewHolder> {
+public class FragmentTalkItemAdapter extends RecyclerView.Adapter<FragmentTalkItemAdapter.ViewHolder> {
 
     private ArrayList<TalkEntity> talkEntities;
 
-    public FragmentTalkAdapter(ArrayList<TalkEntity> talkEntities) {
+    public FragmentTalkItemAdapter(ArrayList<TalkEntity> talkEntities) {
         this.talkEntities = talkEntities;
     }
 
     @Override
-    public FragmentTalkAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public FragmentTalkItemAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View fragmentTalkItemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_talk_item, viewGroup, false);
 
         return new ViewHolder(fragmentTalkItemView);
