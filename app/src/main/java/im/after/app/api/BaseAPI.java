@@ -29,4 +29,8 @@ public class BaseAPI {
         return new RequestParams(hashParams);
     }
 
+    public RequestParams params(String key, String value) {
+        return new RequestParams(key, value);
+    }
+
 }

@@ -14,13 +14,13 @@ public class UserBean extends BaseEntity {
     private String email;
 
     @JsonProperty("hashed_username")
-    private String hashed_username;
+    private String hashedUsername;
 
     @JsonProperty("create_at")
-    private Date create_at;
+    private Date createAt;
 
     @JsonProperty("update_at")
-    private Date update_at;
+    private Date updateAt;
 
     public int getId() {
         return id;
@@ -47,27 +47,27 @@ public class UserBean extends BaseEntity {
     }
 
     public String getHashedUsername() {
-        return hashed_username;
+        return hashedUsername;
     }
 
     public void setHashedUsername(String hashed_username) {
-        this.hashed_username = hashed_username;
+        this.hashedUsername = hashed_username;
     }
 
     public Date getCreateAt() {
-        return create_at;
+        return createAt;
     }
 
     public void setCreateAt(Date create_at) {
-        this.create_at = create_at;
+        this.createAt = create_at;
     }
 
     public Date getUpdateAt() {
-        return update_at;
+        return updateAt;
     }
 
     public void setUpdateAt(Date update_at) {
-        this.update_at = update_at;
+        this.updateAt = update_at;
     }
 
     public String getAvatar() {

@@ -15,8 +15,13 @@ public class FragmentTalkItemAdapter extends RecyclerView.Adapter<FragmentTalkIt
 
     private ArrayList<TalkBean> talkBeans;
 
-    public FragmentTalkItemAdapter(ArrayList<TalkBean> talkBean) {
-        this.talkBeans = talkBean;
+    public FragmentTalkItemAdapter() {
+        this.talkBeans = new ArrayList<TalkBean>();
+    }
+
+    public void setTalkBeans(ArrayList<TalkBean> talkBeans) {
+        this.talkBeans = talkBeans;
+        this.notifyDataSetChanged();
     }
 
     @Override
@@ -30,7 +35,8 @@ public class FragmentTalkItemAdapter extends RecyclerView.Adapter<FragmentTalkIt
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         TalkBean talkBean = this.talkBeans.get(i);
 
-        viewHolder.subject.setText(talkBean.getSubject());
+        viewHolder.username.setText(talkBean.getUsername());
+        viewHolder.content.setText(talkBean.getContent());
     }
 
     @Override
@@ -40,12 +46,14 @@ public class FragmentTalkItemAdapter extends RecyclerView.Adapter<FragmentTalkIt
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView subject;
+        public TextView username;
+        public TextView content;
 
         public ViewHolder(View view) {
             super(view);
 
-            this.subject = (TextView) view.findViewById(R.id.textViewFragmentTalkItemSubject);
+            this.username = (TextView) view.findViewById(R.id.textViewFragmentTalkItemUsername);
+            this.content  = (TextView) view.findViewById(R.id.textViewFragmentTalkItemContent);
         }
 
     }

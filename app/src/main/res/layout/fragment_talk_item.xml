@@ -17,15 +17,23 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textViewFragmentTalkItemSubject"
-            android:gravity="center"
-            android:focusable="true"
-            android:clickable="true"
+            android:id="@+id/textViewFragmentTalkItemUsername"
+            android:gravity="left"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:layout_centerInParent="true"
-            android:textColor="@color/fragment_item_card_view_text" />
+            android:textColor="@color/fragment_item_card_view_text"
+            android:text="username" />
+
+        <TextView
+            android:id="@+id/textViewFragmentTalkItemContent"
+            android:gravity="left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewFragmentTalkItemUsername"
+            android:textSize="24sp"
+            android:textColor="@color/fragment_item_card_view_text"
+            android:text="content" />
 
     </RelativeLayout>
 
