@@ -29,6 +29,7 @@ public class TalkFragment extends BaseFragment {
 
     private SwipeRefreshLayout swipeRefreshLayoutFragmentTalk;
     private RecyclerView recyclerViewFragmentTalk;
+    private LinearLayoutManager linearLayoutManager;
 
     private FragmentTalkItemAdapter fragmentTalkItemAdapter;
     private UIHelper uiHelper;
@@ -39,12 +40,20 @@ public class TalkFragment extends BaseFragment {
     private boolean pageIsLoading = false;
     private boolean showingNoMore = false;
 
+    interface RequestPageFinishedCallBack {
+        void onFinish();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View viewFragmentTalk = inflater.inflate(R.layout.fragment_talk, container, false);
 
         this.swipeRefreshLayoutFragmentTalk = (SwipeRefreshLayout) viewFragmentTalk.findViewById(R.id.swipeRefreshLayoutFragmentTalk);
         this.recyclerViewFragmentTalk       = (RecyclerView) viewFragmentTalk.findViewById(R.id.recyclerViewFragmentTalk);
+
+        // Set UIHelper
+        this.uiHelper = new UIHelper(this.getActivity());
+        this.handler  = new Handler();
 
         return viewFragmentTalk;
     }
@@ -58,16 +67,38 @@ public class TalkFragment extends BaseFragment {
         this.handler  = new Handler();
 
         // Set recycler view is not fixed size, layout manager and adapter
+        this.linearLayoutManager = new LinearLayoutManager(this.getActivity());
+        this.linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
         this.fragmentTalkItemAdapter = new FragmentTalkItemAdapter();
 
         this.recyclerViewFragmentTalk.setHasFixedSize(false);
         this.recyclerViewFragmentTalk.setAdapter(this.fragmentTalkItemAdapter);
         this.recyclerViewFragmentTalk.setItemAnimator(new DefaultItemAnimator());
-        this.recyclerViewFragmentTalk.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        this.recyclerViewFragmentTalk.setLayoutManager(this.linearLayoutManager);
 
         // Set action
+        this.setPullDownEvent();
         this.setLoadMoreEvent();
         this.requestTalkPage(this.currentPageNo);
+    }
+
+    private void setPullDownEvent() {
+        this.swipeRefreshLayoutFragmentTalk.setColorSchemeResources(
+            android.R.color.holo_red_light,
+            android.R.color.holo_blue_light,
+            android.R.color.holo_green_light,
+            android.R.color.holo_orange_light
+        );
+        this.swipeRefreshLayoutFragmentTalk.setOnRefreshListener(() -> {
+            this.swipeRefreshLayoutFragmentTalk.setRefreshing(true);
+            this.fragmentTalkItemAdapter.clearTalkItemBeans();
+
+            this.requestTalkPage(1, () -> {
+                this.currentPageNo = 1;
+                this.swipeRefreshLayoutFragmentTalk.setRefreshing(false);
+            });
+        });
     }
 
     private void setLoadMoreEvent() {
@@ -76,9 +107,7 @@ public class TalkFragment extends BaseFragment {
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
 
-                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerViewFragmentTalk.getLayoutManager();
-
-                if (!pageIsLoading && pageHasNext && fragmentTalkItemAdapter.getItemCount() ==  layoutManager.findLastVisibleItemPosition() + 1) {
+                if (!pageIsLoading && pageHasNext && fragmentTalkItemAdapter.getItemCount() ==  linearLayoutManager.findLastVisibleItemPosition() + 1) {
                     pageIsLoading = true;
 
                     currentPageNo = currentPageNo + 1;
@@ -91,7 +120,7 @@ public class TalkFragment extends BaseFragment {
                     requestTalkPage(currentPageNo);
                 }
 
-                if (!showingNoMore && !pageHasNext && fragmentTalkItemAdapter.getItemCount() ==  layoutManager.findLastVisibleItemPosition() + 1) {
+                if (!showingNoMore && !pageHasNext && fragmentTalkItemAdapter.getItemCount() ==  linearLayoutManager.findLastVisibleItemPosition() + 1) {
                     showingNoMore = true;
 
                     ToastHelper.show(getActivity(), R.string.talk_fragment_no_more_page);
@@ -112,6 +141,10 @@ public class TalkFragment extends BaseFragment {
     }
 
     private void requestTalkPage(int pageNo) {
+        this.requestTalkPage(pageNo, () -> {});
+    }
+
+    private void requestTalkPage(int pageNo, RequestPageFinishedCallBack callback) {
         this.pageIsLoading = true;
 
         TalkAPI talkAPI = new TalkAPI(this.getActivity());
@@ -126,10 +159,12 @@ public class TalkFragment extends BaseFragment {
                     this.pageHasNext = (talkBean.getNext() != null);
 
                     if (pageNo > 1) {
-                        this.fragmentTalkItemAdapter.addTalkBeans(talkBean.getItems());
+                        this.fragmentTalkItemAdapter.addTalkItemBeans(talkBean.getItems());
                     }else{
                         this.fragmentTalkItemAdapter.setTalkItemBeans(talkBean.getItems());
                     }
+
+                    callback.onFinish();
                 }catch(Exception e) {
                     uiHelper.alertError("Oops", String.format(locale(R.string.talk_fragment_request_page_error), "loadTalkPage::JSONSuccessListener"));
                 }finally{
