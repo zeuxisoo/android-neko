@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.melnykov.fab.FloatingActionButton;
 
 import org.json.JSONObject;
 
@@ -30,6 +31,7 @@ public class TalkFragment extends BaseFragment {
     private SwipeRefreshLayout swipeRefreshLayoutFragmentTalk;
     private RecyclerView recyclerViewFragmentTalk;
     private LinearLayoutManager linearLayoutManager;
+    private FloatingActionButton floatingActionButtonFragmentTalk;
 
     private FragmentTalkItemAdapter fragmentTalkItemAdapter;
     private UIHelper uiHelper;
@@ -48,8 +50,9 @@ public class TalkFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View viewFragmentTalk = inflater.inflate(R.layout.fragment_talk, container, false);
 
-        this.swipeRefreshLayoutFragmentTalk = (SwipeRefreshLayout) viewFragmentTalk.findViewById(R.id.swipeRefreshLayoutFragmentTalk);
-        this.recyclerViewFragmentTalk       = (RecyclerView) viewFragmentTalk.findViewById(R.id.recyclerViewFragmentTalk);
+        this.swipeRefreshLayoutFragmentTalk   = (SwipeRefreshLayout) viewFragmentTalk.findViewById(R.id.swipeRefreshLayoutFragmentTalk);
+        this.recyclerViewFragmentTalk         = (RecyclerView) viewFragmentTalk.findViewById(R.id.recyclerViewFragmentTalk);
+        this.floatingActionButtonFragmentTalk = (FloatingActionButton) viewFragmentTalk.findViewById(R.id.floatingActionButtonFragmentTalk);
 
         // Set UIHelper
         this.uiHelper = new UIHelper(this.getActivity());
@@ -77,6 +80,9 @@ public class TalkFragment extends BaseFragment {
         this.recyclerViewFragmentTalk.setItemAnimator(new DefaultItemAnimator());
         this.recyclerViewFragmentTalk.setLayoutManager(this.linearLayoutManager);
 
+        // Attach float button to recyler view
+        this.floatingActionButtonFragmentTalk.attachToRecyclerView(this.recyclerViewFragmentTalk);
+
         // Set action
         this.setPullDownEvent();
         this.setLoadMoreEvent();
@@ -91,11 +97,13 @@ public class TalkFragment extends BaseFragment {
             android.R.color.holo_orange_light
         );
         this.swipeRefreshLayoutFragmentTalk.setOnRefreshListener(() -> {
+            this.floatingActionButtonFragmentTalk.hide();
             this.swipeRefreshLayoutFragmentTalk.setRefreshing(true);
             this.fragmentTalkItemAdapter.clearTalkItemBeans();
 
             this.requestTalkPage(1, () -> {
                 this.currentPageNo = 1;
+                this.floatingActionButtonFragmentTalk.show();
                 this.swipeRefreshLayoutFragmentTalk.setRefreshing(false);
             });
         });
@@ -103,6 +111,7 @@ public class TalkFragment extends BaseFragment {
 
     private void setLoadMoreEvent() {
         this.recyclerViewFragmentTalk.setOnScrollListener(new RecyclerView.OnScrollListener() {
+
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
@@ -133,9 +142,17 @@ public class TalkFragment extends BaseFragment {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 
+                // Fix swipe refresh layout and recycler view will cut the card view item
                 LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerViewFragmentTalk.getLayoutManager();
 
                 swipeRefreshLayoutFragmentTalk.setEnabled(layoutManager.findFirstCompletelyVisibleItemPosition() == 0);
+
+                // Hide the button when scroll down, show the button when scroll up
+                if (dy > 0) {
+                    floatingActionButtonFragmentTalk.hide();
+                }else{
+                    floatingActionButtonFragmentTalk.show();
+                }
             }
         });
     }

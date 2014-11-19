@@ -44,8 +44,13 @@ public class FragmentTalkItemAdapter extends RecyclerView.Adapter<FragmentTalkIt
         this.notifyDataSetChanged();
     }
 
-    public void addTalkBeans(ArrayList<TalkItemBean> talkItemBeans) {
+    public void addTalkItemBeans(ArrayList<TalkItemBean> talkItemBeans) {
         this.talkItemBeans.addAll(talkItemBeans);
+        this.notifyDataSetChanged();
+    }
+
+    public void clearTalkItemBeans() {
+        this.talkItemBeans.clear();
         this.notifyDataSetChanged();
     }
 

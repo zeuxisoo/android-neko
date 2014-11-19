@@ -42,4 +42,5 @@ dependencies {
     compile 'com.makeramen:roundedimageview:1.5.0'
     compile 'com.squareup.picasso:picasso:2.4.0'
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    compile 'com.melnykov:floatingactionbutton:1.0.7'
 }
