@@ -40,4 +40,5 @@
     <color name="compose_text_view_long_text">#FFF06A40</color>
     <color name="compose_text_view_username">#FFAAAAAA</color>
     <color name="compose_user_avatar_border">#FFFFFFFF</color>
+    <color name="compose_image_button_underline">#FF984bc0</color>
 </resources>
