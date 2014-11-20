@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import im.after.app.AppContext;
 import im.after.app.R;
 import im.after.app.entity.bean.UserBean;
-import im.after.app.helper.UIHelper;
+import im.after.app.helper.SweetDialogHelper;
 import im.after.app.ui.adapter.SectionsPagerAdapter;
 
 public class MainActivity extends BaseActionBarActivity {
@@ -63,7 +63,7 @@ public class MainActivity extends BaseActionBarActivity {
 
     private ArrayList<Integer> drawerMenuItems = new ArrayList<Integer>();
     private Handler handler;
-    private UIHelper uiHelper;
+    private SweetDialogHelper sweetDialogHelper;
 
     private int currentSelectedDrawerMenuItem = Integer.MIN_VALUE;
 
@@ -75,7 +75,7 @@ public class MainActivity extends BaseActionBarActivity {
 
         // Set base object
         this.handler = new Handler();
-        this.uiHelper = new UIHelper(this);
+        this.sweetDialogHelper = new SweetDialogHelper(this);
 
         // Set toolbar
         this.toolbar = (Toolbar) this.findViewById(R.id.toolbar);
@@ -117,7 +117,7 @@ public class MainActivity extends BaseActionBarActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            new UIHelper(this).alertSuccess("About", "Servant! Call me, Master :)");
+            new SweetDialogHelper(this).alertSuccess("About", "Servant! Call me, Master :)");
         }
 
         return super.onOptionsItemSelected(item);
@@ -232,16 +232,16 @@ public class MainActivity extends BaseActionBarActivity {
     private void openDrawerMenuItem(int itemId) {
         switch (itemId) {
             case DRAWER_MENU_ITEM_ARTICLE:
-                uiHelper.alertSuccess("Master", "I am article");
+                sweetDialogHelper.alertSuccess("Master", "I am article");
                 break;
             case DRAWER_MENU_ITEM_MEMO:
-                uiHelper.alertSuccess("Master", "I am memo");
+                sweetDialogHelper.alertSuccess("Master", "I am memo");
                 break;
             case DRAWER_MENU_ITEM_TALK:
-                uiHelper.alertSuccess("Master", "I am talk");
+                sweetDialogHelper.alertSuccess("Master", "I am talk");
                 break;
             case DRAWER_MENU_ITEM_SETTINGS:
-                uiHelper.alertSuccess("Master", "I am settings");
+                sweetDialogHelper.alertSuccess("Master", "I am settings");
                 break;
         }
     }

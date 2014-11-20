@@ -19,7 +19,7 @@ import im.after.app.api.MainAPI;
 import im.after.app.entity.bean.UserBean;
 import im.after.app.entity.table.LoginTable;
 import im.after.app.helper.DaoHelper;
-import im.after.app.helper.UIHelper;
+import im.after.app.helper.SweetDialogHelper;
 
 public class LoginActivity extends BaseActivity {
 
@@ -30,7 +30,7 @@ public class LoginActivity extends BaseActivity {
     private ActionProcessButton buttonLogin;
     private CheckBox checkboxSaveLoginInfo;
 
-    private UIHelper uiHelper;
+    private SweetDialogHelper sweetDialogHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class LoginActivity extends BaseActivity {
 
         this.setContentView(R.layout.activity_login);
 
-        this.uiHelper = new UIHelper(this);
+        this.sweetDialogHelper = new SweetDialogHelper(this);
 
         this.editTextLoginAccount = (EditText) this.findViewById(R.id.editTextLoginAccount);
         this.editTextLoginPassword = (EditText) this.findViewById(R.id.editTextLoginPassword);
@@ -117,7 +117,7 @@ public class LoginActivity extends BaseActivity {
 
                 finish();
             } catch (Exception e) {
-                uiHelper.alertError("Oops", String.format(locale(R.string.login_activity_login_error), "doSignIn::JSONSuccessListener"));
+                sweetDialogHelper.alertError("Oops", String.format(locale(R.string.login_activity_login_error), "doSignIn::JSONSuccessListener"));
 
                 buttonLogin.setProgress(0);
                 setAllControlsEnabled(true);
@@ -126,9 +126,9 @@ public class LoginActivity extends BaseActivity {
             try {
                 String message = response.getJSONObject("error").getString("message");
 
-                uiHelper.alertError("Oops", message);
+                sweetDialogHelper.alertError("Oops", message);
             }catch(Exception e) {
-                uiHelper.alertError("Oops", String.format(locale(R.string.login_activity_login_error), "doSignIn::JSONFailureListener"));
+                sweetDialogHelper.alertError("Oops", String.format(locale(R.string.login_activity_login_error), "doSignIn::JSONFailureListener"));
             }finally{
                 buttonLogin.setProgress(0);
                 setAllControlsEnabled(true);

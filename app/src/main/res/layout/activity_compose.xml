@@ -118,7 +118,7 @@
                     android:textColorHint="@color/compose_edit_text_hint"
                     android:textColor="@color/compose_edit_text"
                     android:background="@color/compose_edit_text_background"
-                    android:id="@+id/textViewComposeText" />
+                    android:id="@+id/editTextComposeText" />
 
         </ScrollView>
 

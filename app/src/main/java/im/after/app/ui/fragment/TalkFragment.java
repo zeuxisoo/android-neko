@@ -21,7 +21,7 @@ import im.after.app.R;
 import im.after.app.api.TalkAPI;
 import im.after.app.entity.bean.TalkBean;
 import im.after.app.helper.ToastHelper;
-import im.after.app.helper.UIHelper;
+import im.after.app.helper.SweetDialogHelper;
 import im.after.app.ui.ComposeActivity;
 import im.after.app.ui.adapter.BaseFragment;
 import im.after.app.ui.adapter.FragmentTalkItemAdapter;
@@ -36,7 +36,7 @@ public class TalkFragment extends BaseFragment {
     private FloatingActionButton floatingActionButtonFragmentTalk;
 
     private FragmentTalkItemAdapter fragmentTalkItemAdapter;
-    private UIHelper uiHelper;
+    private SweetDialogHelper sweetDialogHelper;
     private Handler handler;
 
     private int currentPageNo     = 1;
@@ -56,9 +56,9 @@ public class TalkFragment extends BaseFragment {
         this.recyclerViewFragmentTalk         = (RecyclerView) viewFragmentTalk.findViewById(R.id.recyclerViewFragmentTalk);
         this.floatingActionButtonFragmentTalk = (FloatingActionButton) viewFragmentTalk.findViewById(R.id.floatingActionButtonFragmentTalk);
 
-        // Set UIHelper
-        this.uiHelper = new UIHelper(this.getActivity());
-        this.handler  = new Handler();
+        // Set base object
+        this.sweetDialogHelper = new SweetDialogHelper(this.getActivity());
+        this.handler           = new Handler();
 
         return viewFragmentTalk;
     }
@@ -68,7 +68,7 @@ public class TalkFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
 
         // Set UIHelper
-        this.uiHelper = new UIHelper(this.getActivity());
+        this.sweetDialogHelper = new SweetDialogHelper(this.getActivity());
         this.handler  = new Handler();
 
         // Set recycler view is not fixed size, layout manager and adapter
@@ -196,7 +196,7 @@ public class TalkFragment extends BaseFragment {
 
                     callback.onFinish();
                 }catch(Exception e) {
-                    uiHelper.alertError("Oops", String.format(locale(R.string.talk_fragment_request_page_error), "loadTalkPage::JSONSuccessListener"));
+                    sweetDialogHelper.alertError("Oops", String.format(locale(R.string.talk_fragment_request_page_error), "loadTalkPage::JSONSuccessListener"));
                 }finally{
                     this.pageIsLoading = false;
                 }
@@ -208,12 +208,12 @@ public class TalkFragment extends BaseFragment {
                     int status     = errorObject.getInt("status");
 
                     if (status == 404) {
-                        uiHelper.alertError("Oops", String.format(locale(R.string.talk_fragment_not_found_page_number), pageNo));
+                        sweetDialogHelper.alertError("Oops", String.format(locale(R.string.talk_fragment_not_found_page_number), pageNo));
                     }else{
-                        uiHelper.alertError("Oops", message);
+                        sweetDialogHelper.alertError("Oops", message);
                     }
                 }catch(Exception e) {
-                    uiHelper.alertError("Oops", String.format(locale(R.string.talk_fragment_request_page_error), "loadTalkPage::JSONFailureListener"));
+                    sweetDialogHelper.alertError("Oops", String.format(locale(R.string.talk_fragment_request_page_error), "loadTalkPage::JSONFailureListener"));
                 }finally{
                     this.pageIsLoading = false;
                 }

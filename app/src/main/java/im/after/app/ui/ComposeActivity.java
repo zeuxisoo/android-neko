@@ -2,6 +2,8 @@ package im.after.app.ui;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +14,7 @@ import com.squareup.picasso.Picasso;
 import im.after.app.AppContext;
 import im.after.app.R;
 import im.after.app.entity.bean.UserBean;
+import im.after.app.helper.SweetDialogHelper;
 
 public class ComposeActivity extends BaseActivity {
 
@@ -27,6 +30,11 @@ public class ComposeActivity extends BaseActivity {
     private ImageButton imageButtonComposeArticle;
     private ImageButton imageButtonComposeMemo;
     private ImageButton imageButtonComposeTalk;
+    private EditText editTextComposeText;
+    private ImageButton imageButtonComposeCancel;
+    private ImageButton imageButtonComposeClear;
+
+    private SweetDialogHelper sweetDialogHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +47,21 @@ public class ComposeActivity extends BaseActivity {
         this.imageButtonComposeArticle  = (ImageButton) this.findViewById(R.id.imageButtonComposeArticle);
         this.imageButtonComposeMemo     = (ImageButton) this.findViewById(R.id.imageButtonComposeMemo);
         this.imageButtonComposeTalk     = (ImageButton) this.findViewById(R.id.imageButtonComposeTalk);
+        this.editTextComposeText        = (EditText) this.findViewById(R.id.editTextComposeText);
+        this.imageButtonComposeCancel   = (ImageButton) this.findViewById(R.id.imageButtonComposeCancel);
+        this.imageButtonComposeClear    = (ImageButton) this.findViewById(R.id.imageButtonComposeClear);
+
+        this.sweetDialogHelper = new SweetDialogHelper(this);
 
         this.setUserInfo();
         this.underlineSelectedType();
+        this.setCancelEvent();
+        this.setClearEvent();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     private void setUserInfo() {
@@ -74,6 +94,26 @@ public class ComposeActivity extends BaseActivity {
     private void setUnderline(ImageButton button) {
         button.setBackgroundResource(R.drawable.compose_default_image_button_underline);
         button.invalidate();
+    }
+
+    private void setCancelEvent() {
+        this.imageButtonComposeCancel.setOnClickListener((View v) -> {
+            if (this.editTextComposeText.length() > 0) {
+                this.sweetDialogHelper.confirm("Cancel confirm", "Are you sure want to cancel it ?", "Yes", this::finish);
+            }else{
+                this.finish();
+            }
+        });
+    }
+
+    private void setClearEvent() {
+        this.imageButtonComposeClear.setOnClickListener((View v) -> {
+            if (this.editTextComposeText.length() > 0) {
+                this.sweetDialogHelper.confirm("Clear confirm", "Are you sure want to clear the text ?", "Yes", () -> editTextComposeText.setText(""));
+            }else{
+                editTextComposeText.setText("");
+            }
+        });
     }
 
 }
