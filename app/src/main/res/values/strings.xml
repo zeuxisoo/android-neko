@@ -19,9 +19,11 @@
     <string name="main_activity_drawer_menu_item_subject_settings_text">Settings</string>
     <string name="main_activity_menu_item_about">About</string>
 
-    <string name="talk_fragment_current_loading_page">Loading page %s &#8230;</string>
+    <string name="talk_fragment_current_loading_page">Loading page %s …</string>
     <string name="talk_fragment_no_more_page">No more page</string>
     <string name="talk_fragment_request_page_error">Unknown request talks in error (%s)</string>
     <string name="talk_fragment_not_found_page_number">Not found page no: %s</string>
+
+    <string name="compose_edit_text_hint">Come on baby :)</string>
 
 </resources>

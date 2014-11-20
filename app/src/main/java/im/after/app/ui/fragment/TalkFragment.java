@@ -1,5 +1,6 @@
 package im.after.app.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -21,6 +22,7 @@ import im.after.app.api.TalkAPI;
 import im.after.app.entity.bean.TalkBean;
 import im.after.app.helper.ToastHelper;
 import im.after.app.helper.UIHelper;
+import im.after.app.ui.ComposeActivity;
 import im.after.app.ui.adapter.BaseFragment;
 import im.after.app.ui.adapter.FragmentTalkItemAdapter;
 
@@ -84,9 +86,19 @@ public class TalkFragment extends BaseFragment {
         this.floatingActionButtonFragmentTalk.attachToRecyclerView(this.recyclerViewFragmentTalk);
 
         // Set action
+        this.setCreateTalkEvent();
         this.setPullDownEvent();
         this.setLoadMoreEvent();
         this.requestTalkPage(this.currentPageNo);
+    }
+
+    private void setCreateTalkEvent() {
+        this.floatingActionButtonFragmentTalk.setOnClickListener((View v) -> {
+            Intent intent = new Intent(this.getActivity(), ComposeActivity.class);
+            intent.putExtra("type", ComposeActivity.TYPE_TALK);
+
+            this.startActivity(intent);
+        });
     }
 
     private void setPullDownEvent() {
@@ -154,6 +166,7 @@ public class TalkFragment extends BaseFragment {
                     floatingActionButtonFragmentTalk.show();
                 }
             }
+
         });
     }
 

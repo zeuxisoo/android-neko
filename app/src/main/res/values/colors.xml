@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="actionbar_overlay_background">#77000000</color>
+
     <color name="login_white_transparent">#CCFFFFFF</color>
     <color name="login_float_label">#FF3F9FE0</color>
     <color name="login_background">#FF323a45</color>
@@ -27,4 +29,14 @@
     <color name="fragment_item_card_view_float_button_normal">#D9192331</color>
     <color name="fragment_item_card_view_float_button_pressed">#D9000000</color>
     <color name="fragment_item_card_view_float_button_ripple">#FFFFFFFF</color>
+
+    <color name="compose_image_button_pressed_state_background">#55AAAAAA</color>
+    <color name="compose_background">@color/fragment_item_card_view_float_button_normal</color>
+    <color name="compose_top_bar_background">@color/fragment_item_card_view_background</color>
+    <color name="compose_bottom_bar_background">@color/fragment_item_card_view_background</color>
+    <color name="compose_edit_text">#FF455262</color>
+    <color name="compose_edit_text_background">#FFAAAAAA</color>
+    <color name="compose_edit_text_hint">#DD555555</color>
+    <color name="compose_text_view_long_text">#FFF06A40</color>
+    <color name="compose_text_view_username">#FFAAAAAA</color>
 </resources>

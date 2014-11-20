@@ -10,6 +10,20 @@
         <item name="windowActionBar">false</item>
     </style>
 
+    <!--Compose activity theme-->
+    <style name="ActionBar.Black.Overlay" parent="@style/Widget.AppCompat.ActionBar.Solid">
+        <item name="android:background">@color/actionbar_overlay_background</item>
+    </style>
+
+    <style name="AppTheme.ComposeActivity" parent="@style/Theme.AppCompat">
+        <item name="android:windowBackground">@color/compose_background</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+
+        <item name="android:actionBarStyle">@style/ActionBar.Black.Overlay</item>
+        <item name="android:windowActionBarOverlay">true</item>
+    </style>
+
     <!-- Login activity edit text style -->
     <style name="FletTextAppearance" parent="@android:style/TextAppearance.Small">
         <item name="android:textSize">12sp</item>

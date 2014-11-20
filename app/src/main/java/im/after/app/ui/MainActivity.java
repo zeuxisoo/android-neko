@@ -35,10 +35,10 @@ public class MainActivity extends BaseActionBarActivity {
     private static final int DRAWER_MENU_ITEM_SETTINGS  = 3;
     private static final int DRAWER_MENU_ITEM_SEPARATOR = -1;
     private static final int DRAWER_MENU_ITEM_ICON_RESOURCES[] = new int[] {
-        R.drawable.include_drawer_menu_item_icon_article,
-        R.drawable.include_drawer_menu_item_icon_memo,
-        R.drawable.include_drawer_menu_item_icon_talk,
-        R.drawable.include_drawer_menu_item_icon_settings,
+        R.drawable.ic_article_black,
+        R.drawable.ic_memo_black,
+        R.drawable.ic_talk_black,
+        R.drawable.ic_setting_black,
     };
     private static final int DRAWER_MENU_ITEM_SUBJECT_TEXTS[] = new int[] {
         R.string.main_activity_drawer_menu_item_subject_article_text,
