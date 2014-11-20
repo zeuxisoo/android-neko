@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import im.after.app.AppContext;
 import im.after.app.R;
 import im.after.app.api.MainAPI;
 import im.after.app.entity.bean.UserBean;
@@ -109,9 +110,11 @@ public class LoginActivity extends BaseActivity {
                 ObjectMapper objectMapper = new ObjectMapper();
                 UserBean userBean = objectMapper.readValue(response.toString(), UserBean.class);
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("userBean", userBean);
-                startActivity(intent);
+                AppContext appContext = (AppContext) this.getApplicationContext();
+                appContext.setUserBean(userBean);
+
+                startActivity(new Intent(appContext, MainActivity.class));
+
                 finish();
             } catch (Exception e) {
                 uiHelper.alertError("Oops", String.format(locale(R.string.login_activity_login_error), "doSignIn::JSONSuccessListener"));

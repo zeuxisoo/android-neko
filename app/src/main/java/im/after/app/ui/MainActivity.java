@@ -20,6 +20,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import im.after.app.AppContext;
 import im.after.app.R;
 import im.after.app.entity.bean.UserBean;
 import im.after.app.helper.UIHelper;
@@ -131,7 +132,7 @@ public class MainActivity extends BaseActionBarActivity {
     }
 
     private void setUserInfo() {
-        UserBean userBean = (UserBean) this.getIntent().getSerializableExtra("userBean");
+        UserBean userBean = ((AppContext) this.getApplicationContext()).getUserBean();
 
         if (userBean != null) {
             Picasso.with(this).load(userBean.getAvatar()).fit().transform(
