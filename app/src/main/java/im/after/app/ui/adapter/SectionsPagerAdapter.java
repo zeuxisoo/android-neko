@@ -12,7 +12,7 @@ import im.after.app.ui.fragment.TalkFragment;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-    private static final String TAG = "SectionsPagerAdapter";
+    private static final String TAG = SectionsPagerAdapter.class.getSimpleName();
 
     private static final Fragment PAGE_FRAGMENTS[] = new Fragment[] {
         new ArticleFragment(),

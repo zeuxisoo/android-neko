@@ -28,7 +28,7 @@ import im.after.app.ui.adapter.SectionsPagerAdapter;
 
 public class MainActivity extends BaseActionBarActivity {
 
-    private static final String TAG  = "MainActivity";
+    private static final String TAG  = MainActivity.class.getSimpleName();
 
     private static final int DRAWER_MENU_ITEM_ARTICLE   = 0;
     private static final int DRAWER_MENU_ITEM_MEMO      = 1;

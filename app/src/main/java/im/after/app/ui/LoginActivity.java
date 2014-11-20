@@ -23,7 +23,7 @@ import im.after.app.helper.UIHelper;
 
 public class LoginActivity extends BaseActivity {
 
-    private static final String TAG  = "LoginActivity";
+    private static final String TAG  = LoginActivity.class.getSimpleName();
 
     private EditText editTextLoginAccount;
     private EditText editTextLoginPassword;

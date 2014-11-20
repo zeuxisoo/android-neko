@@ -28,7 +28,7 @@ import im.after.app.ui.adapter.FragmentTalkItemAdapter;
 
 public class TalkFragment extends BaseFragment {
 
-    private static final String TAG = "TalkFragment";
+    private static final String TAG = TalkFragment.class.getSimpleName();
 
     private SwipeRefreshLayout swipeRefreshLayoutFragmentTalk;
     private RecyclerView recyclerViewFragmentTalk;

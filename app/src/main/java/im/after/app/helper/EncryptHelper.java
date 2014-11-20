@@ -8,7 +8,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class EncryptHelper {
 
-    private static final String TAG = "EncryptHelper";
+    private static final String TAG = EncryptHelper.class.getSimpleName();
 
     public static String md5(String text) {
         try {
