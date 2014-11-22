@@ -20,8 +20,9 @@ import org.json.JSONObject;
 import im.after.app.R;
 import im.after.app.api.TalkAPI;
 import im.after.app.entity.bean.TalkBean;
-import im.after.app.helper.ToastHelper;
+import im.after.app.entity.bean.TalkItemBean;
 import im.after.app.helper.SweetDialogHelper;
+import im.after.app.helper.ToastHelper;
 import im.after.app.ui.ComposeActivity;
 import im.after.app.ui.adapter.BaseFragment;
 import im.after.app.ui.adapter.FragmentTalkItemAdapter;
@@ -29,6 +30,8 @@ import im.after.app.ui.adapter.FragmentTalkItemAdapter;
 public class TalkFragment extends BaseFragment {
 
     private static final String TAG = TalkFragment.class.getSimpleName();
+
+    private static final int REQUEST_CODE_COMPOSE = 1;
 
     private SwipeRefreshLayout swipeRefreshLayoutFragmentTalk;
     private RecyclerView recyclerViewFragmentTalk;
@@ -92,12 +95,27 @@ public class TalkFragment extends BaseFragment {
         this.requestTalkPage(this.currentPageNo);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch(requestCode) {
+            case REQUEST_CODE_COMPOSE:
+                TalkItemBean talkItemBean = (TalkItemBean) data.getExtras().getSerializable("talkItemBean");
+
+                this.fragmentTalkItemAdapter.prependTalkItemBean(talkItemBean);
+
+                ToastHelper.show(this.getActivity(), R.string.talk_fragment_compose_talk_created);
+                break;
+        }
+    }
+
     private void setCreateTalkEvent() {
         this.floatingActionButtonFragmentTalk.setOnClickListener((View v) -> {
             Intent intent = new Intent(this.getActivity(), ComposeActivity.class);
             intent.putExtra("type", ComposeActivity.TYPE_TALK);
 
-            this.startActivity(intent);
+            this.startActivityForResult(intent, REQUEST_CODE_COMPOSE);
         });
     }
 

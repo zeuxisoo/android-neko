@@ -54,6 +54,11 @@ public class FragmentTalkItemAdapter extends RecyclerView.Adapter<FragmentTalkIt
         this.notifyDataSetChanged();
     }
 
+    public void prependTalkItemBean(TalkItemBean talkItemBean) {
+        this.talkItemBeans.add(0, talkItemBean);
+        this.notifyDataSetChanged();
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView username;
         public TextView content;

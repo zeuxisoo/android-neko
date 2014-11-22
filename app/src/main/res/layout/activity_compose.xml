@@ -114,7 +114,7 @@
                     android:padding="16dp"
                     android:inputType="textCapSentences|textAutoCorrect|textMultiLine"
                     android:textCursorDrawable="@null"
-                    android:hint="@string/compose_edit_text_hint"
+                    android:hint="@string/compose_activity_edit_text_hint"
                     android:textColorHint="@color/compose_edit_text_hint"
                     android:textColor="@color/compose_edit_text"
                     android:background="@color/compose_edit_text_background"
