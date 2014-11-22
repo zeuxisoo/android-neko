@@ -175,6 +175,23 @@ public class MainActivity extends BaseActionBarActivity {
         this.viewPagerMainNavigation.setOffscreenPageLimit(2);
         this.viewPagerMainNavigation.setAdapter(new SectionsPagerAdapter(this, this.getSupportFragmentManager()));
         this.pageIndicatorMainNavigation.setViewPager(this.viewPagerMainNavigation);
+        this.pageIndicatorMainNavigation.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                setSelectedDrawerMenuItem(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+
+        // Set default selected item
+        this.setSelectedDrawerMenuItem(DRAWER_MENU_ITEM_ARTICLE);
     }
 
     private View createDrawerMenuItem(int itemId, ViewGroup drawerMenuItemList) {
