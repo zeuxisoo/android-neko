@@ -231,19 +231,10 @@ public class MainActivity extends BaseActionBarActivity {
     }
 
     private void openDrawerMenuItem(int itemId) {
-        switch (itemId) {
-            case DRAWER_MENU_ITEM_ARTICLE:
-                sweetDialogHelper.alertSuccess("Master", "I am article");
-                break;
-            case DRAWER_MENU_ITEM_MEMO:
-                sweetDialogHelper.alertSuccess("Master", "I am memo");
-                break;
-            case DRAWER_MENU_ITEM_TALK:
-                sweetDialogHelper.alertSuccess("Master", "I am talk");
-                break;
-            case DRAWER_MENU_ITEM_SETTINGS:
-                sweetDialogHelper.alertSuccess("Master", "I am settings");
-                break;
+        if (itemId >= 0 && itemId <= 2) {
+            this.viewPagerMainNavigation.setCurrentItem(itemId, true);
+        }else{
+            this.sweetDialogHelper.alertSuccess("Master", "I am settings");
         }
     }
 
