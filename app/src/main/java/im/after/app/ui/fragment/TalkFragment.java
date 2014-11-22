@@ -108,14 +108,18 @@ public class TalkFragment extends BaseFragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        switch(requestCode) {
-            case REQUEST_CODE_COMPOSE:
-                TalkItemBean talkItemBean = (TalkItemBean) data.getExtras().getSerializable("talkItemBean");
+        if (resultCode == this.getActivity().RESULT_OK) {
+            switch (requestCode) {
+                case REQUEST_CODE_COMPOSE:
+                    TalkItemBean talkItemBean = (TalkItemBean) data.getExtras().getSerializable("talkItemBean");
 
-                this.fragmentTalkItemAdapter.prependTalkItemBean(talkItemBean);
+                    this.fragmentTalkItemAdapter.prependTalkItemBean(talkItemBean);
 
-                ToastHelper.show(this.getActivity(), R.string.talk_fragment_compose_talk_created);
-                break;
+                    ToastHelper.show(this.getActivity(), R.string.talk_fragment_compose_talk_created);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
