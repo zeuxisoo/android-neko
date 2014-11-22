@@ -99,7 +99,12 @@ public class ComposeActivity extends BaseActivity {
     private void setCancelEvent() {
         this.imageButtonComposeCancel.setOnClickListener((View v) -> {
             if (this.editTextComposeText.length() > 0) {
-                this.sweetDialogHelper.confirm("Cancel confirm", "Are you sure want to cancel it ?", "Yes", this::finish);
+                this.sweetDialogHelper.confirm(
+                    this.getString(R.string.compose_cancel_confirm_title),
+                    this.getString(R.string.compose_cancel_confirm_text),
+                    this.getString(R.string.compose_cancel_confirm_yes),
+                    this::finish
+                );
             }else{
                 this.finish();
             }
@@ -109,7 +114,12 @@ public class ComposeActivity extends BaseActivity {
     private void setClearEvent() {
         this.imageButtonComposeClear.setOnClickListener((View v) -> {
             if (this.editTextComposeText.length() > 0) {
-                this.sweetDialogHelper.confirm("Clear confirm", "Are you sure want to clear the text ?", "Yes", () -> editTextComposeText.setText(""));
+                this.sweetDialogHelper.confirm(
+                    this.getString(R.string.compose_clear_confirm_title),
+                    this.getString(R.string.compose_clear_confirm_text),
+                    this.getString(R.string.compose_clear_confirm_yes),
+                    () -> editTextComposeText.setText("")
+                );
             }else{
                 editTextComposeText.setText("");
             }
