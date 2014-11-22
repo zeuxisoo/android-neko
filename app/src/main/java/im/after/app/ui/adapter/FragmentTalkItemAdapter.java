@@ -40,6 +40,10 @@ public class FragmentTalkItemAdapter extends RecyclerView.Adapter<FragmentTalkIt
         return this.talkItemBeans.size();
     }
 
+    public TalkItemBean getTalkItem(int position) {
+        return this.talkItemBeans.get(position);
+    }
+
     public void setTalkItemBeans(ArrayList<TalkItemBean> talkItemBeans) {
         this.talkItemBeans = talkItemBeans;
         this.notifyDataSetChanged();
@@ -60,8 +64,9 @@ public class FragmentTalkItemAdapter extends RecyclerView.Adapter<FragmentTalkIt
         this.notifyDataSetChanged();
     }
 
-    public TalkItemBean getTalkItem(int position) {
-        return this.talkItemBeans.get(position);
+    public void removeTalkItemBean(int position) {
+        this.talkItemBeans.remove(position);
+        this.notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

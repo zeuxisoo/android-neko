@@ -16,6 +16,10 @@ public class HttpHelper {
         this.client.setEnableRedirects(true);
     }
 
+    public void get(String url, JsonHttpResponseHandler responseHandler) {
+        this.client.get(url, responseHandler);
+    }
+
     public void get(String url, RequestParams params, JsonHttpResponseHandler responseHandler) {
         this.client.get(url, params, responseHandler);
     }

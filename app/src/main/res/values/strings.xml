@@ -26,6 +26,7 @@
     <string name="talk_fragment_compose_talk_created">Talk created</string>
     <string name="talk_fragment_dialog_item_edit">Edit</string>
     <string name="talk_fragment_dialog_item_delete">Delete</string>
+    <string name="talk_fragment_delete_talk_error">Unknown delete talks in error (%s)</string>
 
     <string name="compose_activity_edit_text_hint">Come on baby :)</string>
     <string name="compose_activity_cancel_confirm_title">Cancel confirm</string>

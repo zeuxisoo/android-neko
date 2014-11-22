@@ -46,4 +46,18 @@ public class TalkAPI extends BaseAPI {
         });
     }
 
+    public void delete(int talkId, final JSONSuccessListener succssListener, final JSONFailureListener failureListener) {
+        this.httpHelper.get(this.request("/talk/delete/" + talkId), new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                succssListener.onJSON(response);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                failureListener.onJSON(errorResponse);
+            }
+        });
+    }
+
 }

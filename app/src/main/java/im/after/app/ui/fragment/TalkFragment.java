@@ -263,8 +263,8 @@ public class TalkFragment extends BaseFragment {
 
     private void showOptionsMenu(int position) {
         ArrayList<TalkDialogItemBean> dialogTalkItem = new ArrayList<TalkDialogItemBean>();
-        dialogTalkItem.add(new TalkDialogItemBean(R.drawable.ic_edit_white, this.getString(R.string.talk_fragment_dialog_item_edit)));
-        dialogTalkItem.add(new TalkDialogItemBean(R.drawable.ic_delete_white, this.getString(R.string.talk_fragment_dialog_item_delete)));
+        dialogTalkItem.add(new TalkDialogItemBean(R.drawable.ic_edit_white, locale(R.string.talk_fragment_dialog_item_edit)));
+        dialogTalkItem.add(new TalkDialogItemBean(R.drawable.ic_delete_white, locale(R.string.talk_fragment_dialog_item_delete)));
 
         DialogTalkItemAdapter dialogTalkItemAdapter = new DialogTalkItemAdapter(this.getActivity(), R.layout.dialog_talk_item, dialogTalkItem);
 
@@ -283,8 +283,40 @@ public class TalkFragment extends BaseFragment {
             case 0: // edit
                 Log.d(TAG, "Edit > " + talkItemBean.getContent());
                 break;
-            case 1: // delete
+            case 1:
                 Log.d(TAG, "Delete > " + talkItemBean.getContent());
+
+                TalkAPI talkAPI = new TalkAPI(this.getActivity());
+
+                talkAPI.delete(
+                    talkItemBean.getId(),
+                    (JSONObject response) -> {
+                        try {
+                            String message = response.getString("message");
+                            int status     = response.getInt("status");
+
+                            if (status == 200) {
+                                this.fragmentTalkItemAdapter.removeTalkItemBean(position);
+
+                                ToastHelper.show(this.getActivity(), message);
+                            }else{
+                                sweetDialogHelper.alertError("Oops", String.format(locale(R.string.talk_fragment_delete_talk_error), message));
+                            }
+                        }catch(Exception e) {
+                            sweetDialogHelper.alertError("Oops", String.format(locale(R.string.talk_fragment_delete_talk_error), "clickOnOptionsMenuItem::JSONSuccessListener"));
+                        }
+                    },
+                    (JSONObject response) -> {
+                        try {
+                            JSONObject errorObject = response.getJSONObject("error");
+                            String message = errorObject.getString("message");
+
+                            sweetDialogHelper.alertError("Oops", message);
+                        }catch(Exception e) {
+                            sweetDialogHelper.alertError("Oops", String.format(locale(R.string.talk_fragment_delete_talk_error), "clickOnOptionsMenuItem::JSONSuccessListener"));
+                        }
+                    }
+                );
                 break;
         }
     }
