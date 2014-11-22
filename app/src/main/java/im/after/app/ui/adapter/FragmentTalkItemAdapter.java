@@ -32,6 +32,7 @@ public class FragmentTalkItemAdapter extends RecyclerView.Adapter<FragmentTalkIt
 
         viewHolder.username.setText(talkItemBean.getUsername());
         viewHolder.content.setText(talkItemBean.getContent());
+        viewHolder.createAt.setText(talkItemBean.getCreateAtHumanTime());
     }
 
     @Override
@@ -62,12 +63,14 @@ public class FragmentTalkItemAdapter extends RecyclerView.Adapter<FragmentTalkIt
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView username;
         public TextView content;
+        public TextView createAt;
 
         public ViewHolder(View view) {
             super(view);
 
             this.username = (TextView) view.findViewById(R.id.textViewFragmentTalkItemUsername);
             this.content  = (TextView) view.findViewById(R.id.textViewFragmentTalkItemContent);
+            this.createAt = (TextView) view.findViewById(R.id.textViewFragmentTalkItemCreateAt);
         }
     }
 }

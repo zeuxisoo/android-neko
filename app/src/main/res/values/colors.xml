@@ -23,8 +23,10 @@
 
     <color name="fragment_background">#FF455262</color>
     <color name="fragment_item_card_view_background">#FF27394E</color>
-    <color name="fragment_item_card_view_text">#FFDAE0E7</color>
     <color name="fragment_item_card_divider">#FFDADADA</color>
+    <color name="fragment_item_card_view_username">#FFDAE0E7</color>
+    <color name="fragment_item_card_view_create_at">#FF555555</color>
+    <color name="fragment_item_card_view_content">#77DAE0E7</color>
 
     <color name="fragment_item_card_view_float_button_normal">#D9192331</color>
     <color name="fragment_item_card_view_float_button_pressed">#D9000000</color>

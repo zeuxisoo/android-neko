@@ -2,6 +2,8 @@ package im.after.app.entity.bean;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import org.ocpsoft.prettytime.PrettyTime;
+
 import java.util.Date;
 
 import im.after.app.entity.BaseEntity;
@@ -77,5 +79,11 @@ public class TalkItemBean extends BaseEntity {
 
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
+    }
+
+    public String getCreateAtHumanTime() {
+        PrettyTime p = new PrettyTime();
+
+        return p.format(this.getCreateAt());
     }
 }
