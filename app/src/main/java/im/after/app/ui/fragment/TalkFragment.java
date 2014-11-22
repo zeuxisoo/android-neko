@@ -1,5 +1,7 @@
 package im.after.app.ui.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,6 +10,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,15 +20,20 @@ import com.melnykov.fab.FloatingActionButton;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import im.after.app.R;
 import im.after.app.api.TalkAPI;
 import im.after.app.entity.bean.TalkBean;
+import im.after.app.entity.bean.TalkDialogItemBean;
 import im.after.app.entity.bean.TalkItemBean;
 import im.after.app.helper.SweetDialogHelper;
 import im.after.app.helper.ToastHelper;
 import im.after.app.ui.ComposeActivity;
 import im.after.app.ui.adapter.BaseFragment;
+import im.after.app.ui.adapter.DialogTalkItemAdapter;
 import im.after.app.ui.adapter.FragmentTalkItemAdapter;
+import im.after.app.ui.listener.RecyclerViewItemClickListener;
 
 public class TalkFragment extends BaseFragment {
 
@@ -92,6 +100,7 @@ public class TalkFragment extends BaseFragment {
         this.setCreateTalkEvent();
         this.setPullDownEvent();
         this.setLoadMoreEvent();
+        this.setClickItemEvent();
         this.requestTalkPage(this.currentPageNo);
     }
 
@@ -188,6 +197,19 @@ public class TalkFragment extends BaseFragment {
         });
     }
 
+    private void setClickItemEvent() {
+        this.recyclerViewFragmentTalk.addOnItemTouchListener(new RecyclerViewItemClickListener(this.getActivity(), this.recyclerViewFragmentTalk, new RecyclerViewItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+                showOptionsMenu(position);
+            }
+        }));
+    }
+
     private void requestTalkPage(int pageNo) {
         this.requestTalkPage(pageNo, () -> {});
     }
@@ -237,6 +259,34 @@ public class TalkFragment extends BaseFragment {
                 }
             }
         );
+    }
+
+    private void showOptionsMenu(int position) {
+        ArrayList<TalkDialogItemBean> dialogTalkItem = new ArrayList<TalkDialogItemBean>();
+        dialogTalkItem.add(new TalkDialogItemBean(R.drawable.ic_edit_white, this.getString(R.string.talk_fragment_dialog_item_edit)));
+        dialogTalkItem.add(new TalkDialogItemBean(R.drawable.ic_delete_white, this.getString(R.string.talk_fragment_dialog_item_delete)));
+
+        DialogTalkItemAdapter dialogTalkItemAdapter = new DialogTalkItemAdapter(this.getActivity(), R.layout.dialog_talk_item, dialogTalkItem);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
+        builder.setCancelable(true);
+        builder.setAdapter(dialogTalkItemAdapter, (DialogInterface dialog, int which) -> {
+            this.clickOnOptionsMenuItem(dialog, which, position);
+        });
+        builder.show();
+    }
+
+    public void clickOnOptionsMenuItem(DialogInterface dialog, int which, int position) {
+        TalkItemBean talkItemBean = this.fragmentTalkItemAdapter.getTalkItem(position);
+
+        switch(which) {
+            case 0: // edit
+                Log.d(TAG, "Edit > " + talkItemBean.getContent());
+                break;
+            case 1: // delete
+                Log.d(TAG, "Delete > " + talkItemBean.getContent());
+                break;
+        }
     }
 
 }

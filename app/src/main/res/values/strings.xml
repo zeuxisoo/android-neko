@@ -24,6 +24,8 @@
     <string name="talk_fragment_request_page_error">Unknown request talks in error (%s)</string>
     <string name="talk_fragment_not_found_page_number">Not found page no: %s</string>
     <string name="talk_fragment_compose_talk_created">Talk created</string>
+    <string name="talk_fragment_dialog_item_edit">Edit</string>
+    <string name="talk_fragment_dialog_item_delete">Delete</string>
 
     <string name="compose_activity_edit_text_hint">Come on baby :)</string>
     <string name="compose_activity_cancel_confirm_title">Cancel confirm</string>

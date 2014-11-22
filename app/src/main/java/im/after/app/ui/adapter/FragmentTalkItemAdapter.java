@@ -60,6 +60,10 @@ public class FragmentTalkItemAdapter extends RecyclerView.Adapter<FragmentTalkIt
         this.notifyDataSetChanged();
     }
 
+    public TalkItemBean getTalkItem(int position) {
+        return this.talkItemBeans.get(position);
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView username;
         public TextView content;
