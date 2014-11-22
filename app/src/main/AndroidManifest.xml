@@ -41,6 +41,11 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.ComposeActivity" >
         </activity>
+        <activity
+            android:name=".ui.module.talk.TalkEditActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.ComposeActivity" >
+        </activity>
     </application>
 
 </manifest>

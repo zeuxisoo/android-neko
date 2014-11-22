@@ -60,4 +60,18 @@ public class TalkAPI extends BaseAPI {
         });
     }
 
+    public void update(int talkId, HashMap<String, String> params, final JSONSuccessListener succssListener, final JSONFailureListener failureListener) {
+        this.httpHelper.post(this.request("/talk/update/" + talkId), this.params(params), new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                succssListener.onJSON(response);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                failureListener.onJSON(errorResponse);
+            }
+        });
+    }
+
 }

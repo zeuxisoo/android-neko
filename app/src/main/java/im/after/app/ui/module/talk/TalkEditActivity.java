@@ -25,46 +25,53 @@ import im.after.app.entity.bean.UserBean;
 import im.after.app.helper.SweetDialogHelper;
 import im.after.app.ui.base.BaseActivity;
 
-public class TalkComposeActivity extends BaseActivity {
+public class TalkEditActivity extends BaseActivity {
 
-    private static final String TAG = TalkComposeActivity.class.getSimpleName();
+    private static final String TAG = TalkEditActivity.class.getSimpleName();
 
     public static final int TYPE_ARTICLE = 1;
     public static final int TYPE_MEMO    = 2;
     public static final int TYPE_TALK    = 3;
     public static final int TYPE_INVALID = -1;
 
-    private ImageView imageViewComposeUserAvatar;
-    private TextView textViewComposeUsername;
-    private ImageButton imageButtonComposeArticle;
-    private ImageButton imageButtonComposeMemo;
-    private ImageButton imageButtonComposeTalk;
-    private EditText editTextComposeText;
-    private ImageButton imageButtonComposeCancel;
-    private ImageButton imageButtonComposeClear;
-    private ImageButton imageButtonComposeSend;
+    private ImageView imageViewEditUserAvatar;
+    private TextView textViewEditUsername;
+    private ImageButton imageButtonEditArticle;
+    private ImageButton imageButtonEditMemo;
+    private ImageButton imageButtonEditTalk;
+    private EditText editTextEditContent;
+    private ImageButton imageButtonEditCancel;
+    private ImageButton imageButtonEditClear;
+    private ImageButton imageButtonEditSend;
 
     private SweetDialogHelper sweetDialogHelper;
+
+    private TalkItemBean talkItemBean;
+    private int talkItemBeanPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.setContentView(R.layout.activity_talk_compose);
+        this.setContentView(R.layout.activity_talk_edit);
 
-        this.imageViewComposeUserAvatar = (ImageView) this.findViewById(R.id.imageViewComposeUserAvatar);
-        this.textViewComposeUsername    = (TextView) this.findViewById(R.id.textViewComposeUsername);
-        this.imageButtonComposeArticle  = (ImageButton) this.findViewById(R.id.imageButtonComposeArticle);
-        this.imageButtonComposeMemo     = (ImageButton) this.findViewById(R.id.imageButtonComposeMemo);
-        this.imageButtonComposeTalk     = (ImageButton) this.findViewById(R.id.imageButtonComposeTalk);
-        this.editTextComposeText        = (EditText) this.findViewById(R.id.editTextComposeText);
-        this.imageButtonComposeCancel   = (ImageButton) this.findViewById(R.id.imageButtonComposeCancel);
-        this.imageButtonComposeClear    = (ImageButton) this.findViewById(R.id.imageButtonComposeClear);
-        this.imageButtonComposeSend     = (ImageButton) this.findViewById(R.id.imageButtonComposeSend);
+        this.imageViewEditUserAvatar = (ImageView) this.findViewById(R.id.imageViewEditUserAvatar);
+        this.textViewEditUsername    = (TextView) this.findViewById(R.id.textViewEditUsername);
+        this.imageButtonEditArticle  = (ImageButton) this.findViewById(R.id.imageButtonEditArticle);
+        this.imageButtonEditMemo     = (ImageButton) this.findViewById(R.id.imageButtonEditMemo);
+        this.imageButtonEditTalk     = (ImageButton) this.findViewById(R.id.imageButtonEditTalk);
+        this.editTextEditContent     = (EditText) this.findViewById(R.id.editTextEditContent);
+        this.imageButtonEditCancel   = (ImageButton) this.findViewById(R.id.imageButtonEditCancel);
+        this.imageButtonEditClear    = (ImageButton) this.findViewById(R.id.imageButtonEditClear);
+        this.imageButtonEditSend     = (ImageButton) this.findViewById(R.id.imageButtonEditSend);
 
         this.sweetDialogHelper = new SweetDialogHelper(this);
 
+        this.talkItemBean         = (TalkItemBean) this.getIntent().getSerializableExtra("talkItemBean");
+        this.talkItemBeanPosition = this.getIntent().getExtras().getInt("talkItemBeanPosition");
+
         this.setUserInfo();
+        this.setContentText();
         this.underlineSelectedType();
         this.setCancelEvent();
         this.setClearEvent();
@@ -82,23 +89,27 @@ public class TalkComposeActivity extends BaseActivity {
         if (userBean != null) {
             Picasso.with(this).load(userBean.getAvatar()).fit().transform(
                 new RoundedTransformationBuilder().borderColor(R.color.compose_user_avatar_border).borderWidthDp(1).cornerRadiusDp(30).oval(false).build()
-            ).into(this.imageViewComposeUserAvatar);
+            ).into(this.imageViewEditUserAvatar);
 
-            this.textViewComposeUsername.setText(userBean.getUsername());
-            this.imageViewComposeUserAvatar.setBackgroundColor(Color.TRANSPARENT);
+            this.textViewEditUsername.setText(userBean.getUsername());
+            this.imageViewEditUserAvatar.setBackgroundColor(Color.TRANSPARENT);
         }
+    }
+
+    private void setContentText() {
+        this.editTextEditContent.setText(this.talkItemBean.getContent());
     }
 
     private void underlineSelectedType() {
         switch(this.getIntent().getIntExtra("type", TYPE_INVALID)) {
             case TYPE_ARTICLE:
-                this.setUnderline(this.imageButtonComposeArticle);
+                this.setUnderline(this.imageButtonEditArticle);
                 break;
             case TYPE_MEMO:
-                this.setUnderline(this.imageButtonComposeMemo);
+                this.setUnderline(this.imageButtonEditMemo);
                 break;
             case TYPE_TALK:
-                this.setUnderline(this.imageButtonComposeTalk);
+                this.setUnderline(this.imageButtonEditTalk);
                 break;
         }
     }
@@ -109,8 +120,8 @@ public class TalkComposeActivity extends BaseActivity {
     }
 
     private void setCancelEvent() {
-        this.imageButtonComposeCancel.setOnClickListener((View v) -> {
-            if (this.editTextComposeText.length() > 0) {
+        this.imageButtonEditCancel.setOnClickListener((View v) -> {
+            if (this.editTextEditContent.length() > 0) {
                 this.sweetDialogHelper.confirm(
                     this.getString(R.string.compose_activity_cancel_confirm_title),
                     this.getString(R.string.compose_activity_cancel_confirm_text),
@@ -124,28 +135,29 @@ public class TalkComposeActivity extends BaseActivity {
     }
 
     private void setClearEvent() {
-        this.imageButtonComposeClear.setOnClickListener((View v) -> {
-            if (this.editTextComposeText.length() > 0) {
+        this.imageButtonEditClear.setOnClickListener((View v) -> {
+            if (this.editTextEditContent.length() > 0) {
                 this.sweetDialogHelper.confirm(
                     this.getString(R.string.compose_activity_clear_confirm_title),
                     this.getString(R.string.compose_activity_clear_confirm_text),
                     this.getString(R.string.compose_activity_clear_confirm_yes),
-                    () -> editTextComposeText.setText("")
+                    () -> editTextEditContent.setText("")
                 );
             }else{
-                editTextComposeText.setText("");
+                editTextEditContent.setText("");
             }
         });
     }
 
     private void setSendEvent() {
-        this.imageButtonComposeSend.setOnClickListener((View v) -> {
-            if (this.editTextComposeText.length() > 0) {
+        this.imageButtonEditSend.setOnClickListener((View v) -> {
+            if (this.editTextEditContent.length() > 0) {
                 TalkAPI talkAPI = new TalkAPI(this);
 
-                talkAPI.create(
+                talkAPI.update(
+                    this.talkItemBean.getId(),
                     new HashMap<String, String>() {{
-                        put("content", editTextComposeText.getText().toString());
+                        put("content", editTextEditContent.getText().toString());
                     }},
                     (JSONObject response) -> {
                         try {
@@ -155,10 +167,11 @@ public class TalkComposeActivity extends BaseActivity {
 
                             Intent intent = new Intent(this, TalkFragment.class);
                             intent.putExtra("talkItemBean", talkItemBean);
+                            intent.putExtra("talkItemBeanPosition", this.talkItemBeanPosition);
 
                             this.setResult(RESULT_OK, intent);
                             this.finish();
-                        }catch(Exception e) {
+                        } catch (Exception e) {
                             this.sweetDialogHelper.alertError("Oops", String.format(this.getString(R.string.compose_activity_create_talk_error), "setSendEvent::JSONSuccessListener"));
                         }
                     },
@@ -168,7 +181,7 @@ public class TalkComposeActivity extends BaseActivity {
                             String message = errorObject.getString("message");
 
                             this.sweetDialogHelper.alertError("Oops", message);
-                        }catch(Exception e) {
+                        } catch (Exception e) {
                             this.sweetDialogHelper.alertError("Oops", String.format(this.getString(R.string.compose_activity_create_talk_error), "setSendEvent::JSONFailureListener"));
                         }
                     }

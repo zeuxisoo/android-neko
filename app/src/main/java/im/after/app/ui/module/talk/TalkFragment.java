@@ -37,6 +37,7 @@ public class TalkFragment extends BaseFragment {
     private static final String TAG = TalkFragment.class.getSimpleName();
 
     private static final int REQUEST_CODE_COMPOSE = 1;
+    private static final int REQUEST_CODE_EDIT    = 2;
 
     private SwipeRefreshLayout swipeRefreshLayoutFragmentTalk;
     private RecyclerView recyclerViewFragmentTalk;
@@ -106,14 +107,24 @@ public class TalkFragment extends BaseFragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == this.getActivity().RESULT_OK) {
+            TalkItemBean talkItemBean;
+            int talkItemBeanPosition;
+
             switch (requestCode) {
                 case REQUEST_CODE_COMPOSE:
-                    TalkItemBean talkItemBean = (TalkItemBean) data.getExtras().getSerializable("talkItemBean");
+                    talkItemBean = (TalkItemBean) data.getExtras().getSerializable("talkItemBean");
 
                     this.talkItemFragmentAdapter.prependTalkItemBean(talkItemBean);
 
                     ToastHelper.show(this.getActivity(), R.string.talk_fragment_compose_talk_created);
                     break;
+                case REQUEST_CODE_EDIT:
+                    talkItemBean = (TalkItemBean) data.getExtras().getSerializable("talkItemBean");
+                    talkItemBeanPosition = data.getExtras().getInt("talkItemBeanPosition");
+
+                    this.talkItemFragmentAdapter.setTalkItemBean(talkItemBeanPosition, talkItemBean);
+
+                    ToastHelper.show(this.getActivity(), R.string.talk_fragment_compose_talk_updated);
                 default:
                     break;
             }
@@ -283,37 +294,51 @@ public class TalkFragment extends BaseFragment {
         switch(which) {
             case 0: // edit
                 Log.d(TAG, "Edit > " + talkItemBean.getContent());
+
+                Intent intent = new Intent(this.getActivity(), TalkEditActivity.class);
+                intent.putExtra("type", TalkComposeActivity.TYPE_TALK);
+                intent.putExtra("talkItemBean", talkItemBean);
+                intent.putExtra("talkItemBeanPosition", position);
+
+                this.startActivityForResult(intent, REQUEST_CODE_EDIT);
                 break;
-            case 1:
-                TalkAPI talkAPI = new TalkAPI(this.getActivity());
+            case 1: // delete
+                this.sweetDialogHelper.confirm(
+                    locale(R.string.talk_fragment_confirm_delete_title),
+                    locale(R.string.talk_fragment_confirm_delete_content),
+                    locale(R.string.talk_fragment_confirm_delete_yes),
+                    () -> {
+                        TalkAPI talkAPI = new TalkAPI(this.getActivity());
 
-                talkAPI.delete(
-                    talkItemBean.getId(),
-                    (JSONObject response) -> {
-                        try {
-                            String message = response.getString("message");
-                            int status     = response.getInt("status");
+                        talkAPI.delete(
+                            talkItemBean.getId(),
+                            (JSONObject response) -> {
+                                try {
+                                    String message = response.getString("message");
+                                    int status     = response.getInt("status");
 
-                            if (status == 200) {
-                                this.talkItemFragmentAdapter.removeTalkItemBean(position);
+                                    if (status == 200) {
+                                        this.talkItemFragmentAdapter.removeTalkItemBean(position);
 
-                                ToastHelper.show(this.getActivity(), message);
-                            }else{
-                                sweetDialogHelper.alertError("Oops", String.format(locale(R.string.talk_fragment_delete_talk_error), message));
+                                        ToastHelper.show(this.getActivity(), message);
+                                    }else{
+                                        sweetDialogHelper.alertError("Oops", String.format(locale(R.string.talk_fragment_delete_talk_error), message));
+                                    }
+                                }catch(Exception e) {
+                                    sweetDialogHelper.alertError("Oops", String.format(locale(R.string.talk_fragment_delete_talk_error), "clickOnOptionsMenuItem::JSONSuccessListener"));
+                                }
+                            },
+                            (JSONObject response) -> {
+                                try {
+                                    JSONObject errorObject = response.getJSONObject("error");
+                                    String message = errorObject.getString("message");
+
+                                    sweetDialogHelper.alertError("Oops", message);
+                                }catch(Exception e) {
+                                    sweetDialogHelper.alertError("Oops", String.format(locale(R.string.talk_fragment_delete_talk_error), "clickOnOptionsMenuItem::JSONSuccessListener"));
+                                }
                             }
-                        }catch(Exception e) {
-                            sweetDialogHelper.alertError("Oops", String.format(locale(R.string.talk_fragment_delete_talk_error), "clickOnOptionsMenuItem::JSONSuccessListener"));
-                        }
-                    },
-                    (JSONObject response) -> {
-                        try {
-                            JSONObject errorObject = response.getJSONObject("error");
-                            String message = errorObject.getString("message");
-
-                            sweetDialogHelper.alertError("Oops", message);
-                        }catch(Exception e) {
-                            sweetDialogHelper.alertError("Oops", String.format(locale(R.string.talk_fragment_delete_talk_error), "clickOnOptionsMenuItem::JSONSuccessListener"));
-                        }
+                        );
                     }
                 );
                 break;
