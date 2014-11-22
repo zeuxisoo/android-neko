@@ -1,4 +1,4 @@
-package im.after.app.ui.adapter;
+package im.after.app.ui.base;
 
 import android.support.v4.app.Fragment;
 

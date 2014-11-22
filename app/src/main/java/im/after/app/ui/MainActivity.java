@@ -25,6 +25,7 @@ import im.after.app.R;
 import im.after.app.entity.bean.UserBean;
 import im.after.app.helper.SweetDialogHelper;
 import im.after.app.ui.adapter.SectionsPagerAdapter;
+import im.after.app.ui.base.BaseActionBarActivity;
 
 public class MainActivity extends BaseActionBarActivity {
 

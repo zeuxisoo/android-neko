@@ -6,9 +6,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import im.after.app.R;
-import im.after.app.ui.fragment.ArticleFragment;
-import im.after.app.ui.fragment.MemoFragment;
-import im.after.app.ui.fragment.TalkFragment;
+import im.after.app.ui.module.article.ArticleFragment;
+import im.after.app.ui.module.memo.MemoFragment;
+import im.after.app.ui.module.talk.TalkFragment;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 

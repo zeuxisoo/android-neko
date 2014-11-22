@@ -1,4 +1,4 @@
-package im.after.app.ui.adapter;
+package im.after.app.ui.module.talk;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,16 +11,16 @@ import java.util.ArrayList;
 import im.after.app.R;
 import im.after.app.entity.bean.TalkItemBean;
 
-public class FragmentTalkItemAdapter extends RecyclerView.Adapter<FragmentTalkItemAdapter.ViewHolder> {
+public class TalkItemFragmentAdapter extends RecyclerView.Adapter<TalkItemFragmentAdapter.ViewHolder> {
 
     private ArrayList<TalkItemBean> talkItemBeans;
 
-    public FragmentTalkItemAdapter() {
+    public TalkItemFragmentAdapter() {
         this.talkItemBeans = new ArrayList<TalkItemBean>();
     }
 
     @Override
-    public FragmentTalkItemAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public TalkItemFragmentAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View fragmentTalkItemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_talk_item, viewGroup, false);
 
         return new ViewHolder(fragmentTalkItemView);

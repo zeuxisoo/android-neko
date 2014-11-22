@@ -1,4 +1,4 @@
-package im.after.app.ui;
+package im.after.app.ui.module.talk;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -23,11 +23,11 @@ import im.after.app.api.TalkAPI;
 import im.after.app.entity.bean.TalkItemBean;
 import im.after.app.entity.bean.UserBean;
 import im.after.app.helper.SweetDialogHelper;
-import im.after.app.ui.fragment.TalkFragment;
+import im.after.app.ui.base.BaseActivity;
 
-public class ComposeActivity extends BaseActivity {
+public class TalkComposeActivity extends BaseActivity {
 
-    private static final String TAG = ComposeActivity.class.getSimpleName();
+    private static final String TAG = TalkComposeActivity.class.getSimpleName();
 
     public static final int TYPE_ARTICLE = 1;
     public static final int TYPE_MEMO    = 2;

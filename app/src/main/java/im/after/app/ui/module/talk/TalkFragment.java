@@ -1,4 +1,4 @@
-package im.after.app.ui.fragment;
+package im.after.app.ui.module.talk;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -29,10 +29,7 @@ import im.after.app.entity.bean.TalkDialogItemBean;
 import im.after.app.entity.bean.TalkItemBean;
 import im.after.app.helper.SweetDialogHelper;
 import im.after.app.helper.ToastHelper;
-import im.after.app.ui.ComposeActivity;
-import im.after.app.ui.adapter.BaseFragment;
-import im.after.app.ui.adapter.DialogTalkItemAdapter;
-import im.after.app.ui.adapter.FragmentTalkItemAdapter;
+import im.after.app.ui.base.BaseFragment;
 import im.after.app.ui.listener.RecyclerViewItemClickListener;
 
 public class TalkFragment extends BaseFragment {
@@ -46,7 +43,7 @@ public class TalkFragment extends BaseFragment {
     private LinearLayoutManager linearLayoutManager;
     private FloatingActionButton floatingActionButtonFragmentTalk;
 
-    private FragmentTalkItemAdapter fragmentTalkItemAdapter;
+    private TalkItemFragmentAdapter talkItemFragmentAdapter;
     private SweetDialogHelper sweetDialogHelper;
     private Handler handler;
 
@@ -86,10 +83,10 @@ public class TalkFragment extends BaseFragment {
         this.linearLayoutManager = new LinearLayoutManager(this.getActivity());
         this.linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
-        this.fragmentTalkItemAdapter = new FragmentTalkItemAdapter();
+        this.talkItemFragmentAdapter = new TalkItemFragmentAdapter();
 
         this.recyclerViewFragmentTalk.setHasFixedSize(false);
-        this.recyclerViewFragmentTalk.setAdapter(this.fragmentTalkItemAdapter);
+        this.recyclerViewFragmentTalk.setAdapter(this.talkItemFragmentAdapter);
         this.recyclerViewFragmentTalk.setItemAnimator(new DefaultItemAnimator());
         this.recyclerViewFragmentTalk.setLayoutManager(this.linearLayoutManager);
 
@@ -113,7 +110,7 @@ public class TalkFragment extends BaseFragment {
                 case REQUEST_CODE_COMPOSE:
                     TalkItemBean talkItemBean = (TalkItemBean) data.getExtras().getSerializable("talkItemBean");
 
-                    this.fragmentTalkItemAdapter.prependTalkItemBean(talkItemBean);
+                    this.talkItemFragmentAdapter.prependTalkItemBean(talkItemBean);
 
                     ToastHelper.show(this.getActivity(), R.string.talk_fragment_compose_talk_created);
                     break;
@@ -125,8 +122,8 @@ public class TalkFragment extends BaseFragment {
 
     private void setCreateTalkEvent() {
         this.floatingActionButtonFragmentTalk.setOnClickListener((View v) -> {
-            Intent intent = new Intent(this.getActivity(), ComposeActivity.class);
-            intent.putExtra("type", ComposeActivity.TYPE_TALK);
+            Intent intent = new Intent(this.getActivity(), TalkComposeActivity.class);
+            intent.putExtra("type", TalkComposeActivity.TYPE_TALK);
 
             this.startActivityForResult(intent, REQUEST_CODE_COMPOSE);
         });
@@ -142,7 +139,7 @@ public class TalkFragment extends BaseFragment {
         this.swipeRefreshLayoutFragmentTalk.setOnRefreshListener(() -> {
             this.floatingActionButtonFragmentTalk.hide();
             this.swipeRefreshLayoutFragmentTalk.setRefreshing(true);
-            this.fragmentTalkItemAdapter.clearTalkItemBeans();
+            this.talkItemFragmentAdapter.clearTalkItemBeans();
 
             this.requestTalkPage(1, () -> {
                 this.currentPageNo = 1;
@@ -159,7 +156,7 @@ public class TalkFragment extends BaseFragment {
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
 
-                if (!pageIsLoading && pageHasNext && fragmentTalkItemAdapter.getItemCount() ==  linearLayoutManager.findLastVisibleItemPosition() + 1) {
+                if (!pageIsLoading && pageHasNext && talkItemFragmentAdapter.getItemCount() ==  linearLayoutManager.findLastVisibleItemPosition() + 1) {
                     pageIsLoading = true;
 
                     currentPageNo = currentPageNo + 1;
@@ -172,7 +169,7 @@ public class TalkFragment extends BaseFragment {
                     requestTalkPage(currentPageNo);
                 }
 
-                if (!showingNoMore && !pageHasNext && fragmentTalkItemAdapter.getItemCount() ==  linearLayoutManager.findLastVisibleItemPosition() + 1) {
+                if (!showingNoMore && !pageHasNext && talkItemFragmentAdapter.getItemCount() ==  linearLayoutManager.findLastVisibleItemPosition() + 1) {
                     showingNoMore = true;
 
                     ToastHelper.show(getActivity(), R.string.talk_fragment_no_more_page);
@@ -233,9 +230,9 @@ public class TalkFragment extends BaseFragment {
                     this.pageHasNext = (talkBean.getNext() != null);
 
                     if (pageNo > 1) {
-                        this.fragmentTalkItemAdapter.addTalkItemBeans(talkBean.getItems());
+                        this.talkItemFragmentAdapter.addTalkItemBeans(talkBean.getItems());
                     }else{
-                        this.fragmentTalkItemAdapter.setTalkItemBeans(talkBean.getItems());
+                        this.talkItemFragmentAdapter.setTalkItemBeans(talkBean.getItems());
                     }
 
                     callback.onFinish();
@@ -270,26 +267,24 @@ public class TalkFragment extends BaseFragment {
         dialogTalkItem.add(new TalkDialogItemBean(R.drawable.ic_edit_white, locale(R.string.talk_fragment_dialog_item_edit)));
         dialogTalkItem.add(new TalkDialogItemBean(R.drawable.ic_delete_white, locale(R.string.talk_fragment_dialog_item_delete)));
 
-        DialogTalkItemAdapter dialogTalkItemAdapter = new DialogTalkItemAdapter(this.getActivity(), R.layout.dialog_talk_item, dialogTalkItem);
+        TalkItemDialogAdapter talkItemDialogAdapter = new TalkItemDialogAdapter(this.getActivity(), R.layout.dialog_talk_item, dialogTalkItem);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
         builder.setCancelable(true);
-        builder.setAdapter(dialogTalkItemAdapter, (DialogInterface dialog, int which) -> {
+        builder.setAdapter(talkItemDialogAdapter, (DialogInterface dialog, int which) -> {
             this.clickOnOptionsMenuItem(dialog, which, position);
         });
         builder.show();
     }
 
     public void clickOnOptionsMenuItem(DialogInterface dialog, int which, int position) {
-        TalkItemBean talkItemBean = this.fragmentTalkItemAdapter.getTalkItem(position);
+        TalkItemBean talkItemBean = this.talkItemFragmentAdapter.getTalkItem(position);
 
         switch(which) {
             case 0: // edit
                 Log.d(TAG, "Edit > " + talkItemBean.getContent());
                 break;
             case 1:
-                Log.d(TAG, "Delete > " + talkItemBean.getContent());
-
                 TalkAPI talkAPI = new TalkAPI(this.getActivity());
 
                 talkAPI.delete(
@@ -300,7 +295,7 @@ public class TalkFragment extends BaseFragment {
                             int status     = response.getInt("status");
 
                             if (status == 200) {
-                                this.fragmentTalkItemAdapter.removeTalkItemBean(position);
+                                this.talkItemFragmentAdapter.removeTalkItemBean(position);
 
                                 ToastHelper.show(this.getActivity(), message);
                             }else{

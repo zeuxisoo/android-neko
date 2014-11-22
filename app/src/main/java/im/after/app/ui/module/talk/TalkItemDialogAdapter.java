@@ -1,4 +1,4 @@
-package im.after.app.ui.adapter;
+package im.after.app.ui.module.talk;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,14 +14,14 @@ import java.util.ArrayList;
 import im.after.app.R;
 import im.after.app.entity.bean.TalkDialogItemBean;
 
-public class DialogTalkItemAdapter extends ArrayAdapter<TalkDialogItemBean> {
+public class TalkItemDialogAdapter extends ArrayAdapter<TalkDialogItemBean> {
 
     private Context context;
     private LayoutInflater layoutInflater;
     private ArrayList<TalkDialogItemBean> talkDialogItemBeans;
     private int resourceId;
 
-    public DialogTalkItemAdapter(Context context, int resourceId, ArrayList<TalkDialogItemBean> talkDialogItemBeans) {
+    public TalkItemDialogAdapter(Context context, int resourceId, ArrayList<TalkDialogItemBean> talkDialogItemBeans) {
         super(context, resourceId, talkDialogItemBeans);
 
         this.context             = context;
