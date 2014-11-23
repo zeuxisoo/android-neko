@@ -1,4 +1,4 @@
-package im.after.app.ui.module.talk;
+package im.after.app.ui.module.memo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,22 +15,22 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 import im.after.app.R;
-import im.after.app.api.TalkAPI;
-import im.after.app.entity.bean.TalkItemBean;
+import im.after.app.api.MemoAPI;
+import im.after.app.entity.bean.MemoItemBean;
 import im.after.app.ui.base.BaseComposeActivity;
 
-public class TalkEditActivity extends BaseComposeActivity {
+public class MemoEditActivity extends BaseComposeActivity {
 
-    private static final String TAG = TalkEditActivity.class.getSimpleName();
+    private static final String TAG = MemoEditActivity.class.getSimpleName();
 
-    private TalkItemBean talkItemBean;
-    private int talkItemBeanPosition;
+    private MemoItemBean memoItemBean;
+    private int memoItemBeanPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.setContentView(R.layout.activity_talk_edit);
+        this.setContentView(R.layout.activity_memo_edit);
 
         this.imageViewUserAvatar = (ImageView) this.findViewById(R.id.imageViewEditUserAvatar);
         this.textViewUsername    = (TextView) this.findViewById(R.id.textViewEditUsername);
@@ -43,10 +43,10 @@ public class TalkEditActivity extends BaseComposeActivity {
         this.imageButtonCopy     = (ImageButton) this.findViewById(R.id.imageButtonEditCopy);
         this.imageButtonSend     = (ImageButton) this.findViewById(R.id.imageButtonEditSend);
 
-        this.talkItemBean         = (TalkItemBean) this.getIntent().getSerializableExtra("talkItemBean");
-        this.talkItemBeanPosition = this.getIntent().getExtras().getInt("talkItemBeanPosition");
+        this.memoItemBean         = (MemoItemBean) this.getIntent().getSerializableExtra("memoItemBean");
+        this.memoItemBeanPosition = this.getIntent().getExtras().getInt("memoItemBeanPosition");
 
-        this.editTextContent.setText(this.talkItemBean.getContent());
+        this.editTextContent.setText(this.memoItemBean.getContent());
     }
 
     @Override
@@ -58,10 +58,10 @@ public class TalkEditActivity extends BaseComposeActivity {
     protected void setSendEvent() {
         this.imageButtonSend.setOnClickListener((View v) -> {
             if (this.editTextContent.length() > 0) {
-                TalkAPI talkAPI = new TalkAPI(this);
+                MemoAPI memoAPI = new MemoAPI(this);
 
-                talkAPI.update(
-                    this.talkItemBean.getId(),
+                memoAPI.update(
+                    this.memoItemBean.getId(),
                     new HashMap<String, String>() {{
                         put("content", editTextContent.getText().toString());
                     }},
@@ -69,16 +69,16 @@ public class TalkEditActivity extends BaseComposeActivity {
                         try {
                             ObjectMapper objectMapper = new ObjectMapper();
 
-                            TalkItemBean talkItemBean = objectMapper.readValue(response.toString(), TalkItemBean.class);
+                            MemoItemBean memoItemBean = objectMapper.readValue(response.toString(), MemoItemBean.class);
 
-                            Intent intent = new Intent(this, TalkFragment.class);
-                            intent.putExtra("talkItemBean", talkItemBean);
-                            intent.putExtra("talkItemBeanPosition", this.talkItemBeanPosition);
+                            Intent intent = new Intent(this, MemoFragment.class);
+                            intent.putExtra("memoItemBean", memoItemBean);
+                            intent.putExtra("memoItemBeanPosition", this.memoItemBeanPosition);
 
                             this.setResult(RESULT_OK, intent);
                             this.finish();
                         } catch (Exception e) {
-                            this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.talk_edit_activity_edit_error), "setSendEvent::JSONSuccessListener"));
+                            this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.memo_edit_activity_edit_error), "setSendEvent::JSONSuccessListener"));
                         }
                     },
                     (JSONObject response) -> {
@@ -88,7 +88,7 @@ public class TalkEditActivity extends BaseComposeActivity {
 
                             this.sweetDialogHelper.alertError("Oops", message);
                         } catch (Exception e) {
-                            this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.talk_edit_activity_edit_error), "setSendEvent::JSONFailureListener"));
+                            this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.memo_edit_activity_edit_error), "setSendEvent::JSONFailureListener"));
                         }
                     }
                 );

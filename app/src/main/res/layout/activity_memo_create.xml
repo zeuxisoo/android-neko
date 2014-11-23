@@ -1,13 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal"
-    android:orientation="vertical"
-    android:layout_marginLeft="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginBottom="8dp"
-    android:background="@android:color/transparent">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_gravity="center_horizontal"
+              android:orientation="vertical"
+              android:layout_marginLeft="8dp"
+              android:layout_marginTop="8dp"
+              android:layout_marginRight="8dp"
+              android:layout_marginBottom="8dp"
+              android:background="@android:color/transparent">
 
     <!-- header -->
     <RelativeLayout
@@ -24,13 +24,13 @@
             android:padding="6dp"
             android:cropToPadding="true"
             android:background="@drawable/ic_default_avatar_white"
-            android:id="@+id/imageViewEditUserAvatar"/>
+            android:id="@+id/imageViewComposeUserAvatar"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_toRightOf="@+id/imageViewEditUserAvatar">
+            android:layout_toRightOf="@id/imageViewComposeUserAvatar">
 
             <TextView
                 android:layout_width="match_parent"
@@ -44,7 +44,7 @@
                 android:textColor="@color/compose_text_view_username"
                 android:background="@null"
                 android:text="username"
-                android:id="@+id/textViewEditUsername"/>
+                android:id="@+id/textViewComposeUsername"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -56,7 +56,7 @@
                 android:textColor="@color/compose_text_view_long_text"
                 android:background="@null"
                 android:text="longerText"
-                android:id="@+id/textViewEditLongerText" />
+                android:id="@+id/textViewComposeLongerText" />
 
         </LinearLayout>
 
@@ -69,27 +69,27 @@
             android:padding="10dp"
             android:src="@drawable/ic_talk_white"
             android:background="@drawable/compose_default_image_button"
-            android:id="@+id/imageButtonEditTalk" />
+            android:id="@+id/imageButtonComposeTalk" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_toLeftOf="@id/imageButtonEditTalk"
+            android:layout_toLeftOf="@id/imageButtonComposeTalk"
             android:padding="10dp"
             android:src="@drawable/ic_memo_white"
             android:background="@drawable/compose_default_image_button"
-            android:id="@+id/imageButtonEditMemo" />
+            android:id="@+id/imageButtonComposeMemo" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_toLeftOf="@id/imageButtonEditMemo"
+            android:layout_toLeftOf="@id/imageButtonComposeMemo"
             android:padding="10dp"
             android:src="@drawable/ic_article_white"
             android:background="@drawable/compose_default_image_button"
-            android:id="@+id/imageButtonEditArticle" />
+            android:id="@+id/imageButtonComposeArticle" />
 
     </RelativeLayout>
 
@@ -104,7 +104,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true"
-            android:scrollbarStyle="outsideOverlay">
+            android:scrollbarStyle="outsideOverlay"
+            android:id="@+id/scrollViewTextContainer">
 
             <EditText
                 android:layout_width="match_parent"
@@ -117,7 +118,7 @@
                 android:textColorHint="@color/compose_edit_text_hint"
                 android:textColor="@color/compose_edit_text"
                 android:background="@color/compose_edit_text_background"
-                android:id="@+id/editTextEditContent" />
+                android:id="@+id/editTextComposeText" />
 
         </ScrollView>
 
@@ -137,7 +138,7 @@
             android:layout_weight="1"
             android:src="@drawable/ic_cancel_white"
             android:background="@drawable/compose_default_image_button"
-            android:id="@+id/imageButtonEditCancel" />
+            android:id="@+id/imageButtonComposeCancel" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -145,7 +146,7 @@
             android:layout_weight="1"
             android:src="@drawable/ic_clear_white"
             android:background="@drawable/compose_default_image_button"
-            android:id="@+id/imageButtonEditClear" />
+            android:id="@+id/imageButtonComposeClear" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -153,7 +154,7 @@
             android:layout_weight="1"
             android:src="@drawable/ic_copy_white"
             android:background="@drawable/compose_default_image_button"
-            android:id="@+id/imageButtonEditCopy" />
+            android:id="@+id/imageButtonComposeCopy" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -161,7 +162,7 @@
             android:layout_weight="1"
             android:background="@drawable/compose_default_image_button"
             android:src="@drawable/ic_send_white"
-            android:id="@+id/imageButtonEditSend" />
+            android:id="@+id/imageButtonComposeSend" />
 
     </LinearLayout>
 

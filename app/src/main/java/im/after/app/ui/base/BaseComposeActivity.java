@@ -1,4 +1,4 @@
-package im.after.app.ui.module.talk;
+package im.after.app.ui.base;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -18,11 +18,10 @@ import im.after.app.R;
 import im.after.app.entity.bean.UserBean;
 import im.after.app.helper.SweetDialogHelper;
 import im.after.app.helper.ToastHelper;
-import im.after.app.ui.base.BaseActivity;
 
-abstract public class TalkBaseActivity extends BaseActivity {
+abstract public class BaseComposeActivity extends BaseActivity {
 
-    protected static final String TAG = TalkBaseActivity.class.getSimpleName();
+    protected static final String TAG = BaseComposeActivity.class.getSimpleName();
 
     public static final int TYPE_ARTICLE = 1;
     public static final int TYPE_MEMO    = 2;
@@ -97,9 +96,9 @@ abstract public class TalkBaseActivity extends BaseActivity {
         this.imageButtonCancel.setOnClickListener((View v) -> {
             if (this.editTextContent.length() > 0) {
                 this.sweetDialogHelper.confirm(
-                    locale(R.string.talk_base_activity_cancel_confirm_title),
-                    locale(R.string.talk_base_activity_cancel_confirm_text),
-                    locale(R.string.talk_base_activity_cancel_confirm_yes),
+                    locale(R.string.base_compose_activity_cancel_confirm_title),
+                    locale(R.string.base_compose_activity_cancel_confirm_text),
+                    locale(R.string.base_compose_activity_cancel_confirm_yes),
                     this::finish
                 );
             }else{
@@ -112,9 +111,9 @@ abstract public class TalkBaseActivity extends BaseActivity {
         this.imageButtonClear.setOnClickListener((View v) -> {
             if (this.editTextContent.length() > 0) {
                 this.sweetDialogHelper.confirm(
-                    locale(R.string.talk_base_activity_clear_confirm_title),
-                    locale(R.string.talk_base_activity_clear_confirm_text),
-                    locale(R.string.talk_base_activity_clear_confirm_yes),
+                    locale(R.string.base_compose_activity_clear_confirm_title),
+                    locale(R.string.base_compose_activity_clear_confirm_text),
+                    locale(R.string.base_compose_activity_clear_confirm_yes),
                     () -> editTextContent.setText("")
                 );
             }else{
