@@ -77,7 +77,7 @@ public class TalkEditActivity extends TalkBaseActivity {
                             this.setResult(RESULT_OK, intent);
                             this.finish();
                         } catch (Exception e) {
-                            this.sweetDialogHelper.alertError("Oops", String.format(this.getString(R.string.talk_base_activity_create_talk_error), "setSendEvent::JSONSuccessListener"));
+                            this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.talk_base_activity_create_talk_error), "setSendEvent::JSONSuccessListener"));
                         }
                     },
                     (JSONObject response) -> {
@@ -87,7 +87,7 @@ public class TalkEditActivity extends TalkBaseActivity {
 
                             this.sweetDialogHelper.alertError("Oops", message);
                         } catch (Exception e) {
-                            this.sweetDialogHelper.alertError("Oops", String.format(this.getString(R.string.talk_base_activity_create_talk_error), "setSendEvent::JSONFailureListener"));
+                            this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.talk_base_activity_create_talk_error), "setSendEvent::JSONFailureListener"));
                         }
                     }
                 );
