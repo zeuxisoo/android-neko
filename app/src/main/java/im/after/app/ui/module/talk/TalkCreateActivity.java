@@ -28,9 +28,9 @@ import im.after.app.helper.SweetDialogHelper;
 import im.after.app.helper.ToastHelper;
 import im.after.app.ui.base.BaseActivity;
 
-public class TalkComposeActivity extends BaseActivity {
+public class TalkCreateActivity extends BaseActivity {
 
-    private static final String TAG = TalkComposeActivity.class.getSimpleName();
+    private static final String TAG = TalkCreateActivity.class.getSimpleName();
 
     public static final int TYPE_ARTICLE = 1;
     public static final int TYPE_MEMO    = 2;

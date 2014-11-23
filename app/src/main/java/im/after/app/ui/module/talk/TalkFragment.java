@@ -133,8 +133,8 @@ public class TalkFragment extends BaseFragment {
 
     private void setCreateTalkEvent() {
         this.floatingActionButtonFragmentTalk.setOnClickListener((View v) -> {
-            Intent intent = new Intent(this.getActivity(), TalkComposeActivity.class);
-            intent.putExtra("type", TalkComposeActivity.TYPE_TALK);
+            Intent intent = new Intent(this.getActivity(), TalkCreateActivity.class);
+            intent.putExtra("type", TalkCreateActivity.TYPE_TALK);
 
             this.startActivityForResult(intent, REQUEST_CODE_COMPOSE);
         });
@@ -296,7 +296,7 @@ public class TalkFragment extends BaseFragment {
                 Log.d(TAG, "Edit > " + talkItemBean.getContent());
 
                 Intent intent = new Intent(this.getActivity(), TalkEditActivity.class);
-                intent.putExtra("type", TalkComposeActivity.TYPE_TALK);
+                intent.putExtra("type", TalkCreateActivity.TYPE_TALK);
                 intent.putExtra("talkItemBean", talkItemBean);
                 intent.putExtra("talkItemBeanPosition", position);
 

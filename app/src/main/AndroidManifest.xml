@@ -37,7 +37,7 @@
             android:theme="@style/AppTheme.MainActivity" >
         </activity>
         <activity
-            android:name=".ui.module.talk.TalkComposeActivity"
+            android:name=".ui.module.talk.TalkCreateActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.ComposeActivity" >
         </activity>
