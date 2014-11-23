@@ -31,6 +31,7 @@
     <string name="talk_fragment_confirm_delete_title">"Delete?</string>
     <string name="talk_fragment_confirm_delete_content">Are you sure delete this record ?</string>
     <string name="talk_fragment_confirm_delete_yes">Yes</string>
+    <string name="talk_fragment_copy_success">Text Copied</string>
 
     <string name="compose_activity_edit_text_hint">Come on baby :)</string>
     <string name="compose_activity_cancel_confirm_title">Cancel confirm</string>
