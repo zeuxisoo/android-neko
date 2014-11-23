@@ -27,7 +27,7 @@ public class TalkAPI extends BaseAPI {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                failureListener.onJSON(errorResponse);
+                failureListener.onErrorJSON(errorResponse);
             }
         });
     }
@@ -41,7 +41,7 @@ public class TalkAPI extends BaseAPI {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                failureListener.onJSON(errorResponse);
+                failureListener.onErrorJSON(errorResponse);
             }
         });
     }
@@ -55,7 +55,7 @@ public class TalkAPI extends BaseAPI {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                failureListener.onJSON(errorResponse);
+                failureListener.onErrorJSON(errorResponse);
             }
         });
     }
@@ -69,7 +69,7 @@ public class TalkAPI extends BaseAPI {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                failureListener.onJSON(errorResponse);
+                failureListener.onErrorJSON(errorResponse);
             }
         });
     }

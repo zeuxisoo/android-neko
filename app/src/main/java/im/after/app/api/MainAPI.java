@@ -27,7 +27,7 @@ public class MainAPI extends BaseAPI {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                failureListener.onJSON(errorResponse);
+                failureListener.onErrorJSON(errorResponse);
             }
         });
     }
