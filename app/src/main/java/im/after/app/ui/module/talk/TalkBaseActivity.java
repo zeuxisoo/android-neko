@@ -97,9 +97,9 @@ abstract public class TalkBaseActivity extends BaseActivity {
         this.imageButtonCancel.setOnClickListener((View v) -> {
             if (this.editTextContent.length() > 0) {
                 this.sweetDialogHelper.confirm(
-                    this.getString(R.string.compose_activity_cancel_confirm_title),
-                    this.getString(R.string.compose_activity_cancel_confirm_text),
-                    this.getString(R.string.compose_activity_cancel_confirm_yes),
+                    this.getString(R.string.talk_base_activity_cancel_confirm_title),
+                    this.getString(R.string.talk_base_activity_cancel_confirm_text),
+                    this.getString(R.string.talk_base_activity_cancel_confirm_yes),
                     this::finish
                 );
             }else{
@@ -112,9 +112,9 @@ abstract public class TalkBaseActivity extends BaseActivity {
         this.imageButtonClear.setOnClickListener((View v) -> {
             if (this.editTextContent.length() > 0) {
                 this.sweetDialogHelper.confirm(
-                    this.getString(R.string.compose_activity_clear_confirm_title),
-                    this.getString(R.string.compose_activity_clear_confirm_text),
-                    this.getString(R.string.compose_activity_clear_confirm_yes),
+                    this.getString(R.string.talk_base_activity_clear_confirm_title),
+                    this.getString(R.string.talk_base_activity_clear_confirm_text),
+                    this.getString(R.string.talk_base_activity_clear_confirm_yes),
                     () -> editTextContent.setText("")
                 );
             }else{

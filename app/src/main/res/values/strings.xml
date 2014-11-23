@@ -33,13 +33,13 @@
     <string name="talk_fragment_confirm_delete_yes">Yes</string>
     <string name="talk_fragment_copy_success">Text Copied</string>
 
-    <string name="compose_activity_edit_text_hint">Come on baby :)</string>
-    <string name="compose_activity_cancel_confirm_title">Cancel confirm</string>
-    <string name="compose_activity_cancel_confirm_text">Are you sure want to cancel it ?</string>
-    <string name="compose_activity_cancel_confirm_yes">Yes</string>
-    <string name="compose_activity_clear_confirm_title">Clear confirm</string>
-    <string name="compose_activity_clear_confirm_text">Are you sure want to clear the text ?</string>
-    <string name="compose_activity_clear_confirm_yes">Yes</string>
-    <string name="compose_activity_create_talk_error">Unknown create talks in error (%s)</string>
+    <string name="talk_base_activity_edit_text_hint">Come on baby :)</string>
+    <string name="talk_base_activity_cancel_confirm_title">Cancel confirm</string>
+    <string name="talk_base_activity_cancel_confirm_text">Are you sure want to cancel it ?</string>
+    <string name="talk_base_activity_cancel_confirm_yes">Yes</string>
+    <string name="talk_base_activity_clear_confirm_title">Clear confirm</string>
+    <string name="talk_base_activity_clear_confirm_text">Are you sure want to clear the text ?</string>
+    <string name="talk_base_activity_clear_confirm_yes">Yes</string>
+    <string name="talk_base_activity_create_talk_error">Unknown create talks in error (%s)</string>
 
 </resources>

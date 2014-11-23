@@ -26,7 +26,7 @@ public class TalkCreateActivity extends TalkBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.setContentView(R.layout.activity_talk_compose);
+        this.setContentView(R.layout.activity_talk_create);
 
         this.imageViewUserAvatar = (ImageView) this.findViewById(R.id.imageViewComposeUserAvatar);
         this.textViewUsername    = (TextView) this.findViewById(R.id.textViewComposeUsername);
@@ -67,7 +67,7 @@ public class TalkCreateActivity extends TalkBaseActivity {
                             this.setResult(RESULT_OK, intent);
                             this.finish();
                         }catch(Exception e) {
-                            this.sweetDialogHelper.alertError("Oops", String.format(this.getString(R.string.compose_activity_create_talk_error), "setSendEvent::JSONSuccessListener"));
+                            this.sweetDialogHelper.alertError("Oops", String.format(this.getString(R.string.talk_base_activity_create_talk_error), "setSendEvent::JSONSuccessListener"));
                         }
                     },
                     (JSONObject response) -> {
@@ -77,7 +77,7 @@ public class TalkCreateActivity extends TalkBaseActivity {
 
                             this.sweetDialogHelper.alertError("Oops", message);
                         }catch(Exception e) {
-                            this.sweetDialogHelper.alertError("Oops", String.format(this.getString(R.string.compose_activity_create_talk_error), "setSendEvent::JSONFailureListener"));
+                            this.sweetDialogHelper.alertError("Oops", String.format(this.getString(R.string.talk_base_activity_create_talk_error), "setSendEvent::JSONFailureListener"));
                         }
                     }
                 );
