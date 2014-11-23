@@ -208,6 +208,7 @@ public class ArticleFragment extends BaseFragment {
         this.recyclerViewFragmentArticle.addOnItemTouchListener(new RecyclerViewItemClickListener(this.getActivity(), this.recyclerViewFragmentArticle, new RecyclerViewItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                showFullArticle(position);
             }
 
             @Override
@@ -336,6 +337,15 @@ public class ArticleFragment extends BaseFragment {
                 );
                 break;
         }
+    }
+
+    private void showFullArticle(int position) {
+        ArticleItemBean articleItemBean = this.articleItemFragmentAdapter.getArticleItem(position);
+
+        Intent intent = new Intent(this.getActivity(), ArticleFullActivity.class);
+        intent.putExtra("articleItemBean", articleItemBean);
+
+        this.startActivity(intent);
     }
 
 }

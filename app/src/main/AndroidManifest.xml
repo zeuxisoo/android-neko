@@ -66,6 +66,11 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.ComposeActivity" >
         </activity>
+        <activity
+            android:name=".ui.module.article.ArticleFullActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.ComposeActivity" >
+        </activity>
     </application>
 
 </manifest>
