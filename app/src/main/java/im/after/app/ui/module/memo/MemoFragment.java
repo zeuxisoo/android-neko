@@ -23,7 +23,6 @@ import java.util.ArrayList;
 
 import im.after.app.R;
 import im.after.app.api.MemoAPI;
-import im.after.app.api.TalkAPI;
 import im.after.app.entity.bean.MemoBean;
 import im.after.app.entity.bean.MemoDialogItemBean;
 import im.after.app.entity.bean.MemoItemBean;
@@ -31,8 +30,6 @@ import im.after.app.helper.SweetDialogHelper;
 import im.after.app.helper.ToastHelper;
 import im.after.app.ui.base.BaseFragment;
 import im.after.app.ui.listener.RecyclerViewItemClickListener;
-import im.after.app.ui.module.talk.TalkCreateActivity;
-import im.after.app.ui.module.talk.MemoItemDialogAdapter;
 
 public class MemoFragment extends BaseFragment {
 
@@ -67,10 +64,6 @@ public class MemoFragment extends BaseFragment {
         this.recyclerViewFragmentMemo         = (RecyclerView) viewFragmentMemo.findViewById(R.id.recyclerViewFragmentMemo);
         this.floatingActionButtonFragmentMemo = (FloatingActionButton) viewFragmentMemo.findViewById(R.id.floatingActionButtonFragmentMemo);
 
-        // Set base object
-        this.sweetDialogHelper = new SweetDialogHelper(this.getActivity());
-        this.handler           = new Handler();
-
         return viewFragmentMemo;
     }
 
@@ -78,7 +71,7 @@ public class MemoFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        // Set UIHelper
+        // Set base object
         this.sweetDialogHelper = new SweetDialogHelper(this.getActivity());
         this.handler  = new Handler();
 
@@ -110,7 +103,7 @@ public class MemoFragment extends BaseFragment {
 
         if (resultCode == this.getActivity().RESULT_OK) {
             MemoItemBean memoItemBean;
-            int talkItemBeanPosition;
+            int memoItemBeanPosition;
 
             switch (requestCode) {
                 case REQUEST_CODE_COMPOSE:
@@ -122,9 +115,9 @@ public class MemoFragment extends BaseFragment {
                     break;
                 case REQUEST_CODE_EDIT:
                     memoItemBean = (MemoItemBean) data.getExtras().getSerializable("memoItemBean");
-                    talkItemBeanPosition = data.getExtras().getInt("memoItemBeanPosition");
+                    memoItemBeanPosition = data.getExtras().getInt("memoItemBeanPosition");
 
-                    this.memoItemFragmentAdapter.setMemoItemBean(talkItemBeanPosition, memoItemBean);
+                    this.memoItemFragmentAdapter.setMemoItemBean(memoItemBeanPosition, memoItemBean);
 
                     ToastHelper.show(this.getActivity(), R.string.memo_fragment_compose_memo_updated);
                 default:
@@ -277,8 +270,8 @@ public class MemoFragment extends BaseFragment {
 
     private void showOptionsMenu(int position) {
         ArrayList<MemoDialogItemBean> dialogMemoItem = new ArrayList<MemoDialogItemBean>();
-        dialogMemoItem.add(new MemoDialogItemBean(R.drawable.ic_edit_white, locale(R.string.talk_fragment_dialog_item_edit)));
-        dialogMemoItem.add(new MemoDialogItemBean(R.drawable.ic_delete_white, locale(R.string.talk_fragment_dialog_item_delete)));
+        dialogMemoItem.add(new MemoDialogItemBean(R.drawable.ic_edit_white, locale(R.string.memo_fragment_dialog_item_edit)));
+        dialogMemoItem.add(new MemoDialogItemBean(R.drawable.ic_delete_white, locale(R.string.memo_fragment_dialog_item_delete)));
 
         MemoItemDialogAdapter memoItemDialogAdapter = new MemoItemDialogAdapter(this.getActivity(), R.layout.dialog_memo_item, dialogMemoItem);
 
@@ -296,7 +289,7 @@ public class MemoFragment extends BaseFragment {
         switch(which) {
             case 0: // edit
                 Intent intent = new Intent(this.getActivity(), MemoEditActivity.class);
-                intent.putExtra("type", TalkCreateActivity.TYPE_TALK);
+                intent.putExtra("type", MemoCreateActivity.TYPE_MEMO);
                 intent.putExtra("memoItemBean", memoItemBean);
                 intent.putExtra("memoItemBeanPosition", position);
 
@@ -308,9 +301,9 @@ public class MemoFragment extends BaseFragment {
                     locale(R.string.memo_fragment_confirm_delete_content),
                     locale(R.string.memo_fragment_confirm_delete_yes),
                     () -> {
-                        TalkAPI talkAPI = new TalkAPI(this.getActivity());
+                        MemoAPI memoAPI = new MemoAPI(this.getActivity());
 
-                        talkAPI.delete(
+                        memoAPI.delete(
                             memoItemBean.getId(),
                             (JSONObject response) -> {
                                 try {

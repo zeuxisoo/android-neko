@@ -21,7 +21,7 @@ public class MemoItemFragmentAdapter extends RecyclerView.Adapter<MemoItemFragme
 
     @Override
     public MemoItemFragmentAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View fragmentTalkItemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_talk_item, viewGroup, false);
+        View fragmentTalkItemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_memo_item, viewGroup, false);
 
         return new ViewHolder(fragmentTalkItemView);
     }

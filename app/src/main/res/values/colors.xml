@@ -43,6 +43,9 @@
     <color name="compose_text_view_username">#FFAAAAAA</color>
     <color name="compose_user_avatar_border">#FFFFFFFF</color>
     <color name="compose_image_button_underline">#FF984bc0</color>
+    <color name="compose_edit_title">#FF455262</color>
+    <color name="compose_edit_title_background">#FFCCCCCC</color>
+    <color name="compose_edit_title_hint">#DD555555</color>
 
     <color name="dialog_background">@color/fragment_item_card_view_background</color>
     <color name="dialog_item_text">@color/fragment_item_card_view_username</color>

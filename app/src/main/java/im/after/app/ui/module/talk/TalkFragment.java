@@ -64,10 +64,6 @@ public class TalkFragment extends BaseFragment {
         this.recyclerViewFragmentTalk         = (RecyclerView) viewFragmentTalk.findViewById(R.id.recyclerViewFragmentTalk);
         this.floatingActionButtonFragmentTalk = (FloatingActionButton) viewFragmentTalk.findViewById(R.id.floatingActionButtonFragmentTalk);
 
-        // Set base object
-        this.sweetDialogHelper = new SweetDialogHelper(this.getActivity());
-        this.handler           = new Handler();
-
         return viewFragmentTalk;
     }
 
@@ -75,7 +71,7 @@ public class TalkFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        // Set UIHelper
+        // Set base object
         this.sweetDialogHelper = new SweetDialogHelper(this.getActivity());
         this.handler  = new Handler();
 

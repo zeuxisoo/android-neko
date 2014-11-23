@@ -33,6 +33,32 @@
     <string name="talk_fragment_confirm_delete_yes">Yes</string>
     <string name="talk_fragment_copy_success">Text Copied</string>
 
+    <string name="memo_fragment_current_loading_page">Loading page %s …</string>
+    <string name="memo_fragment_no_more_page">No more page</string>
+    <string name="memo_fragment_request_page_error">Unknown request memos in error (%s)</string>
+    <string name="memo_fragment_not_found_page_number">Not found page no: %s</string>
+    <string name="memo_fragment_compose_memo_created">Memo created</string>
+    <string name="memo_fragment_dialog_item_edit">Edit</string>
+    <string name="memo_fragment_dialog_item_delete">Delete</string>
+    <string name="memo_fragment_delete_memo_error">Unknown delete talks in error (%s)</string>
+    <string name="memo_fragment_compose_memo_updated">Memo updated</string>
+    <string name="memo_fragment_confirm_delete_title">"Delete?</string>
+    <string name="memo_fragment_confirm_delete_content">Are you sure delete this record ?</string>
+    <string name="memo_fragment_confirm_delete_yes">Yes</string>
+
+    <string name="article_fragment_current_loading_page">Loading page %s …</string>
+    <string name="article_fragment_no_more_page">No more page</string>
+    <string name="article_fragment_request_page_error">Unknown request articles in error (%s)</string>
+    <string name="article_fragment_not_found_page_number">Not found page no: %s</string>
+    <string name="article_fragment_compose_article_created">Article created</string>
+    <string name="article_fragment_dialog_item_edit">Edit</string>
+    <string name="article_fragment_dialog_item_delete">Delete</string>
+    <string name="article_fragment_delete_article_error">Unknown delete articles in error (%s)</string>
+    <string name="article_fragment_compose_article_updated">Article updated</string>
+    <string name="article_fragment_confirm_delete_title">"Delete?</string>
+    <string name="article_fragment_confirm_delete_content">Are you sure delete this record ?</string>
+    <string name="article_fragment_confirm_delete_yes">Yes</string>
+
     <string name="base_compose_activity_edit_text_hint">Come on baby :)</string>
     <string name="base_compose_activity_cancel_confirm_title">Cancel confirm</string>
     <string name="base_compose_activity_cancel_confirm_text">Are you sure want to cancel it ?</string>
@@ -40,6 +66,7 @@
     <string name="base_compose_activity_clear_confirm_title">Clear confirm</string>
     <string name="base_compose_activity_clear_confirm_text">Are you sure want to clear the text ?</string>
     <string name="base_compose_activity_clear_confirm_yes">Yes</string>
+    <string name="base_compose_activity_edit_title_hint">The title is ...</string>
 
     <string name="talk_create_activity_create_error">Unknown create talks in error (%s)</string>
     <string name="talk_edit_activity_edit_error">Unknown edit talks in error (%s)</string>
@@ -47,16 +74,7 @@
     <string name="memo_create_activity_create_error">Unknown create memos in error (%s)</string>
     <string name="memo_edit_activity_edit_error">Unknown edit memos in error (%s)</string>
 
-    <string name="memo_fragment_current_loading_page">Loading page %s …</string>
-    <string name="memo_fragment_no_more_page">No more page</string>
-    <string name="memo_fragment_request_page_error">Unknown request memos in error (%s)</string>
-    <string name="memo_fragment_not_found_page_number">Not found page no: %s</string>
-    <string name="memo_fragment_compose_memo_created">Memo created</string>
-
-    <string name="memo_fragment_delete_memo_error">Unknown delete talks in error (%s)</string>
-    <string name="memo_fragment_compose_memo_updated">Memo updated</string>
-    <string name="memo_fragment_confirm_delete_title">"Delete?</string>
-    <string name="memo_fragment_confirm_delete_content">Are you sure delete this record ?</string>
-    <string name="memo_fragment_confirm_delete_yes">Yes</string>
+    <string name="article_create_activity_create_error">Unknown create articles in error (%s)</string>
+    <string name="article_edit_activity_edit_error">Unknown edit articles in error (%s)</string>
 
 </resources>

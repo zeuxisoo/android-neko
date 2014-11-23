@@ -1,4 +1,4 @@
-package im.after.app.ui.module.talk;
+package im.after.app.ui.module.memo;
 
 import android.app.Activity;
 import android.content.Context;
@@ -18,15 +18,15 @@ public class MemoItemDialogAdapter extends ArrayAdapter<MemoDialogItemBean> {
 
     private Context context;
     private LayoutInflater layoutInflater;
-    private ArrayList<MemoDialogItemBean> talkDialogItemBeans;
+    private ArrayList<MemoDialogItemBean> memoDialogItemBeans;
     private int resourceId;
 
-    public MemoItemDialogAdapter(Context context, int resourceId, ArrayList<MemoDialogItemBean> talkDialogItemBeans) {
-        super(context, resourceId, talkDialogItemBeans);
+    public MemoItemDialogAdapter(Context context, int resourceId, ArrayList<MemoDialogItemBean> memoDialogItemBeans) {
+        super(context, resourceId, memoDialogItemBeans);
 
         this.context             = context;
         this.resourceId          = resourceId;
-        this.talkDialogItemBeans = talkDialogItemBeans;
+        this.memoDialogItemBeans = memoDialogItemBeans;
         this.layoutInflater      = ((Activity) this.context).getLayoutInflater();
     }
 
@@ -46,10 +46,10 @@ public class MemoItemDialogAdapter extends ArrayAdapter<MemoDialogItemBean> {
             viewTag = (ViewTag) convertView.getTag();
         }
 
-        MemoDialogItemBean talkDialogItemBean = (MemoDialogItemBean) this.talkDialogItemBeans.get(position);
+        MemoDialogItemBean memoDialogItemBean = (MemoDialogItemBean) this.memoDialogItemBeans.get(position);
 
-        viewTag.icon.setImageResource(talkDialogItemBean.getIcon());
-        viewTag.name.setText(String.valueOf(talkDialogItemBean.getName()));
+        viewTag.icon.setImageResource(memoDialogItemBean.getIcon());
+        viewTag.name.setText(String.valueOf(memoDialogItemBean.getName()));
 
         return convertView;
     }
