@@ -1,5 +1,7 @@
 package im.after.app.ui.module.talk;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -23,6 +25,7 @@ import im.after.app.api.TalkAPI;
 import im.after.app.entity.bean.TalkItemBean;
 import im.after.app.entity.bean.UserBean;
 import im.after.app.helper.SweetDialogHelper;
+import im.after.app.helper.ToastHelper;
 import im.after.app.ui.base.BaseActivity;
 
 public class TalkEditActivity extends BaseActivity {
@@ -42,6 +45,7 @@ public class TalkEditActivity extends BaseActivity {
     private EditText editTextEditContent;
     private ImageButton imageButtonEditCancel;
     private ImageButton imageButtonEditClear;
+    private ImageButton imageButtonEditCopy;
     private ImageButton imageButtonEditSend;
 
     private SweetDialogHelper sweetDialogHelper;
@@ -63,6 +67,7 @@ public class TalkEditActivity extends BaseActivity {
         this.editTextEditContent     = (EditText) this.findViewById(R.id.editTextEditContent);
         this.imageButtonEditCancel   = (ImageButton) this.findViewById(R.id.imageButtonEditCancel);
         this.imageButtonEditClear    = (ImageButton) this.findViewById(R.id.imageButtonEditClear);
+        this.imageButtonEditCopy     = (ImageButton) this.findViewById(R.id.imageButtonEditCopy);
         this.imageButtonEditSend     = (ImageButton) this.findViewById(R.id.imageButtonEditSend);
 
         this.sweetDialogHelper = new SweetDialogHelper(this);
@@ -75,6 +80,7 @@ public class TalkEditActivity extends BaseActivity {
         this.underlineSelectedType();
         this.setCancelEvent();
         this.setClearEvent();
+        this.setCopyEvent();
         this.setSendEvent();
     }
 
@@ -146,6 +152,17 @@ public class TalkEditActivity extends BaseActivity {
             }else{
                 editTextEditContent.setText("");
             }
+        });
+    }
+
+    private void setCopyEvent() {
+        this.imageButtonEditCopy.setOnClickListener((View v) -> {
+            ClipboardManager clipboardManager = (ClipboardManager) this.getSystemService(this.CLIPBOARD_SERVICE);
+            ClipData clipData = ClipData.newPlainText(TAG, this.editTextEditContent.getText());
+
+            clipboardManager.setPrimaryClip(clipData);
+
+            ToastHelper.show(this, "Text Copied");
         });
     }
 
