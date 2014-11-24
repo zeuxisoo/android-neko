@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Neko</string>
+
+    <string name="login_activity_account_hint">帳號</string>
+    <string name="login_activity_password_hint">密碼</string>
+    <string name="login_activity_login_button">登入</string>
+    <string name="login_activity_login_success">成功</string>
+    <string name="login_activity_login_loading">載入中</string>
+    <string name="login_activity_login_error">登入失敗 (%s)</string>
+    <string name="login_activity_save_login_info">儲存登入資訊</string>
+
+    <string name="main_activity_open_drawer_text">打開</string>
+    <string name="main_activity_close_drawer_text">關閉</string>
+    <string name="main_activity_drawer_menu_item_subject_article_text">文章</string>
+    <string name="main_activity_drawer_menu_item_subject_memo_text">備件</string>
+    <string name="main_activity_drawer_menu_item_subject_talk_text">說話</string>
+    <string name="main_activity_drawer_menu_item_subject_settings_text">設置</string>
+    <string name="main_activity_menu_item_about">關於</string>
+
+    <string name="talk_fragment_current_loading_page">加載第 %s 頁中 …</string>
+    <string name="talk_fragment_no_more_page">沒有更多頁面</string>
+    <string name="talk_fragment_request_page_error">加載說話頁面失敗 (%s)</string>
+    <string name="talk_fragment_not_found_page_number">找不到第 %s 頁</string>
+    <string name="talk_fragment_compose_talk_created">說話發表成功</string>
+    <string name="talk_fragment_dialog_item_edit">編輯</string>
+    <string name="talk_fragment_dialog_item_delete">刪除</string>
+    <string name="talk_fragment_delete_talk_error">刪除說話失敗 (%s)</string>
+    <string name="talk_fragment_compose_talk_updated">說話更新成功</string>
+    <string name="talk_fragment_confirm_delete_title">刪除?</string>
+    <string name="talk_fragment_confirm_delete_content">確定要刪除這筆記錄 ?</string>
+    <string name="talk_fragment_confirm_delete_yes">是</string>
+    <string name="talk_fragment_copy_success">文字已複制</string>
+
+    <string name="memo_fragment_current_loading_page">加載第 %s 頁中 …</string>
+    <string name="memo_fragment_no_more_page">沒有更多頁面</string>
+    <string name="memo_fragment_request_page_error">加載備件頁面失敗 (%s)</string>
+    <string name="memo_fragment_not_found_page_number">找不到第 %s 頁</string>
+    <string name="memo_fragment_compose_memo_created">備件發表成功</string>
+    <string name="memo_fragment_dialog_item_edit">編輯</string>
+    <string name="memo_fragment_dialog_item_delete">刪除</string>
+    <string name="memo_fragment_delete_memo_error">刪除備件失敗 (%s)</string>
+    <string name="memo_fragment_compose_memo_updated">備件更新成功</string>
+    <string name="memo_fragment_confirm_delete_title">"刪除?</string>
+    <string name="memo_fragment_confirm_delete_content">確定要刪除這筆記錄 ?</string>
+    <string name="memo_fragment_confirm_delete_yes">是</string>
+
+    <string name="article_fragment_current_loading_page">加載第 %s 頁中 …</string>
+    <string name="article_fragment_no_more_page">沒有更多頁面</string>
+    <string name="article_fragment_request_page_error">加載文章頁面失敗 (%s)</string>
+    <string name="article_fragment_not_found_page_number">找不到第 %s 頁</string>
+    <string name="article_fragment_compose_article_created">文章發表成功</string>
+    <string name="article_fragment_dialog_item_edit">編輯</string>
+    <string name="article_fragment_dialog_item_delete">刪除</string>
+    <string name="article_fragment_delete_article_error">刪除文章失敗 (%s)</string>
+    <string name="article_fragment_compose_article_updated">文章更新成功</string>
+    <string name="article_fragment_confirm_delete_title">"刪除?</string>
+    <string name="article_fragment_confirm_delete_content">確定要刪除這筆記錄 ?</string>
+    <string name="article_fragment_confirm_delete_yes">是</string>
+
+    <string name="base_compose_activity_edit_text_hint">來吧親愛的 :)</string>
+    <string name="base_compose_activity_cancel_confirm_title">取消?</string>
+    <string name="base_compose_activity_cancel_confirm_text">真的要取消他嗎 ?</string>
+    <string name="base_compose_activity_cancel_confirm_yes">是</string>
+    <string name="base_compose_activity_clear_confirm_title">消除?</string>
+    <string name="base_compose_activity_clear_confirm_text">真的要消除這些文字嗎 ?</string>
+    <string name="base_compose_activity_clear_confirm_yes">是</string>
+    <string name="base_compose_activity_edit_title_hint">標題是 ...</string>
+
+    <string name="talk_create_activity_create_error">建立說話失敗 (%s)</string>
+    <string name="talk_edit_activity_edit_error">編輯說話失敗 (%s)</string>
+
+    <string name="memo_create_activity_create_error">建立備件失敗 (%s)</string>
+    <string name="memo_edit_activity_edit_error">編輯備件失敗 (%s)</string>
+
+    <string name="article_create_activity_create_error">編輯文章失敗 (%s)</string>
+    <string name="article_edit_activity_edit_error">編輯文章失敗 (%s)</string>
+
+    <string name="preference_settings_locale_category">多國語系</string>
+    <string name="preference_settings_locale_key">prefs_locale</string>
+    <string name="preference_settings_locale_title">語言</string>
+    <string name="preference_settings_locale_summary">系統界面語言 (需重開, 目前: %s)</string>
+    <string name="preference_settings_locale_default">zh-rTW</string>
+
+</resources>

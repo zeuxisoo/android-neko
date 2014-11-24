@@ -1,5 +1,6 @@
 package im.after.app.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
@@ -42,7 +43,7 @@ public class MainActivity extends BaseActionBarActivity {
         R.drawable.ic_talk_black,
         R.drawable.ic_setting_black,
     };
-    private static final int DRAWER_MENU_ITEM_SUBJECT_TEXTS[] = new int[] {
+    private static final int DRAWER_MENU_ITEM_SUBJECT_TEXTS[] = new int[]{
         R.string.main_activity_drawer_menu_item_subject_article_text,
         R.string.main_activity_drawer_menu_item_subject_memo_text,
         R.string.main_activity_drawer_menu_item_subject_talk_text,
@@ -251,7 +252,8 @@ public class MainActivity extends BaseActionBarActivity {
         if (itemId >= 0 && itemId <= 2) {
             this.viewPagerMainNavigation.setCurrentItem(itemId, true);
         }else{
-            this.sweetDialogHelper.alertSuccess("Master", "I am settings");
+            Intent intent = new Intent(this, SettingsActivity.class);
+            this.startActivity(intent);
         }
     }
 
@@ -277,4 +279,5 @@ public class MainActivity extends BaseActionBarActivity {
             this.setCurrentSelectedDrawerMenuItem(itemId);
         }
     }
+
 }

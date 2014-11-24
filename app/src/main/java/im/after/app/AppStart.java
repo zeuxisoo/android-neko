@@ -1,6 +1,5 @@
 package im.after.app;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,8 +7,9 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
 import im.after.app.ui.LoginActivity;
+import im.after.app.ui.base.BaseActivity;
 
-public class AppStart extends Activity {
+public class AppStart extends BaseActivity {
 
     private static final String TAG  = "AppStart";
 

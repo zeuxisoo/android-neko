@@ -10,7 +10,8 @@ import im.after.app.helper.HttpHelper;
 
 public class BaseAPI {
 
-    private static final String APIServer = "http://10.0.1.10:5000/api";
+//    private static final String APIServer = "http://10.0.1.10:5000/api";
+    private static final String APIServer = "https://www.after.im/api";
 
 
     protected Context context;

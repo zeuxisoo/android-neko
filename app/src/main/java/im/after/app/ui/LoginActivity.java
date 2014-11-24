@@ -2,6 +2,7 @@ package im.after.app.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -20,12 +21,13 @@ import im.after.app.entity.bean.UserBean;
 import im.after.app.entity.table.LoginTable;
 import im.after.app.helper.DaoHelper;
 import im.after.app.helper.SweetDialogHelper;
-import im.after.app.ui.base.BaseActivity;
+import im.after.app.ui.base.BaseActionBarActivity;
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActionBarActivity {
 
     private static final String TAG  = LoginActivity.class.getSimpleName();
 
+    private Toolbar toolbar;
     private EditText editTextLoginAccount;
     private EditText editTextLoginPassword;
     private ActionProcessButton buttonLogin;
@@ -38,6 +40,9 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         this.setContentView(R.layout.activity_login);
+
+        this.toolbar = (Toolbar) this.findViewById(R.id.toolbar);
+        this.setSupportActionBar(toolbar);
 
         this.sweetDialogHelper = new SweetDialogHelper(this);
 

@@ -9,13 +9,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/main_toolbar_background"
-            android:minHeight="?attr/actionBarSize">
-        </android.support.v7.widget.Toolbar>
+        <include layout="@layout/include_toolbar" />
 
         <com.astuetz.PagerSlidingTabStrip
             android:id="@+id/pageIndicatorMainNavigation"

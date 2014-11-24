@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="preference_languages_keys">
+        <item>English</item>
+        <item>繁體中文</item>
+    </string-array>
+    <string-array name="preference_language_values">
+        <item>en</item>
+        <item>zh_TW</item>
+    </string-array>
+</resources>

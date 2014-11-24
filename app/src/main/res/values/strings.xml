@@ -77,4 +77,10 @@
     <string name="article_create_activity_create_error">Unknown create articles in error (%s)</string>
     <string name="article_edit_activity_edit_error">Unknown edit articles in error (%s)</string>
 
+    <string name="preference_settings_locale_category">Locale</string>
+    <string name="preference_settings_locale_key">prefs_locale</string>
+    <string name="preference_settings_locale_title">Langauge</string>
+    <string name="preference_settings_locale_summary">Application language (need restart, current: %s) </string>
+    <string name="preference_settings_locale_default">en</string>
+
 </resources>
