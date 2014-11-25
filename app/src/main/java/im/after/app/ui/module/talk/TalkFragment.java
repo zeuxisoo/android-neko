@@ -132,6 +132,7 @@ public class TalkFragment extends BaseFragment {
             intent.putExtra("type", TalkCreateActivity.TYPE_TALK);
 
             this.startActivityForResult(intent, REQUEST_CODE_COMPOSE);
+            this.getActivity().overridePendingTransition(R.anim.slide_up_enter, R.anim.zoom_out);
         });
     }
 
@@ -294,6 +295,7 @@ public class TalkFragment extends BaseFragment {
                 intent.putExtra("talkItemBeanPosition", position);
 
                 this.startActivityForResult(intent, REQUEST_CODE_EDIT);
+                this.getActivity().overridePendingTransition(R.anim.slide_up_enter, R.anim.zoom_out);
                 break;
             case 1: // delete
                 this.sweetDialogHelper.confirm(

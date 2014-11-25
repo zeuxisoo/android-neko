@@ -76,7 +76,7 @@ public class MemoEditActivity extends BaseComposeActivity {
                             intent.putExtra("memoItemBeanPosition", this.memoItemBeanPosition);
 
                             this.setResult(RESULT_OK, intent);
-                            this.finish();
+                            this.close();
                         } catch (Exception e) {
                             this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.memo_edit_activity_edit_error), "setSendEvent::JSONSuccessListener"));
                         }

@@ -66,7 +66,7 @@ public class MemoCreateActivity extends BaseComposeActivity {
                             intent.putExtra("memoItemBean", memoItemBean);
 
                             this.setResult(RESULT_OK, intent);
-                            this.finish();
+                            this.close();
                         }catch(Exception e) {
                             this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.memo_create_activity_create_error), "setSendEvent::JSONSuccessListener"));
                         }

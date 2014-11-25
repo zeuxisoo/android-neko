@@ -71,7 +71,7 @@ public class ArticleCreateActivity extends BaseComposeActivity {
                             intent.putExtra("articleItemBean", articleItemBean);
 
                             this.setResult(RESULT_OK, intent);
-                            this.finish();
+                            this.close();
                         }catch(Exception e) {
                             this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.article_create_activity_create_error), "setSendEvent::JSONSuccessListener"));
                         }

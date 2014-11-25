@@ -66,7 +66,7 @@ public class TalkCreateActivity extends BaseComposeActivity {
                             intent.putExtra("talkItemBean", talkItemBean);
 
                             this.setResult(RESULT_OK, intent);
-                            this.finish();
+                            this.close();
                         }catch(Exception e) {
                             this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.talk_create_activity_create_error), "setSendEvent::JSONSuccessListener"));
                         }

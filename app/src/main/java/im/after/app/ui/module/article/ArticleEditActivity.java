@@ -82,7 +82,7 @@ public class ArticleEditActivity extends BaseComposeActivity {
                             intent.putExtra("articleItemBeanPosition", this.articleItemBeanPosition);
 
                             this.setResult(RESULT_OK, intent);
-                            this.finish();
+                            this.close();
                         } catch (Exception e) {
                             this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.article_edit_activity_edit_error), "setSendEvent::JSONSuccessListener"));
                         }

@@ -60,6 +60,13 @@ abstract public class BaseComposeActivity extends BaseActivity {
         this.setSendEvent();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        this.close();
+    }
+
     protected void setUserInfo() {
         UserBean userBean = ((AppContext) this.getApplicationContext()).getUserBean();
 
@@ -99,10 +106,10 @@ abstract public class BaseComposeActivity extends BaseActivity {
                     locale(R.string.base_compose_activity_cancel_confirm_title),
                     locale(R.string.base_compose_activity_cancel_confirm_text),
                     locale(R.string.base_compose_activity_cancel_confirm_yes),
-                    this::finish
+                    this::close
                 );
             }else{
-                this.finish();
+                this.close();
             }
         });
     }
@@ -131,6 +138,11 @@ abstract public class BaseComposeActivity extends BaseActivity {
 
             ToastHelper.show(this, locale(R.string.talk_fragment_copy_success));
         });
+    }
+
+    protected void close() {
+        this.finish();
+        this.overridePendingTransition(R.anim.zoom_in, R.anim.slide_down_exit);
     }
 
     abstract protected void setSendEvent();

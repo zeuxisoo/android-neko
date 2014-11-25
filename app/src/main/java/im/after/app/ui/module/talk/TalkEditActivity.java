@@ -76,7 +76,7 @@ public class TalkEditActivity extends BaseComposeActivity {
                             intent.putExtra("talkItemBeanPosition", this.talkItemBeanPosition);
 
                             this.setResult(RESULT_OK, intent);
-                            this.finish();
+                            this.close();
                         } catch (Exception e) {
                             this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.talk_edit_activity_edit_error), "setSendEvent::JSONSuccessListener"));
                         }
