@@ -3,5 +3,4 @@
     android:fromYDelta="100%"
     android:toYDelta="0%"
     android:fillAfter="true"
-    android:fillEnabled="true" >
-</translate>
+    android:fillEnabled="true" />
