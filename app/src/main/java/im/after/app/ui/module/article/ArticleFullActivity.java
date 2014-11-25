@@ -30,4 +30,12 @@ public class ArticleFullActivity extends BaseActivity {
         this.textViewArticleFullTitle.setText(articleItembean.getTitle());
         this.webViewArticleFullContent.setText(markdown);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        this.finish();
+        this.overridePendingTransition(R.anim.zoom_in, R.anim.slide_down_exit);
+    }
 }

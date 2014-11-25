@@ -346,6 +346,7 @@ public class ArticleFragment extends BaseFragment {
         intent.putExtra("articleItemBean", articleItemBean);
 
         this.startActivity(intent);
+        this.getActivity().overridePendingTransition(R.anim.slide_up_enter, R.anim.zoom_out);
     }
 
 }
