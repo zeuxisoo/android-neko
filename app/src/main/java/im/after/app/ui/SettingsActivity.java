@@ -34,6 +34,18 @@ public class SettingsActivity extends BaseActionBarActivity {
             .commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        this.close();
+    }
+
+    private void close() {
+        this.finish();
+        this.overridePendingTransition(R.anim.slide_right_enter, R.anim.slide_right_exit);
+    }
+
     public static class SettingsFragment extends PreferenceFragment {
 
         @Override

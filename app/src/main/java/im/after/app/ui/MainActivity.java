@@ -258,6 +258,7 @@ public class MainActivity extends BaseActionBarActivity {
         }else{
             Intent intent = new Intent(this, SettingsActivity.class);
             this.startActivity(intent);
+            this.overridePendingTransition(R.anim.slide_left_enter, R.anim.slide_left_exit);
         }
     }
 
