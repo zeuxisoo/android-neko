@@ -25,6 +25,7 @@ import im.after.app.AppContext;
 import im.after.app.R;
 import im.after.app.entity.bean.UserBean;
 import im.after.app.helper.SweetDialogHelper;
+import im.after.app.helper.ToastHelper;
 import im.after.app.ui.adapter.SectionsPagerAdapter;
 import im.after.app.ui.base.BaseActionBarActivity;
 
@@ -193,6 +194,9 @@ public class MainActivity extends BaseActionBarActivity {
 
         // Set default selected item
         this.setSelectedDrawerMenuItem(DRAWER_MENU_ITEM_ARTICLE);
+
+        // Show loading pages message
+        ToastHelper.show(this, R.string.main_activity_loading_all_tab_pages);
     }
 
     private View createDrawerMenuItem(int itemId, ViewGroup drawerMenuItemList) {

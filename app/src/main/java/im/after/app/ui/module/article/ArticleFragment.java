@@ -316,10 +316,10 @@ public class ArticleFragment extends BaseFragment {
 
                                         ToastHelper.show(this.getActivity(), message);
                                     }else{
-                                        sweetDialogHelper.alertError("Oops", String.format(locale(R.string.article_fragment_delete_article_error), message));
+                                        this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.article_fragment_delete_article_error), message));
                                     }
                                 }catch(Exception e) {
-                                    sweetDialogHelper.alertError("Oops", String.format(locale(R.string.article_fragment_delete_article_error), "clickOnOptionsMenuItem::JSONSuccessListener"));
+                                    this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.article_fragment_delete_article_error), "clickOnOptionsMenuItem::JSONSuccessListener"));
                                 }
                             },
                             (JSONObject response) -> {
@@ -327,9 +327,9 @@ public class ArticleFragment extends BaseFragment {
                                     JSONObject errorObject = response.getJSONObject("error");
                                     String message = errorObject.getString("message");
 
-                                    sweetDialogHelper.alertError("Oops", message);
+                                    this.sweetDialogHelper.alertError("Oops", message);
                                 }catch(Exception e) {
-                                    sweetDialogHelper.alertError("Oops", String.format(locale(R.string.article_fragment_delete_article_error), "clickOnOptionsMenuItem::JSONSuccessListener"));
+                                    this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.article_fragment_delete_article_error), "clickOnOptionsMenuItem::JSONSuccessListener"));
                                 }
                             }
                         );
