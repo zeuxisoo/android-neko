@@ -243,7 +243,7 @@ public class MemoFragment extends BaseFragment {
 
                     callback.onFinish();
                 }catch(Exception e) {
-                    sweetDialogHelper.alertError("Oops", String.format(locale(R.string.memo_fragment_request_page_error), "loadTalkPage::JSONSuccessListener"));
+                    this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.memo_fragment_request_page_error), "loadTalkPage::JSONSuccessListener"));
                 }finally{
                     this.pageIsLoading = false;
                 }
@@ -255,12 +255,12 @@ public class MemoFragment extends BaseFragment {
                     int status     = errorObject.getInt("status");
 
                     if (status == 404) {
-                        sweetDialogHelper.alertError("Oops", String.format(locale(R.string.memo_fragment_not_found_page_number), pageNo));
+                        this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.memo_fragment_not_found_page_number), pageNo));
                     }else{
-                        sweetDialogHelper.alertError("Oops", message);
+                        this.sweetDialogHelper.alertError("Oops", message);
                     }
                 }catch(Exception e) {
-                    sweetDialogHelper.alertError("Oops", String.format(locale(R.string.memo_fragment_request_page_error), "loadTalkPage::JSONFailureListener"));
+                    this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.memo_fragment_request_page_error), "loadTalkPage::JSONFailureListener"));
                 }finally{
                     this.pageIsLoading = false;
                 }
@@ -315,10 +315,10 @@ public class MemoFragment extends BaseFragment {
 
                                         ToastHelper.show(this.getActivity(), message);
                                     }else{
-                                        sweetDialogHelper.alertError("Oops", String.format(locale(R.string.memo_fragment_delete_memo_error), message));
+                                        this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.memo_fragment_delete_memo_error), message));
                                     }
                                 }catch(Exception e) {
-                                    sweetDialogHelper.alertError("Oops", String.format(locale(R.string.memo_fragment_delete_memo_error), "clickOnOptionsMenuItem::JSONSuccessListener"));
+                                    this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.memo_fragment_delete_memo_error), "clickOnOptionsMenuItem::JSONSuccessListener"));
                                 }
                             },
                             (JSONObject response) -> {
@@ -326,9 +326,9 @@ public class MemoFragment extends BaseFragment {
                                     JSONObject errorObject = response.getJSONObject("error");
                                     String message = errorObject.getString("message");
 
-                                    sweetDialogHelper.alertError("Oops", message);
+                                    this.sweetDialogHelper.alertError("Oops", message);
                                 }catch(Exception e) {
-                                    sweetDialogHelper.alertError("Oops", String.format(locale(R.string.memo_fragment_delete_memo_error), "clickOnOptionsMenuItem::JSONSuccessListener"));
+                                    this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.memo_fragment_delete_memo_error), "clickOnOptionsMenuItem::JSONSuccessListener"));
                                 }
                             }
                         );

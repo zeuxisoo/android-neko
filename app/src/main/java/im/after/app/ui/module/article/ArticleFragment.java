@@ -244,7 +244,7 @@ public class ArticleFragment extends BaseFragment {
 
                     callback.onFinish();
                 }catch(Exception e) {
-                    sweetDialogHelper.alertError("Oops", String.format(locale(R.string.article_fragment_request_page_error), "loadTalkPage::JSONSuccessListener"));
+                    this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.article_fragment_request_page_error), "loadTalkPage::JSONSuccessListener"));
                 }finally{
                     this.pageIsLoading = false;
                 }
@@ -256,12 +256,12 @@ public class ArticleFragment extends BaseFragment {
                     int status     = errorObject.getInt("status");
 
                     if (status == 404) {
-                        sweetDialogHelper.alertError("Oops", String.format(locale(R.string.article_fragment_not_found_page_number), pageNo));
+                        this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.article_fragment_not_found_page_number), pageNo));
                     }else{
-                        sweetDialogHelper.alertError("Oops", message);
+                        this.sweetDialogHelper.alertError("Oops", message);
                     }
                 }catch(Exception e) {
-                    sweetDialogHelper.alertError("Oops", String.format(locale(R.string.article_fragment_request_page_error), "loadTalkPage::JSONFailureListener"));
+                    this.sweetDialogHelper.alertError("Oops", String.format(locale(R.string.article_fragment_request_page_error), "loadTalkPage::JSONFailureListener"));
                 }finally{
                     this.pageIsLoading = false;
                 }
