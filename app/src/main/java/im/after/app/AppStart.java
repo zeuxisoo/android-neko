@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
+import im.after.app.service.NetworkStateService;
 import im.after.app.ui.LoginActivity;
 import im.after.app.ui.base.BaseActivity;
 
@@ -20,6 +21,10 @@ public class AppStart extends BaseActivity {
         // Set view
         final View view = View.inflate(this, R.layout.activity_app_start, null);
         this.setContentView(view);
+
+        // Set service
+        Intent intent = new Intent(this, NetworkStateService.class);
+        this.startService(intent);
 
         // Set animation
         AlphaAnimation alphaAnimation = new AlphaAnimation(0.3f,1.0f);

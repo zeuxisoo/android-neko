@@ -84,4 +84,6 @@
     <string name="preference_settings_locale_summary">系統界面語言 (需重開, 目前: %s)</string>
     <string name="preference_settings_locale_default">zh-rTW</string>
 
+    <string name="service_network_state_not_connected">沒有可用網絡</string>
+
 </resources>
