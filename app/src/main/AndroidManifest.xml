@@ -26,7 +26,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <service android:enabled="true" android:name="im.after.app.service.NetworkStateService" />
-        <receiver android:enabled="true" android:name="im.after.app.ui.receiver.MainActivityReceiver" />
+        <!--<receiver android:enabled="true" android:name="im.after.app.ui.receiver.MainActivityReceiver" />-->
         <activity
             android:name="im.after.app.AppStart"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
@@ -47,6 +47,9 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.MainActivity"
             android:configChanges="locale|layoutDirection">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ui.module.talk.TalkCreateActivity"

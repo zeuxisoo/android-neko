@@ -117,12 +117,8 @@ public class MainActivity extends BaseActionBarActivity {
         super.onPostResume();
 
         // Register receiver to show network state
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-
         this.mainActivityReceiver = new MainActivityReceiver();
-
-        this.registerReceiver(this.mainActivityReceiver, intentFilter);
+        this.registerReceiver(this.mainActivityReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
     }
 
     @Override
