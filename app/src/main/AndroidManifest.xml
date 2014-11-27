@@ -26,6 +26,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <service android:enabled="true" android:name="im.after.app.service.NetworkStateService" />
+        <receiver android:enabled="true" android:name="im.after.app.ui.receiver.MainActivityReceiver" />
         <activity
             android:name="im.after.app.AppStart"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"

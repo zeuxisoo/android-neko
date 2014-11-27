@@ -1,6 +1,8 @@
 package im.after.app.ui;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
@@ -28,6 +30,7 @@ import im.after.app.helper.SweetDialogHelper;
 import im.after.app.helper.ToastHelper;
 import im.after.app.ui.adapter.SectionsPagerAdapter;
 import im.after.app.ui.base.BaseActionBarActivity;
+import im.after.app.ui.receiver.MainActivityReceiver;
 
 public class MainActivity extends BaseActionBarActivity {
 
@@ -67,6 +70,7 @@ public class MainActivity extends BaseActionBarActivity {
     private ArrayList<Integer> drawerMenuItems = new ArrayList<Integer>();
     private Handler handler;
     private SweetDialogHelper sweetDialogHelper;
+    private MainActivityReceiver mainActivityReceiver;
 
     private int currentSelectedDrawerMenuItem = Integer.MIN_VALUE;
 
@@ -106,6 +110,27 @@ public class MainActivity extends BaseActionBarActivity {
         this.setUserInfo();
         this.setDrawerMenuItems();
         this.setViewPager();
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+
+        // Register receiver to show network state
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+
+        this.mainActivityReceiver = new MainActivityReceiver();
+
+        this.registerReceiver(this.mainActivityReceiver, intentFilter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // Unregister receiver
+        this.unregisterReceiver(this.mainActivityReceiver);
     }
 
     @Override

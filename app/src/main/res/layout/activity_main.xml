@@ -5,28 +5,45 @@
     android:layout_height="match_parent"
     android:id="@+id/drawerLayout">
 
-    <LinearLayout android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <include layout="@layout/include_toolbar" />
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <com.astuetz.PagerSlidingTabStrip
-            android:id="@+id/pageIndicatorMainNavigation"
-            android:layout_width="fill_parent"
-            android:layout_height="48dp"
-            android:background="@color/main_tab_background"
-            android:textColor="@color/main_tab_text"
-            custom:pstsShouldExpand="true"
-            custom:pstsIndicatorColor="@color/main_tab_indicator"
-            custom:pstsUnderlineColor="@color/main_tab_underline" />
+            <include layout="@layout/include_toolbar" />
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewPagerMainNavigation"
+            <com.astuetz.PagerSlidingTabStrip
+                android:id="@+id/pageIndicatorMainNavigation"
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:background="@color/main_tab_background"
+                android:textColor="@color/main_tab_text"
+                custom:pstsShouldExpand="true"
+                custom:pstsIndicatorColor="@color/main_tab_indicator"
+                custom:pstsUnderlineColor="@color/main_tab_underline" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPagerMainNavigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:padding="3dp"
+            android:textColor="@color/main_tab_text"
+            android:background="@color/main_tab_background"
+            android:text="network state"
+            android:id="@+id/textViewMainActivityNetworkState" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <include layout="@layout/include_drawer_menu" />
 
