@@ -13,12 +13,6 @@
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <supports-screens
-        android:smallScreens="true"
-        android:normalScreens="true"
-        android:largeScreens="true"
-        android:anyDensity="true" />
-
     <application
         android:name="im.after.app.AppContext"
         android:allowBackup="true"
@@ -29,8 +23,7 @@
         <!--<receiver android:enabled="true" android:name="im.after.app.ui.receiver.MainActivityReceiver" />-->
         <activity
             android:name="im.after.app.AppStart"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
-            android:configChanges="locale|layoutDirection">
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -39,14 +32,12 @@
         <activity
             android:name="im.after.app.ui.LoginActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.MainActivity"
-            android:configChanges="locale|layoutDirection">
+            android:theme="@style/AppTheme.MainActivity">
         </activity>
         <activity
             android:name="im.after.app.ui.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.MainActivity"
-            android:configChanges="locale|layoutDirection">
+            android:theme="@style/AppTheme.MainActivity">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
@@ -54,50 +45,42 @@
         <activity
             android:name=".ui.module.talk.TalkCreateActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.ComposeActivity"
-            android:configChanges="locale|layoutDirection">
+            android:theme="@style/AppTheme.ComposeActivity">
         </activity>
         <activity
             android:name=".ui.module.talk.TalkEditActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.ComposeActivity"
-            android:configChanges="locale|layoutDirection">
+            android:theme="@style/AppTheme.ComposeActivity">
         </activity>
         <activity
             android:name=".ui.module.memo.MemoCreateActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.ComposeActivity"
-            android:configChanges="locale|layoutDirection">
+            android:theme="@style/AppTheme.ComposeActivity">
         </activity>
         <activity
             android:name=".ui.module.memo.MemoEditActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.ComposeActivity"
-            android:configChanges="locale|layoutDirection">
+            android:theme="@style/AppTheme.ComposeActivity">
         </activity>
         <activity
             android:name=".ui.module.article.ArticleCreateActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.ComposeActivity"
-            android:configChanges="locale|layoutDirection">
+            android:theme="@style/AppTheme.ComposeActivity">
         </activity>
         <activity
             android:name=".ui.module.article.ArticleEditActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.ComposeActivity"
-            android:configChanges="locale|layoutDirection">
+            android:theme="@style/AppTheme.ComposeActivity">
         </activity>
         <activity
             android:name=".ui.module.article.ArticleFullActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.ComposeActivity"
-            android:configChanges="locale|layoutDirection">
+            android:theme="@style/AppTheme.ComposeActivity">
         </activity>
         <activity
             android:name=".ui.SettingsActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:configChanges="locale|layoutDirection">
+            android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
     </application>
 
