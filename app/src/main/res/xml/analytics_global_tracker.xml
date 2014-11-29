@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="TypographyDashes">
+    <!-- How long a session exists before giving up -->
+    <integer name="ga_sessionTimeout">300</integer>
+
+    <!-- Enable automatic Activity measurement -->
+    <bool name="ga_autoActivityTracking">true</bool>
+
+    <!-- the Local LogLevel for Analytics -->
+    <string name="ga_logLevel">verbose</string>
+
+    <!-- Treat events as test events and don't send to google -->
+    <bool name="ga_dryRun">false</bool>
+
+    <!-- The screen names that will appear in reports -->
+    <screenName name="im.after.app.AppStart">AppStart</screenName>
+    <screenName name="im.after.app.ui.LoginActivity">LoginActivity</screenName>
+    <screenName name="im.after.app.ui.MainActivity">MainActivity</screenName>
+    <screenName name="im.after.app.ui.SettingsActivity">SettingsActivity</screenName>
+
+    <screenName name="im.after.app.ui.module.article.ArticleFragment">ArticleFragment</screenName>
+    <screenName name="im.after.app.ui.module.article.ArticleCreateActivity">ArticleCreateActivity</screenName>
+    <screenName name="im.after.app.ui.module.article.ArticleEditActivity">ArticleEditActivity</screenName>
+    <screenName name="im.after.app.ui.module.article.ArticleFullActivity">ArticleFullActivity</screenName>
+
+    <screenName name="im.after.app.ui.module.memo.MemoFragment">MemoFragment</screenName>
+    <screenName name="im.after.app.ui.module.memo.MemoCreateActivity">MemoCreateActivity</screenName>
+    <screenName name="im.after.app.ui.module.memo.MemoEditActivity">MemoEditActivity</screenName>
+
+    <screenName name="im.after.app.ui.module.talk.TalkFragment">TalkFragment</screenName>
+    <screenName name="im.after.app.ui.module.talk.TalkCreateActivity">TalkCreateActivity</screenName>
+    <screenName name="im.after.app.ui.module.talk.TalkEditActivity">TalkEditActivity</screenName>
+</resources>

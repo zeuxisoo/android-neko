@@ -4,6 +4,8 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+
 import im.after.app.AppContext;
 import im.after.app.AppManager;
 
@@ -15,7 +17,22 @@ public class BaseActionBarActivity extends ActionBarActivity {
 
         AppManager.getInstance().addActivity(this);
 
+        ((AppContext) getApplication()).getTracker(AppContext.AnalyticsTrackerName.APP_TRACKER);
         ((AppContext) this.getApplicationContext()).setLocale();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        GoogleAnalytics.getInstance(this).reportActivityStart(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        GoogleAnalytics.getInstance(this).reportActivityStop(this);
     }
 
     @Override

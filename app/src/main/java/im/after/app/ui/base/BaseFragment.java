@@ -8,9 +8,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+
 import im.after.app.AppContext;
 
 public class BaseFragment extends Fragment {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        ((AppContext) this.getActivity().getApplication()).getTracker(AppContext.AnalyticsTrackerName.APP_TRACKER);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        GoogleAnalytics.getInstance(this.getActivity()).reportActivityStart(this.getActivity());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        GoogleAnalytics.getInstance(this.getActivity()).reportActivityStop(this.getActivity());
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
