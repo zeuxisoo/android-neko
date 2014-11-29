@@ -1,6 +1,5 @@
 package im.after.app.ui;
 
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -11,6 +10,7 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.support.v7.widget.Toolbar;
 
+import im.after.app.AppManager;
 import im.after.app.AppStart;
 import im.after.app.R;
 import im.after.app.helper.LanguageHelper;
@@ -75,14 +75,8 @@ public class SettingsActivity extends BaseActionBarActivity {
                 // Switch language
                 LanguageHelper.setLanguage(this.getActivity().getBaseContext());
 
-                // Restart to enable new locale
-                Activity activity = this.getActivity();
-
-                Intent intent = activity.getIntent();
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-
-                activity.finish();
-                activity.startActivity(intent);
+                // Finish all activity
+                AppManager.getInstance().finishAllActivity();
 
                 // Restart app
                 Intent intentForRestart = new Intent(this.getActivity(), AppStart.class);
