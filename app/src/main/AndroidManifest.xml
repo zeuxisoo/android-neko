@@ -23,7 +23,9 @@
         <!--<receiver android:enabled="true" android:name="im.after.app.ui.receiver.MainActivityReceiver" />-->
         <activity
             android:name="im.after.app.AppStart"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -32,12 +34,16 @@
         <activity
             android:name="im.after.app.ui.LoginActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.MainActivity">
+            android:theme="@style/AppTheme.MainActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
         <activity
             android:name="im.after.app.ui.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.MainActivity">
+            android:theme="@style/AppTheme.MainActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
@@ -45,42 +51,58 @@
         <activity
             android:name=".ui.module.talk.TalkCreateActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.ComposeActivity">
+            android:theme="@style/AppTheme.ComposeActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
         <activity
             android:name=".ui.module.talk.TalkEditActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.ComposeActivity">
+            android:theme="@style/AppTheme.ComposeActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
         <activity
             android:name=".ui.module.memo.MemoCreateActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.ComposeActivity">
+            android:theme="@style/AppTheme.ComposeActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
         <activity
             android:name=".ui.module.memo.MemoEditActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.ComposeActivity">
+            android:theme="@style/AppTheme.ComposeActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
         <activity
             android:name=".ui.module.article.ArticleCreateActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.ComposeActivity">
+            android:theme="@style/AppTheme.ComposeActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
         <activity
             android:name=".ui.module.article.ArticleEditActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.ComposeActivity">
+            android:theme="@style/AppTheme.ComposeActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
         <activity
             android:name=".ui.module.article.ArticleFullActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.ComposeActivity">
+            android:theme="@style/AppTheme.ComposeActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
         <activity
             android:name=".ui.SettingsActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
     </application>
 
