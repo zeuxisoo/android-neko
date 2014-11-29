@@ -26,6 +26,7 @@ import im.after.app.api.ArticleAPI;
 import im.after.app.entity.bean.ArticleBean;
 import im.after.app.entity.bean.ArticleDialogItemBean;
 import im.after.app.entity.bean.ArticleItemBean;
+import im.after.app.helper.AnalyticsHelper;
 import im.after.app.helper.SweetDialogHelper;
 import im.after.app.helper.ToastHelper;
 import im.after.app.ui.base.BaseFragment;
@@ -95,6 +96,13 @@ public class ArticleFragment extends BaseFragment {
         this.setLoadMoreEvent();
         this.setClickItemEvent();
         this.requestArticlePage(this.currentPageNo);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        AnalyticsHelper.sendScreenName(this.getActivity(), TAG);
     }
 
     @Override

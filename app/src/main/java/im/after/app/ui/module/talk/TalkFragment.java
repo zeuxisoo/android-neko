@@ -26,6 +26,7 @@ import im.after.app.api.TalkAPI;
 import im.after.app.entity.bean.TalkBean;
 import im.after.app.entity.bean.TalkDialogItemBean;
 import im.after.app.entity.bean.TalkItemBean;
+import im.after.app.helper.AnalyticsHelper;
 import im.after.app.helper.SweetDialogHelper;
 import im.after.app.helper.ToastHelper;
 import im.after.app.ui.base.BaseFragment;
@@ -95,6 +96,13 @@ public class TalkFragment extends BaseFragment {
         this.setLoadMoreEvent();
         this.setClickItemEvent();
         this.requestTalkPage(this.currentPageNo);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        AnalyticsHelper.sendScreenName(this.getActivity(), TAG);
     }
 
     @Override

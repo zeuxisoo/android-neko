@@ -8,6 +8,7 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 
 import im.after.app.AppContext;
 import im.after.app.AppManager;
+import im.after.app.helper.AnalyticsHelper;
 
 public class BaseActionBarActivity extends ActionBarActivity {
 
@@ -26,6 +27,13 @@ public class BaseActionBarActivity extends ActionBarActivity {
         super.onStart();
 
         GoogleAnalytics.getInstance(this).reportActivityStart(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        AnalyticsHelper.sendScreenName(this);
     }
 
     @Override

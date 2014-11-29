@@ -26,6 +26,7 @@ import im.after.app.api.MemoAPI;
 import im.after.app.entity.bean.MemoBean;
 import im.after.app.entity.bean.MemoDialogItemBean;
 import im.after.app.entity.bean.MemoItemBean;
+import im.after.app.helper.AnalyticsHelper;
 import im.after.app.helper.SweetDialogHelper;
 import im.after.app.helper.ToastHelper;
 import im.after.app.ui.base.BaseFragment;
@@ -95,6 +96,13 @@ public class MemoFragment extends BaseFragment {
         this.setLoadMoreEvent();
         this.setClickItemEvent();
         this.requestMemoPage(this.currentPageNo);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        AnalyticsHelper.sendScreenName(this.getActivity(), TAG);
     }
 
     @Override
