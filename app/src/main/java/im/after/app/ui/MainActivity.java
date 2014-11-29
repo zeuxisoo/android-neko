@@ -113,8 +113,8 @@ public class MainActivity extends BaseActionBarActivity {
     }
 
     @Override
-    protected void onPostResume() {
-        super.onPostResume();
+    protected void onResume() {
+        super.onResume();
 
         // Register receiver to show network state
         this.mainActivityReceiver = new MainActivityReceiver();
