@@ -1,6 +1,9 @@
 package im.after.app.ui;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -8,6 +11,7 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.support.v7.widget.Toolbar;
 
+import im.after.app.AppStart;
 import im.after.app.R;
 import im.after.app.helper.LanguageHelper;
 import im.after.app.ui.base.BaseActionBarActivity;
@@ -79,6 +83,12 @@ public class SettingsActivity extends BaseActionBarActivity {
 
                 activity.finish();
                 activity.startActivity(intent);
+
+                // Restart app
+                Intent intentForRestart = new Intent(this.getActivity(), AppStart.class);
+                PendingIntent pendingIntent = PendingIntent.getActivity(this.getActivity(), 123456, intentForRestart, PendingIntent.FLAG_CANCEL_CURRENT);
+                AlarmManager alarmManager = (AlarmManager)this.getActivity().getSystemService(Context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC, System.currentTimeMillis() + 100, pendingIntent);
 
                 return true;
             });

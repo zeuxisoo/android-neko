@@ -130,6 +130,14 @@ public class MainActivity extends BaseActionBarActivity {
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+
+        // Fix restart app will cause viewpager not display CardView item in RecyclerView again
+        this.viewPagerMainNavigation.setAdapter(null);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         this.getMenuInflater().inflate(R.menu.menu_main, menu);
 

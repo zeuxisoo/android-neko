@@ -3,14 +3,14 @@ package im.after.app.ui.adapter;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import im.after.app.R;
 import im.after.app.ui.module.article.ArticleFragment;
 import im.after.app.ui.module.memo.MemoFragment;
 import im.after.app.ui.module.talk.TalkFragment;
 
-public class SectionsPagerAdapter extends FragmentPagerAdapter {
+public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
     private static final String TAG = SectionsPagerAdapter.class.getSimpleName();
 
