@@ -23,6 +23,7 @@
         android:theme="@style/AppTheme">
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
         <meta-data android:name="com.google.android.gms.analytics.globalConfigResource" android:resource="@xml/analytics_global_tracker" />
+        <meta-data android:name="com.crashlytics.ApiKey" android:value="______YOUR_KEY______"/>
         <service android:enabled="true" android:name="im.after.app.service.NetworkStateService" />
         <!--<receiver android:enabled="true" android:name="im.after.app.ui.receiver.MainActivityReceiver" />-->
         <activity

@@ -3,6 +3,7 @@ package im.after.app;
 import android.app.Application;
 import android.content.res.Configuration;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 
@@ -10,6 +11,7 @@ import java.util.HashMap;
 
 import im.after.app.entity.bean.UserBean;
 import im.after.app.helper.LanguageHelper;
+import io.fabric.sdk.android.Fabric;
 
 public class AppContext extends Application {
 
@@ -27,6 +29,8 @@ public class AppContext extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        Fabric.with(this, new Crashlytics());
 
         this.setLocale();
     }
