@@ -214,7 +214,8 @@ public class MainActivity extends BaseActionBarActivity {
         });
 
         // Set default selected item
-        this.setSelectedDrawerMenuItem(DRAWER_MENU_ITEM_ARTICLE);
+        this.setSelectedDrawerMenuItem(DRAWER_MENU_ITEM_TALK);
+        this.setSelectedPager(DRAWER_MENU_ITEM_TALK);
 
         // Show loading pages message
         ToastHelper.show(this, R.string.main_activity_loading_all_tab_pages);
@@ -275,7 +276,7 @@ public class MainActivity extends BaseActionBarActivity {
 
     private void openDrawerMenuItem(int itemId) {
         if (itemId >= 0 && itemId <= 2) {
-            this.viewPagerMainNavigation.setCurrentItem(itemId, true);
+            this.setSelectedPager(itemId);
         }else{
             Intent intent = new Intent(this, SettingsActivity.class);
             this.startActivity(intent);
@@ -304,6 +305,10 @@ public class MainActivity extends BaseActionBarActivity {
 
             this.setCurrentSelectedDrawerMenuItem(itemId);
         }
+    }
+
+    private void setSelectedPager(int itemId) {
+        this.viewPagerMainNavigation.setCurrentItem(itemId, true);
     }
 
 }
