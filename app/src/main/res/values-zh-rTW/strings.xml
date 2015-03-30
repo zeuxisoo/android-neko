@@ -86,4 +86,6 @@
 
     <string name="service_network_state_not_connected">沒有可用網絡</string>
 
+    <string name="fragment_empty_list_text">親 沒東西看喔 :(</string>
+
 </resources>
