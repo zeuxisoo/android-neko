@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.melnykov.fab.FloatingActionButton;
@@ -31,6 +32,7 @@ import im.after.app.helper.SweetDialogHelper;
 import im.after.app.helper.ToastHelper;
 import im.after.app.ui.base.BaseFragment;
 import im.after.app.ui.listener.RecyclerViewItemClickListener;
+import im.after.app.ui.observer.FragmentEmptyViewObserver;
 
 public class MemoFragment extends BaseFragment {
 
@@ -64,6 +66,7 @@ public class MemoFragment extends BaseFragment {
         this.swipeRefreshLayoutFragmentMemo   = (SwipeRefreshLayout) viewFragmentMemo.findViewById(R.id.swipeRefreshLayoutFragmentMemo);
         this.recyclerViewFragmentMemo         = (RecyclerView) viewFragmentMemo.findViewById(R.id.recyclerViewFragmentMemo);
         this.floatingActionButtonFragmentMemo = (FloatingActionButton) viewFragmentMemo.findViewById(R.id.floatingActionButtonFragmentMemo);
+        this.textViewEmptyText                = (TextView) viewFragmentMemo.findViewById(R.id.textViewEmptyTextMemo);
 
         return viewFragmentMemo;
     }
@@ -81,6 +84,8 @@ public class MemoFragment extends BaseFragment {
         this.linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         this.memoItemFragmentAdapter = new MemoItemFragmentAdapter();
+        this.memoItemFragmentAdapter.registerAdapterDataObserver(new FragmentEmptyViewObserver(this, this.memoItemFragmentAdapter));
+        this.memoItemFragmentAdapter.notifyDataSetChanged();
 
         this.recyclerViewFragmentMemo.setHasFixedSize(false);
         this.recyclerViewFragmentMemo.setAdapter(this.memoItemFragmentAdapter);

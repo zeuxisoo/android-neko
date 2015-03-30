@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.melnykov.fab.FloatingActionButton;
@@ -31,6 +32,7 @@ import im.after.app.helper.SweetDialogHelper;
 import im.after.app.helper.ToastHelper;
 import im.after.app.ui.base.BaseFragment;
 import im.after.app.ui.listener.RecyclerViewItemClickListener;
+import im.after.app.ui.observer.FragmentEmptyViewObserver;
 
 public class ArticleFragment extends BaseFragment {
 
@@ -64,6 +66,7 @@ public class ArticleFragment extends BaseFragment {
         this.swipeRefreshLayoutFragmentArticle   = (SwipeRefreshLayout) viewFragmentArticle.findViewById(R.id.swipeRefreshLayoutFragmentArticle);
         this.recyclerViewFragmentArticle         = (RecyclerView) viewFragmentArticle.findViewById(R.id.recyclerViewFragmentArticle);
         this.floatingActionButtonFragmentArticle = (FloatingActionButton) viewFragmentArticle.findViewById(R.id.floatingActionButtonFragmentArticle);
+        this.textViewEmptyText                   = (TextView) viewFragmentArticle.findViewById(R.id.textViewEmptyTextArticle);
 
         return viewFragmentArticle;
     }
@@ -81,6 +84,8 @@ public class ArticleFragment extends BaseFragment {
         this.linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         this.articleItemFragmentAdapter = new ArticleItemFragmentAdapter();
+        this.articleItemFragmentAdapter.registerAdapterDataObserver(new FragmentEmptyViewObserver(this, this.articleItemFragmentAdapter));
+        this.articleItemFragmentAdapter.notifyDataSetChanged();
 
         this.recyclerViewFragmentArticle.setHasFixedSize(false);
         this.recyclerViewFragmentArticle.setAdapter(this.articleItemFragmentAdapter);

@@ -7,12 +7,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 
 import im.after.app.AppContext;
 
 public class BaseFragment extends Fragment {
+
+    protected TextView textViewEmptyText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,10 @@ public class BaseFragment extends Fragment {
 
     protected String locale(int stringId) {
         return this.getResources().getString(stringId);
+    }
+
+    public void setEmptyView(int state) {
+        this.textViewEmptyText.setVisibility(state);
     }
 
 }

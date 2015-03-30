@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.melnykov.fab.FloatingActionButton;
@@ -31,6 +32,7 @@ import im.after.app.helper.SweetDialogHelper;
 import im.after.app.helper.ToastHelper;
 import im.after.app.ui.base.BaseFragment;
 import im.after.app.ui.listener.RecyclerViewItemClickListener;
+import im.after.app.ui.observer.FragmentEmptyViewObserver;
 
 public class TalkFragment extends BaseFragment {
 
@@ -64,6 +66,7 @@ public class TalkFragment extends BaseFragment {
         this.swipeRefreshLayoutFragmentTalk   = (SwipeRefreshLayout) viewFragmentTalk.findViewById(R.id.swipeRefreshLayoutFragmentTalk);
         this.recyclerViewFragmentTalk         = (RecyclerView) viewFragmentTalk.findViewById(R.id.recyclerViewFragmentTalk);
         this.floatingActionButtonFragmentTalk = (FloatingActionButton) viewFragmentTalk.findViewById(R.id.floatingActionButtonFragmentTalk);
+        this.textViewEmptyText                = (TextView) viewFragmentTalk.findViewById(R.id.textViewEmptyTextTalk);
 
         return viewFragmentTalk;
     }
@@ -81,6 +84,8 @@ public class TalkFragment extends BaseFragment {
         this.linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         this.talkItemFragmentAdapter = new TalkItemFragmentAdapter();
+        this.talkItemFragmentAdapter.registerAdapterDataObserver(new FragmentEmptyViewObserver(this, this.talkItemFragmentAdapter));
+        this.talkItemFragmentAdapter.notifyDataSetChanged();
 
         this.recyclerViewFragmentTalk.setHasFixedSize(false);
         this.recyclerViewFragmentTalk.setAdapter(this.talkItemFragmentAdapter);
