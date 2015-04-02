@@ -41,7 +41,7 @@
                 android:minWidth="60dp"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:textColor="@color/compose_text_view_username"
+                android:textColor="?attr/composeTextViewUsername"
                 android:background="@null"
                 android:text="username"
                 android:id="@+id/textViewComposeUsername"/>
@@ -53,7 +53,7 @@
                 android:paddingBottom="4dp"
                 android:visibility="gone"
                 android:textSize="10sp"
-                android:textColor="@color/compose_text_view_long_text"
+                android:textColor="?attr/composeTextViewLongText"
                 android:background="@null"
                 android:text="longerText"
                 android:id="@+id/textViewComposeLongerText" />
@@ -111,9 +111,9 @@
             android:inputType="textCapSentences|textAutoCorrect|textMultiLine"
             android:textCursorDrawable="@null"
             android:hint="@string/base_compose_activity_edit_title_hint"
-            android:textColorHint="@color/compose_edit_title_hint"
-            android:textColor="@color/compose_edit_title"
-            android:background="@color/compose_edit_title_background"
+            android:textColorHint="?attr/composeEditTitleHint"
+            android:textColor="?attr/composeEditTitle"
+            android:background="?attr/composeEditTitleBackground"
             android:id="@+id/editTextComposeTitle" />
 
         <ScrollView
@@ -131,9 +131,9 @@
                 android:inputType="textCapSentences|textAutoCorrect|textMultiLine"
                 android:textCursorDrawable="@null"
                 android:hint="@string/base_compose_activity_edit_text_hint"
-                android:textColorHint="@color/compose_edit_text_hint"
-                android:textColor="@color/compose_edit_text"
-                android:background="@color/compose_edit_text_background"
+                android:textColorHint="?attr/composeEditTextHint"
+                android:textColor="?attr/composeEditText"
+                android:background="?attr/composeEditTextBackground"
                 android:id="@+id/editTextComposeText" />
 
         </ScrollView>

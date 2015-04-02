@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:id="@+id/drawerMenu"
-    android:background="@color/drawer_menu_background"
+    android:background="?attr/drawerMenuBackground"
     android:fitsSystemWindows="true">
 
     <LinearLayout
@@ -21,7 +21,7 @@
             <ImageView android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/include_drawer_menu_user_background_image"
+                android:src="?attr/drawerMenuUserBackgroundImage"
                 android:tint="#6000" />
 
             <RelativeLayout
@@ -40,7 +40,7 @@
                     android:id="@+id/imageViewUserAvatar"
                     custom:riv_corner_radius="30dp"
                     custom:riv_border_width="1dp"
-                    custom:riv_border_color="@color/drawer_menu_user_avatar_border"/>
+                    custom:riv_border_color="?attr/drawerMenuUserAvatarBorder"/>
 
                 <TextView
                     android:id="@+id/textViewAccountEmail"
@@ -51,7 +51,7 @@
                     android:layout_alignParentBottom="true"
                     android:paddingBottom="16dp"
                     android:textSize="14sp"
-                    android:textColor="@color/drawer_menu_user_account_email"
+                    android:textColor="?attr/drawerMenuUserAccountEmail"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:ellipsize="end" />
@@ -64,7 +64,7 @@
                     android:layout_above="@id/textViewAccountEmail"
                     android:layout_toRightOf="@id/imageViewUserAvatar"
                     android:textSize="18sp"
-                    android:textColor="@color/drawer_menu_user_account_username"
+                    android:textColor="?attr/drawerMenuUserAccountUsername"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:ellipsize="end" />

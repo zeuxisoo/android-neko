@@ -19,11 +19,11 @@
                 android:id="@+id/pageIndicatorMainNavigation"
                 android:layout_width="fill_parent"
                 android:layout_height="48dp"
-                android:background="@color/main_tab_background"
-                android:textColor="@color/main_tab_text"
+                android:background="?attr/mainTabBackground"
+                android:textColor="?attr/mainTabTextColor"
                 custom:pstsShouldExpand="true"
-                custom:pstsIndicatorColor="@color/main_tab_indicator"
-                custom:pstsUnderlineColor="@color/main_tab_underline" />
+                custom:pstsIndicatorColor="?attr/mainTabIndicator"
+                custom:pstsUnderlineColor="?attr/mainTabUnderline" />
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/viewPagerMainNavigation"
@@ -38,8 +38,8 @@
             android:layout_alignParentBottom="true"
             android:gravity="center"
             android:padding="3dp"
-            android:textColor="@color/main_tab_text"
-            android:background="@color/main_tab_background"
+            android:textColor="?attr/mainTabTextColor"
+            android:background="?attr/mainTabBackground"
             android:text="network state"
             android:id="@+id/textViewMainActivityNetworkState" />
 

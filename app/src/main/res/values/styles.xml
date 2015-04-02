@@ -1,13 +1,45 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="@android:style/Theme.Holo">
-        <!-- Customize your theme here. -->
+    <!-- Main activity theme, drawer layout must render from theme.appcompat (AndroidManifest set) -->
+    <style name="AppTheme" parent="@style/Theme.AppCompat">
+        <item name="windowActionBar">false</item>
     </style>
 
-    <!-- Main activity theme, drawer layout must render from theme.appcompat (AndroidManifest set) -->
-    <style name="AppTheme.MainActivity" parent="@style/Theme.AppCompat">
-        <item name="windowActionBar">false</item>
+    <style name="AppTheme.Dark" parent="AppTheme">
+        <item name="mainTabBackground">@color/main_tab_background</item>
+        <item name="mainTabTextColor">@color/main_tab_text</item>
+        <item name="mainTabIndicator">@color/main_tab_indicator</item>
+        <item name="mainTabUnderline">@color/main_tab_underline</item>
+        <item name="mainToolbarBackground">@color/main_toolbar_background</item>
+
+        <item name="loginEditTextColor">@color/login_white_transparent</item>
+
+        <item name="fragmentItemCardViewFloatButtonNormal">@color/fragment_item_card_view_float_button_normal</item>
+        <item name="fragmentItemCardVIewFloatButtonPressed">@color/fragment_item_card_view_float_button_pressed</item>
+        <item name="fragmentItemCardViewFloatButtonRipple">@color/fragment_item_card_view_float_button_ripple</item>
+        <item name="fragmentItemCardViewUsername">@color/fragment_item_card_view_username</item>
+        <item name="fragmentItemCardViewCreateAt">@color/fragment_item_card_view_create_at</item>
+        <item name="fragmentItemCardViewDivider">@color/fragment_item_card_divider</item>
+        <item name="fragmentItemCardViewContent">@color/fragment_item_card_view_content</item>
+        <item name="fragmentBackground">@color/fragment_background</item>
+
+        <item name="composeTextViewUsername">@color/compose_text_view_username</item>
+        <item name="composeTextViewLongText">@color/compose_text_view_long_text</item>
+        <item name="composeEditTitleHint">@color/compose_edit_title_hint</item>
+        <item name="composeEditTitle">@color/compose_edit_title</item>
+        <item name="composeEditTitleBackground">@color/compose_edit_title_background</item>
+        <item name="composeEditTextHint">@color/compose_edit_text_hint</item>
+        <item name="composeEditText">@color/compose_edit_text</item>
+        <item name="composeEditTextBackground">@color/compose_edit_text_background</item>
+
+        <item name="dialogItemText">@color/dialog_item_text</item>
+
+        <item name="drawerMenuBackground">@color/drawer_menu_background</item>
+        <item name="drawerMenuUserAvatarBorder">@color/drawer_menu_user_avatar_border</item>
+        <item name="drawerMenuUserAccountEmail">@color/drawer_menu_user_account_email</item>
+        <item name="drawerMenuUserAccountUsername">@color/drawer_menu_user_account_username</item>
+        <item name="drawerMenuUserBackgroundImage">@drawable/include_drawer_menu_user_background_image</item>
+        <item name="drawerMenuItemText">@color/drawer_menu_item_text</item>
     </style>
 
     <!--Compose activity theme-->
@@ -15,7 +47,7 @@
         <item name="android:background">@color/actionbar_overlay_background</item>
     </style>
 
-    <style name="AppTheme.ComposeActivity" parent="@style/Theme.AppCompat">
+    <style name="AppTheme.Dark.ComposeActivity" parent="@style/AppTheme.Dark">
         <item name="android:windowBackground">@color/compose_background</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:colorBackgroundCacheHint">@null</item>

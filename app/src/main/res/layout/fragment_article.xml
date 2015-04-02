@@ -17,7 +17,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="start"
                 android:id="@+id/recyclerViewFragmentArticle"
-                android:background="@color/fragment_background"
+                android:background="?attr/fragmentBackground"
                 android:scrollbars="vertical"
                 android:clipToPadding="false" />
 
@@ -28,9 +28,9 @@
                 android:layout_gravity="bottom|right"
                 android:layout_margin="16dp"
                 android:src="@drawable/ic_float_action_button"
-                custom:fab_colorNormal="@color/fragment_item_card_view_float_button_normal"
-                custom:fab_colorPressed="@color/fragment_item_card_view_float_button_pressed"
-                custom:fab_colorRipple="@color/fragment_item_card_view_float_button_ripple" />
+                custom:fab_colorNormal="?attr/fragmentItemCardViewFloatButtonNormal"
+                custom:fab_colorPressed="?attr/fragmentItemCardVIewFloatButtonPressed"
+                custom:fab_colorRipple="?attr/fragmentItemCardViewFloatButtonRipple" />
 
         </FrameLayout>
 

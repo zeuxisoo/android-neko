@@ -44,8 +44,8 @@
                     android:id="@+id/editTextLoginAccount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/login_white_transparent"
-                    android:textColorHint="@color/login_white_transparent"
+                    android:textColor="?attr/loginEditTextColor"
+                    android:textColorHint="?attr/loginEditTextColor"
                     android:singleLine="true"
                     android:imeOptions="actionNext"
                     android:hint="@string/login_activity_account_hint" />
@@ -62,8 +62,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/login_activity_password_hint"
-                    android:textColor="@color/login_white_transparent"
-                    android:textColorHint="@color/login_white_transparent"
+                    android:textColor="?attr/loginEditTextColor"
+                    android:textColorHint="?attr/loginEditTextColor"
                     android:singleLine="true"
                     android:imeOptions="actionNext"
                     android:inputType="textPassword" />

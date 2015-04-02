@@ -33,7 +33,7 @@
                 android:layout_marginRight="4dp"
                 android:maxLines="1"
                 android:textSize="18sp"
-                android:textColor="@color/fragment_item_card_view_username"
+                android:textColor="?attr/fragmentItemCardViewUsername"
                 android:text="username" />
 
             <TextView
@@ -48,7 +48,7 @@
                 android:layout_marginRight="4dp"
                 android:maxLines="1"
                 android:textSize="10sp"
-                android:textColor="@color/fragment_item_card_view_create_at"
+                android:textColor="?attr/fragmentItemCardViewCreateAt"
                 android:textStyle="italic"
                 android:text="create_at" />
 
@@ -57,7 +57,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="@color/fragment_item_card_divider"/>
+            android:background="?attr/fragmentItemCardViewDivider"/>
 
         <TextView
             android:id="@+id/textViewFragmentTalkItemTitle"
@@ -70,7 +70,7 @@
             android:layout_marginRight="4dp"
             android:textSize="14sp"
             android:maxLines="20"
-            android:textColor="@color/fragment_item_card_view_content"
+            android:textColor="?attr/fragmentItemCardViewContent"
             android:text="content" />
 
     </LinearLayout>
