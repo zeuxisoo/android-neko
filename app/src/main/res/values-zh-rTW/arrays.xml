@@ -8,4 +8,13 @@
         <item>en</item>
         <item>zh_TW</item>
     </string-array>
+
+    <string-array name="preference_theme_keys">
+        <item>暗黑派</item>
+        <item>光明派</item>
+    </string-array>
+    <string-array name="preference_theme_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
 </resources>

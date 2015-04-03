@@ -84,6 +84,12 @@
     <string name="preference_settings_locale_summary">Application language (need restart, current: %s) </string>
     <string name="preference_settings_locale_default">en</string>
 
+    <string name="preference_settings_theme_category">Theme</string>
+    <string name="preference_settings_theme_key">prefs_theme</string>
+    <string name="preference_settings_theme_title">Theme</string>
+    <string name="preference_settings_theme_summary">Application theme (need restart, current: %s)</string>
+    <string name="preference_settings_theme_default">0</string>
+
     <string name="service_network_state_not_connected">Not Connected</string>
 
     <string name="fragment_empty_list_text">Nothing :(</string>
