@@ -14,9 +14,9 @@ import im.after.app.AppManager;
 import im.after.app.AppStart;
 import im.after.app.R;
 import im.after.app.helper.LanguageHelper;
-import im.after.app.ui.base.BaseActionBarActivity;
+import im.after.app.ui.base.BaseThemedActionBarActivity;
 
-public class SettingsActivity extends BaseActionBarActivity {
+public class SettingsActivity extends BaseThemedActionBarActivity {
 
     private static final String TAG = SettingsActivity.class.getSimpleName();
 
@@ -59,6 +59,7 @@ public class SettingsActivity extends BaseActionBarActivity {
             this.addPreferencesFromResource(R.xml.preference_settings);
 
             this.setUpLanguagePreference();
+            this.setUpThemePreference();
         }
 
         private void setUpLanguagePreference() {
@@ -75,6 +76,25 @@ public class SettingsActivity extends BaseActionBarActivity {
                 // Switch language
                 LanguageHelper.setLanguage(this.getActivity().getBaseContext());
 
+                // Finish all activity
+                AppManager.getInstance().finishAllActivity();
+
+                // Restart app
+                Intent intentForRestart = new Intent(this.getActivity(), AppStart.class);
+                PendingIntent pendingIntent = PendingIntent.getActivity(this.getActivity(), 123456, intentForRestart, PendingIntent.FLAG_CANCEL_CURRENT);
+                AlarmManager alarmManager = (AlarmManager)this.getActivity().getSystemService(Context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC, System.currentTimeMillis() + 100, pendingIntent);
+
+                return true;
+            });
+        }
+
+        private void setUpThemePreference() {
+            String key = this.getString(R.string.preference_settings_theme_key);
+
+            ListPreference listPreference = (ListPreference) this.findPreference(key);
+
+            listPreference.setOnPreferenceChangeListener((Preference preference, Object newValue) -> {
                 // Finish all activity
                 AppManager.getInstance().finishAllActivity();
 

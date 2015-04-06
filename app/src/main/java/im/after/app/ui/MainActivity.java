@@ -29,10 +29,10 @@ import im.after.app.entity.bean.UserBean;
 import im.after.app.helper.SweetDialogHelper;
 import im.after.app.helper.ToastHelper;
 import im.after.app.ui.adapter.SectionsPagerAdapter;
-import im.after.app.ui.base.BaseActionBarActivity;
+import im.after.app.ui.base.BaseThemedActionBarActivity;
 import im.after.app.ui.receiver.MainActivityReceiver;
 
-public class MainActivity extends BaseActionBarActivity {
+public class MainActivity extends BaseThemedActionBarActivity {
 
     private static final String TAG  = MainActivity.class.getSimpleName();
 

@@ -21,9 +21,9 @@ import im.after.app.entity.bean.UserBean;
 import im.after.app.entity.table.LoginTable;
 import im.after.app.helper.DaoHelper;
 import im.after.app.helper.SweetDialogHelper;
-import im.after.app.ui.base.BaseActionBarActivity;
+import im.after.app.ui.base.BaseThemedActionBarActivity;
 
-public class LoginActivity extends BaseActionBarActivity {
+public class LoginActivity extends BaseThemedActionBarActivity {
 
     private static final String TAG  = LoginActivity.class.getSimpleName();
 
