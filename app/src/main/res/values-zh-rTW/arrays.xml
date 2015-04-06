@@ -10,8 +10,8 @@
     </string-array>
 
     <string-array name="preference_theme_keys">
-        <item>暗黑派</item>
-        <item>光明派</item>
+        <item>神秘的</item>
+        <item>黑暗的</item>
     </string-array>
     <string-array name="preference_theme_values">
         <item>0</item>
