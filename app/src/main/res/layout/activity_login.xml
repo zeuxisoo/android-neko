@@ -5,9 +5,7 @@
     android:layout_centerInParent="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_tab_background">
-
-    <include layout="@layout/include_toolbar" />
+    android:background="?attr/fragmentBackground">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -74,6 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:textColor="?attr/loginEditTextColor"
                 android:textSize="12dp"
                 android:text="@string/login_activity_save_login_info" />
 

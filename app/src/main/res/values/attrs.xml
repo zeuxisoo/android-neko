@@ -15,6 +15,7 @@
     <attr name="fragmentItemCardViewCreateAt" format="reference|color" />
     <attr name="fragmentItemCardViewDivider" format="reference|color" />
     <attr name="fragmentItemCardViewContent" format="reference|color" />
+    <attr name="fragmentItemCardViewBackground" format="reference|color" />
     <attr name="fragmentBackground" format="reference|color" />
 
     <attr name="composeTextViewUsername" format="reference|color" />
@@ -26,6 +27,7 @@
     <attr name="composeEditText" format="reference|color" />
     <attr name="composeEditTextBackground" format="reference|color" />
 
+    <attr name="dialogBackground" format="reference|color" />
     <attr name="dialogItemText" format="reference|color" />
 
     <attr name="drawerMenuBackground" format="reference|color" />

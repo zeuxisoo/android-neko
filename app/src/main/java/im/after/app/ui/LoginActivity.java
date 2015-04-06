@@ -41,9 +41,6 @@ public class LoginActivity extends BaseThemedActionBarActivity {
 
         this.setContentView(R.layout.activity_login);
 
-        this.toolbar = (Toolbar) this.findViewById(R.id.toolbar);
-        this.setSupportActionBar(toolbar);
-
         this.sweetDialogHelper = new SweetDialogHelper(this);
 
         this.editTextLoginAccount = (EditText) this.findViewById(R.id.editTextLoginAccount);

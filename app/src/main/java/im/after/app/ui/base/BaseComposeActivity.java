@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -46,6 +47,21 @@ abstract public class BaseComposeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         this.sweetDialogHelper = new SweetDialogHelper(this);
+
+        // Theme
+        int theme = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this).getString(
+            this.getString(R.string.preference_settings_theme_key),
+            this.getString(R.string.preference_settings_theme_default)
+        ));
+
+        switch(theme) {
+            case 1:
+                this.setTheme(R.style.AppTheme_Black_ComposeActivity);
+                break;
+            default:
+                this.setTheme(R.style.AppTheme_Dark_ComposeActivity);
+                break;
+        }
     }
 
     @Override
