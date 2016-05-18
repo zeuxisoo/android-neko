@@ -6,7 +6,6 @@ import android.content.Context;
 import dagger.Module;
 import dagger.Provides;
 import im.after.neko.di.scope.ActivityScope;
-import im.after.neko.di.scope.ContextLife;
 
 @Module
 public class ActivityModule {
@@ -19,8 +18,7 @@ public class ActivityModule {
 
     @Provides
     @ActivityScope
-    @ContextLife("Activity")
-    public Context provideContext() {
+    public Activity getActivity() {
         return this.mActivity;
     }
 
