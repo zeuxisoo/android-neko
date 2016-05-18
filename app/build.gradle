@@ -22,6 +22,9 @@ android {
         abortOnError false
         disable 'InvalidPackage'
     }
+    compileOptions {
+        incremental = false
+    }
 }
 
 dependencies {

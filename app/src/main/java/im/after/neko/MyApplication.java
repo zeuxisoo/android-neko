@@ -18,7 +18,13 @@ public class MyApplication extends Application {
     }
 
     private void initComponent() {
-        this.mApplicationComponent = DaggerApplicationComponent.builder().applicationModule(new ApplicationModule(this)).build();
+        this.mApplicationComponent = DaggerApplicationComponent.builder()
+                .applicationModule(new ApplicationModule(this))
+                .build();
+    }
+
+    public ApplicationComponent getApplicationComponent() {
+        return this.mApplicationComponent;
     }
 
 }
