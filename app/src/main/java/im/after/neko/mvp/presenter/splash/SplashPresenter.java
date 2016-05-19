@@ -14,38 +14,15 @@ import im.after.neko.mvp.contract.splash.SplashContract;
 
 public class SplashPresenter extends BasePresenter implements SplashContract {
 
-    AlphaAnimation mAlphaAnimation;
-    SplashActivity mSplashActivity;
+    private AlphaAnimation mAlphaAnimation;
+    private SplashActivity mSplashActivity;
 
     @Inject
     public SplashPresenter() {
 
     }
 
-    @Override
-    public void beginAnimation(View view) {
-        this.mAlphaAnimation = new AlphaAnimation(0.3f, 1.0f);
-        this.mAlphaAnimation.setDuration(2000);
-        this.mAlphaAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                Log.d("SplashActivity", "onAnimationStart");
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                Log.d("SplashActivity", "onAnimationEnd");
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-                Log.d("SplashActivity", "onAnimationRepeat");
-            }
-        });
-
-        view.startAnimation(this.mAlphaAnimation);
-    }
-
+    // Implementation for BasePresenter
     @Override
     public void attachView(BaseView view) {
         this.mSplashActivity = (SplashActivity) view;
@@ -54,6 +31,34 @@ public class SplashPresenter extends BasePresenter implements SplashContract {
     @Override
     public void detachView() {
         this.mSplashActivity = null;
+    }
+
+    // Implementation for SplashContract
+    @Override
+    public void beginAnimation(View view) {
+        this.mAlphaAnimation = new AlphaAnimation(0.3f, 1.0f);
+        this.mAlphaAnimation.setDuration(2000);
+        this.mAlphaAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                triggerOnAnimationEnd();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+        });
+
+        view.startAnimation(this.mAlphaAnimation);
+    }
+
+    //
+    public void triggerOnAnimationEnd() {
+        this.mSplashActivity.redirectToLoginActivity();
     }
 
 }

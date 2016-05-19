@@ -1,5 +1,6 @@
 package im.after.neko.mvp.view.splash;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -8,6 +9,7 @@ import javax.inject.Inject;
 import im.after.neko.R;
 import im.after.neko.base.BaseActivity;
 import im.after.neko.mvp.presenter.splash.SplashPresenter;
+import im.after.neko.mvp.view.login.LoginActivity;
 
 public class SplashActivity extends BaseActivity {
 
@@ -47,6 +49,12 @@ public class SplashActivity extends BaseActivity {
     @Override
     public void initPresenter() {
         this.mSplashPresenter.attachView(this);
+    }
+
+    public void redirectToLoginActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        this.startActivity(intent);
+        this.finish();
     }
 
 }

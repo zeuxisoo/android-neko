@@ -41,4 +41,7 @@ dependencies {
     // Butter Knife
     apt 'com.jakewharton:butterknife-compiler:8.0.1'
     compile 'com.jakewharton:butterknife:8.0.1'
+
+    // Material ripple
+    compile 'com.balysv:material-ripple:1.0.2'
 }

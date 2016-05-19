@@ -3,4 +3,5 @@
 
     <string name="edit_text_hint_username">Username</string>
     <string name="edit_text_hint_password">Password</string>
+    <string name="button_text_login">Login</string>
 </resources>

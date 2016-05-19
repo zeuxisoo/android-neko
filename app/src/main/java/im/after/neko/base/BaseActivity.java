@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import im.after.neko.ApplicationManager;
 import im.after.neko.MyApplication;
 import im.after.neko.di.component.ActivityComponent;
@@ -13,6 +15,7 @@ import im.after.neko.di.module.ActivityModule;
 public abstract class BaseActivity extends AppCompatActivity implements BaseView {
 
     public ActivityComponent mActivityComponent;
+    private Unbinder mUnbinder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,10 +23,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
         this.initComponent();
 
-        this.initInjector();
         this.initContentView();
-        this.initViewAndListener();
+        this.initButterKnife();
+        this.initInjector();
         this.initPresenter();
+        this.initViewAndListener();
 
         ApplicationManager.getApplicationManager().addActivity(this);
     }
@@ -31,6 +35,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        this.mUnbinder.unbind();
 
         ApplicationManager.getApplicationManager().finishActivity(this);
     }
@@ -42,6 +48,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
                 .activityModule(new ActivityModule(this))
                 .applicationComponent(myApplication.getApplicationComponent())
                 .build();
+    }
+
+    protected void initButterKnife() {
+        this.mUnbinder = ButterKnife.bind(this);
     }
 
     abstract public void initInjector();
