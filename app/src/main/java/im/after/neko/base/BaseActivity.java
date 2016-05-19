@@ -10,7 +10,7 @@ import im.after.neko.di.component.ActivityComponent;
 import im.after.neko.di.component.DaggerActivityComponent;
 import im.after.neko.di.module.ActivityModule;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements BaseView {
 
     public ActivityComponent mActivityComponent;
 
@@ -19,6 +19,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         this.initComponent();
+
+        this.initInjector();
+        this.initContentView();
+        this.initViewAndListener();
+        this.initPresenter();
 
         ApplicationManager.getApplicationManager().addActivity(this);
     }
@@ -30,7 +35,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         ApplicationManager.getApplicationManager().finishActivity(this);
     }
 
-    public void initComponent() {
+    protected void initComponent() {
         MyApplication myApplication = (MyApplication) this.getApplication();
 
         this.mActivityComponent = DaggerActivityComponent.builder()
@@ -38,5 +43,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .applicationComponent(myApplication.getApplicationComponent())
                 .build();
     }
+
+    abstract public void initInjector();
+    abstract public void initContentView();
+    abstract public void initViewAndListener();
+    abstract public void initPresenter();
 
 }
