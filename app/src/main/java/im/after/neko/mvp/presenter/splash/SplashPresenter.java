@@ -1,4 +1,4 @@
-package im.after.neko.ui.splash.presenter;
+package im.after.neko.mvp.presenter.splash;
 
 import android.util.Log;
 import android.view.View;
@@ -9,8 +9,8 @@ import javax.inject.Inject;
 
 import im.after.neko.base.BasePresenter;
 import im.after.neko.base.BaseView;
-import im.after.neko.ui.splash.activity.SplashActivity;
-import im.after.neko.ui.splash.contract.SplashContract;
+import im.after.neko.mvp.view.splash.SplashActivity;
+import im.after.neko.mvp.contract.splash.SplashContract;
 
 public class SplashPresenter extends BasePresenter implements SplashContract {
 

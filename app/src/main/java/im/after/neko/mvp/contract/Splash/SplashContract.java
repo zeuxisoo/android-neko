@@ -1,4 +1,4 @@
-package im.after.neko.ui.splash.contract;
+package im.after.neko.mvp.contract.splash;
 
 import android.view.View;
 
