@@ -4,6 +4,7 @@
     android:id="@+id/relativeLayoutLogin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorDefaultBackground"
     android:fitsSystemWindows="true">
 
     <LinearLayout
@@ -60,16 +61,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dip"
-            android:layout_marginRight="30dip">
+            android:layout_marginRight="30dip"
+            app:mrl_rippleOverlay="false"
+            app:mrl_rippleColor="#585858"
+            app:mrl_rippleAlpha="0.2"
+            app:mrl_rippleDelayClick="false"
+            app:mrl_rippleHover="true">
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/button_text_login"
-                app:mrl_rippleColor="#585858"
-                app:mrl_rippleAlpha="0.2"
-                app:mrl_rippleHover="true" />
+                android:text="@string/button_text_login" />
 
         </com.balysv.materialripple.MaterialRippleLayout>
 

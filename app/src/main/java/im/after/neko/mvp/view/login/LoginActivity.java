@@ -1,17 +1,13 @@
 package im.after.neko.mvp.view.login;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.balysv.materialripple.MaterialRippleLayout;
 
 import javax.inject.Inject;
 
@@ -31,9 +27,6 @@ public class LoginActivity extends BaseActivity {
 
     @BindView(R.id.editTextPassword)
     EditText mEditTextPassword;
-
-    @BindView(R.id.rippleLayoutLoginButton)
-    View mRippleLayoutLoginButton;
 
     @Inject
     LoginPresenter mLoginPresenter;
@@ -55,7 +48,6 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void initViewAndListener() {
-        MaterialRippleLayout.on(this.mRippleLayoutLoginButton).create();
     }
 
     @Override
