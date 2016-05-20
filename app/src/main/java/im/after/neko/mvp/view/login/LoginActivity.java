@@ -22,8 +22,8 @@ public class LoginActivity extends BaseActivity {
     @BindView(R.id.relativeLayoutLogin)
     RelativeLayout mRelativeLayoutLogin;
 
-    @BindView(R.id.editTextUsername)
-    EditText mEditTextUsername;
+    @BindView(R.id.editTextAccount)
+    EditText mEditTextAccount;
 
     @BindView(R.id.editTextPassword)
     EditText mEditTextPassword;
@@ -57,15 +57,15 @@ public class LoginActivity extends BaseActivity {
 
     @OnClick(R.id.rippleLayoutLoginButton)
     public void doLogin() {
-        String username = mEditTextUsername.getText().toString().trim();
+        String account = mEditTextAccount.getText().toString().trim();
         String password = mEditTextPassword.getText().toString().trim();
 
-        if (TextUtils.isEmpty(username)) {
-            this.showSnackbar(this.getString(R.string.error_empty_username));
+        if (TextUtils.isEmpty(account)) {
+            this.showSnackbar(this.getString(R.string.error_empty_account));
         }else if (TextUtils.isEmpty(password)) {
             this.showSnackbar(this.getString(R.string.error_empty_password));
         }else {
-            this.mLoginPresenter.doLogin(username, password);
+            this.mLoginPresenter.doLogin(account, password);
         }
     }
 

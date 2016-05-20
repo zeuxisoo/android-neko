@@ -21,19 +21,19 @@
             android:src="@drawable/login_logo" />
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputUsername"
+            android:id="@+id/textInputAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dip"
             android:layout_marginRight="30dip"
             android:layout_marginTop="8dip">
             <EditText
-                android:id="@+id/editTextUsername"
+                android:id="@+id/editTextAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:imeOptions="actionNext"
-                android:hint="@string/edit_text_hint_username"
+                android:hint="@string/edit_text_hint_account"
                 android:textColor="?android:textColorPrimary"
                 android:textSize="16sp" />
         </android.support.design.widget.TextInputLayout>

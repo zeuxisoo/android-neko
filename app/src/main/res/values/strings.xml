@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Neko</string>
 
-    <string name="edit_text_hint_username">Username</string>
+    <string name="edit_text_hint_account">Account</string>
     <string name="edit_text_hint_password">Password</string>
     <string name="button_text_login">Login</string>
 
-    <string name="error_empty_username">Please enter username</string>
+    <string name="error_empty_account">Please enter account</string>
     <string name="error_empty_password">Please enter password</string>
 </resources>

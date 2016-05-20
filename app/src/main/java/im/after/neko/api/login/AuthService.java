@@ -12,6 +12,6 @@ public interface AuthService {
 
     @FormUrlEncoded
     @POST("login")
-    Observable<AuthBean> login(@Field("username") String username, @Field("password") String password);
+    Observable<AuthBean> login(@Field("account") String account, @Field("password") String password);
 
 }

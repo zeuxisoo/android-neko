@@ -25,8 +25,8 @@ public class AuthApi {
         this.mAuthService = retrofit.create(AuthService.class);
     }
 
-    public Observable<AuthBean> login(String username, String password) {
-        return this.mAuthService.login(username, password).subscribeOn(Schedulers.io());
+    public Observable<AuthBean> login(String account, String password) {
+        return this.mAuthService.login(account, password).subscribeOn(Schedulers.io());
     }
 
 }
