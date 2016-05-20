@@ -6,7 +6,6 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
-import rx.schedulers.Schedulers;
 
 public class AuthApi {
 
@@ -26,7 +25,7 @@ public class AuthApi {
     }
 
     public Observable<AuthBean> login(String account, String password) {
-        return this.mAuthService.login(account, password).subscribeOn(Schedulers.io());
+        return this.mAuthService.login(account, password);
     }
 
 }

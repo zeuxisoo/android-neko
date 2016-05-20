@@ -21,6 +21,7 @@ import im.after.neko.view.login.LoginActivity;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class LoginPresenter extends BasePresenter implements LoginContract {
 
@@ -58,6 +59,7 @@ public class LoginPresenter extends BasePresenter implements LoginContract {
     @Override
     public void doLogin(String account, String password) {
         this.mSubscription = this.mAuthApi.login(account, password)
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(this::handleLoginSuccess, this::handleLoginError);
     }
