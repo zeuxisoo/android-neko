@@ -14,7 +14,6 @@ import im.after.neko.mvp.contract.login.LoginContract;
 import im.after.neko.mvp.view.login.LoginActivity;
 import okhttp3.ResponseBody;
 import retrofit2.adapter.rxjava.HttpException;
-import rx.Observer;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 
@@ -48,43 +47,31 @@ public class LoginPresenter extends BasePresenter implements LoginContract {
 
     // Implementation for LoginContract
     @Override
-    public void doLogin(String username, String password) {
+    public void doLogin(String account, String password) {
         Log.d("LoginActivity", "doLogin");
 
-        this.mSubscription = this.mAuthApi.login(username, password)
+        this.mSubscription = this.mAuthApi.login(account, password)
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(new Observer<AuthBean>() {
-                @Override
-                public void onCompleted() {
+            .subscribe(this::handleLoginSuccess, this::handleLoginError);
+    }
 
-                }
+    // Subscribe handler for doLogin method
+    private void handleLoginSuccess(AuthBean authBean) {
+        Log.d("LoginActivity", authBean.token);
+    }
 
-                @Override
-                public void onError(Throwable e) {
-                    Log.d("LoginActivity", "onError");
+    private void handleLoginError(Throwable throwable) {
+        if (throwable instanceof HttpException) {
+            HttpException httpException = (HttpException) throwable;
 
-                    if (e instanceof HttpException) {
-                        HttpException httpException = (HttpException) e;
+            ResponseBody response = httpException.response().errorBody();
 
-                        ResponseBody response = httpException.response().errorBody();
-
-                        try {
-                            // TODO: parse 403 error message
-                            Log.d("LoginActivity", response.string());
-                        } catch (IOException ioe) {
-                            ioe.printStackTrace();
-                        }
-                    }
-
-                    e.printStackTrace();
-                }
-
-                @Override
-                public void onNext(AuthBean authBean) {
-                    Log.d("LoginActivity", "onNext");
-                    Log.d("LoginActivity", authBean.token);
-                }
-            });
+            try {
+                Log.d("LoginActivity", response.string());
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        }
     }
 
 }
