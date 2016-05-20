@@ -2,6 +2,8 @@ package im.after.neko.di.module;
 
 import android.content.Context;
 
+import com.google.gson.Gson;
+
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
@@ -43,6 +45,11 @@ public class ApplicationModule {
         builder.protocols(Arrays.asList(Protocol.HTTP_1_1, Protocol.SPDY_3));
 
         return builder.build();
+    }
+
+    @Provides
+    public Gson provideGson() {
+        return new Gson();
     }
 
 }

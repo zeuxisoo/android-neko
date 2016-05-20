@@ -69,7 +69,7 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
-    private void showSnackbar(String message) {
+    public void showSnackbar(String message) {
         Snackbar snackbar = Snackbar.make(this.mRelativeLayoutLogin, message, Snackbar.LENGTH_SHORT);
 
         View view = snackbar.getView();

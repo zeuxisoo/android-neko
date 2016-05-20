@@ -2,6 +2,8 @@ package im.after.neko.di.component;
 
 import android.content.Context;
 
+import com.google.gson.Gson;
+
 import javax.inject.Singleton;
 
 import dagger.Component;
@@ -18,6 +20,8 @@ public interface ApplicationComponent {
     Context context();
 
     OkHttpClient getOKHttpClient();
+
+    Gson getGsion();
 
     // ApiModule
     AuthApi getAuthApi();
