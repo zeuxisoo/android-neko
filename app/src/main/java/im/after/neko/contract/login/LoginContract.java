@@ -1,4 +1,4 @@
-package im.after.neko.mvp.contract.login;
+package im.after.neko.contract.login;
 
 public interface LoginContract {
 

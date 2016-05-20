@@ -1,4 +1,4 @@
-package im.after.neko.mvp.view.splash;
+package im.after.neko.view.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import javax.inject.Inject;
 
 import im.after.neko.R;
 import im.after.neko.base.BaseActivity;
-import im.after.neko.mvp.presenter.splash.SplashPresenter;
-import im.after.neko.mvp.view.login.LoginActivity;
+import im.after.neko.presenter.splash.SplashPresenter;
+import im.after.neko.view.login.LoginActivity;
 
 public class SplashActivity extends BaseActivity {
 

@@ -1,4 +1,4 @@
-package im.after.neko.mvp.view.login;
+package im.after.neko.view.login;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import im.after.neko.R;
 import im.after.neko.base.BaseActivity;
-import im.after.neko.mvp.presenter.login.LoginPresenter;
+import im.after.neko.presenter.login.LoginPresenter;
 
 public class LoginActivity extends BaseActivity {
 

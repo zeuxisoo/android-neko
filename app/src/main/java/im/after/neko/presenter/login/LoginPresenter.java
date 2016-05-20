@@ -1,4 +1,4 @@
-package im.after.neko.mvp.presenter.login;
+package im.after.neko.presenter.login;
 
 import android.util.Log;
 
@@ -9,15 +9,15 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
-import im.after.neko.api.login.AuthApi;
+import im.after.neko.api.auth.AuthApi;
 import im.after.neko.base.BasePresenter;
 import im.after.neko.base.BaseView;
-import im.after.neko.db.model.TokenModel;
-import im.after.neko.db.model.TokenModel_Table;
-import im.after.neko.mvp.bean.AuthBean;
-import im.after.neko.mvp.bean.AuthErrorBean;
-import im.after.neko.mvp.contract.login.LoginContract;
-import im.after.neko.mvp.view.login.LoginActivity;
+import im.after.neko.model.TokenModel;
+import im.after.neko.model.TokenModel_Table;
+import im.after.neko.api.auth.bean.AuthBean;
+import im.after.neko.api.auth.bean.AuthErrorBean;
+import im.after.neko.contract.login.LoginContract;
+import im.after.neko.view.login.LoginActivity;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;

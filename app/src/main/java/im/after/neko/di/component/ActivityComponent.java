@@ -5,8 +5,8 @@ import android.app.Activity;
 import dagger.Component;
 import im.after.neko.di.module.ActivityModule;
 import im.after.neko.di.scope.ActivityScope;
-import im.after.neko.mvp.view.login.LoginActivity;
-import im.after.neko.mvp.view.splash.SplashActivity;
+import im.after.neko.view.login.LoginActivity;
+import im.after.neko.view.splash.SplashActivity;
 
 @ActivityScope
 @Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)

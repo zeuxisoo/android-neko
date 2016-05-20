@@ -1,4 +1,4 @@
-package im.after.neko.db;
+package im.after.neko;
 
 import com.raizlabs.android.dbflow.annotation.Database;
 

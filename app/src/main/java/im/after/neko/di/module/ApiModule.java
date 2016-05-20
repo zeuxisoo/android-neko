@@ -4,7 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import im.after.neko.api.login.AuthApi;
+import im.after.neko.api.auth.AuthApi;
 import okhttp3.OkHttpClient;
 
 @Module
