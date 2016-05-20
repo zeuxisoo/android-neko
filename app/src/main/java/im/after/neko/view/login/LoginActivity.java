@@ -37,6 +37,13 @@ public class LoginActivity extends BaseActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        this.mLoginPresenter.detachView();
+
+        super.onDestroy();
+    }
+
+    @Override
     public void initInjector() {
         this.mActivityComponent.inject(this);
     }
