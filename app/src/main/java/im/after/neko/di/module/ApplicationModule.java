@@ -7,6 +7,8 @@ import com.google.gson.Gson;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import im.after.neko.MyApplication;
@@ -29,6 +31,7 @@ public class ApplicationModule {
     }
 
     @Provides
+    @Singleton
     public OkHttpClient provideOkHttpClient() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -48,6 +51,7 @@ public class ApplicationModule {
     }
 
     @Provides
+    @Singleton
     public Gson provideGson() {
         return new Gson();
     }
