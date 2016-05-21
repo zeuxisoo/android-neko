@@ -10,6 +10,7 @@ import dagger.Component;
 import im.after.neko.data.api.auth.AuthApi;
 import im.after.neko.di.module.ApiModule;
 import im.after.neko.di.module.ApplicationModule;
+import im.after.neko.model.login.LoginModel;
 import okhttp3.OkHttpClient;
 
 @Singleton
@@ -21,9 +22,12 @@ public interface ApplicationComponent {
 
     OkHttpClient getOKHttpClient();
 
-    Gson getGsion();
+    Gson getGson();
 
     // ApiModule
     AuthApi getAuthApi();
+
+    // ModelModule
+    LoginModel getLoginModel();
 
 }

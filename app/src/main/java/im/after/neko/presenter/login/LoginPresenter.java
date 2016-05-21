@@ -9,19 +9,17 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
-import im.after.neko.data.api.auth.AuthApi;
 import im.after.neko.base.BasePresenter;
 import im.after.neko.base.BaseView;
-import im.after.neko.data.db.model.TokenModel;
-import im.after.neko.data.db.model.TokenModel_Table;
+import im.after.neko.contract.login.LoginContract;
 import im.after.neko.data.api.auth.bean.AuthBean;
 import im.after.neko.data.api.auth.bean.AuthErrorBean;
-import im.after.neko.contract.login.LoginContract;
+import im.after.neko.data.db.model.TokenModel;
+import im.after.neko.data.db.model.TokenModel_Table;
+import im.after.neko.model.login.LoginModel;
 import im.after.neko.view.login.LoginActivity;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 public class LoginPresenter extends BasePresenter implements LoginContract {
 
@@ -29,15 +27,15 @@ public class LoginPresenter extends BasePresenter implements LoginContract {
 
     private LoginActivity mLoginActivity;
 
-    private AuthApi mAuthApi;
+    private LoginModel mLoginModel;
     private Gson mGson;
 
     private Subscription mSubscription;
 
     @Inject
-    public LoginPresenter(AuthApi authApi, Gson gson) {
-        this.mAuthApi = authApi;
-        this.mGson    = gson;
+    public LoginPresenter(LoginModel loginModel, Gson gson) {
+        this.mLoginModel = loginModel;
+        this.mGson       = gson;
     }
 
     // Implementation for BasePresenter
@@ -58,10 +56,7 @@ public class LoginPresenter extends BasePresenter implements LoginContract {
     // Implementation for LoginContract
     @Override
     public void doLogin(String account, String password) {
-        this.mSubscription = this.mAuthApi.login(account, password)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(this::handleLoginSuccess, this::handleLoginError);
+        this.mSubscription = this.mLoginModel.doLogin(account, password, this::handleLoginSuccess, this::handleLoginError);
     }
 
     // Subscribe handler for doLogin method
