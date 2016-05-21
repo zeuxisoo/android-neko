@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.orhanobut.logger.Logger;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import im.after.neko.ApplicationManager;
@@ -20,6 +22,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        this.initLogger();
 
         this.initComponent();
 
@@ -42,6 +46,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     }
 
     // Init methods
+    protected void initLogger() {
+        Logger.init("Neko").methodCount(1).hideThreadInfo();
+    }
+
     protected void initComponent() {
         MyApplication myApplication = (MyApplication) this.getApplication();
 

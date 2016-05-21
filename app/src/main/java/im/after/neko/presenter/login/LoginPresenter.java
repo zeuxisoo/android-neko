@@ -1,8 +1,7 @@
 package im.after.neko.presenter.login;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
+import com.orhanobut.logger.Logger;
 
 import java.io.IOException;
 
@@ -59,19 +58,19 @@ public class LoginPresenter extends BasePresenter implements LoginContract {
 
     // Subscribe handler for doLogin method
     private void handleLoginSuccess(AuthBean authBean) {
-        Log.d(TAG, "handleLoginSuccess");
-        Log.d(TAG, "=> token: " + authBean.getToken());
+        Logger.t(TAG).d("handleLoginSuccess");
+        Logger.t(TAG).d("=> token: %s", authBean.getToken());
 
         // Find previous token
         TokenModel tokenModel = this.mLoginModel.findTokenById(1);
 
         if (tokenModel == null) {
-            Log.d(TAG, "=> create new token");
+            Logger.t(TAG).d("=> create new token");
 
             // Create token if token not exists in database
             this.mLoginModel.createToken(authBean.getToken());
         } else {
-            Log.d(TAG, "=> update exists token");
+            Logger.t(TAG).d("=> update exists token");
 
             // Update token if token is exists in database
             this.mLoginModel.updateTokenByTokenModel(tokenModel, authBean.getToken());
