@@ -41,6 +41,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         ApplicationManager.getApplicationManager().finishActivity(this);
     }
 
+    // Init methods
     protected void initComponent() {
         MyApplication myApplication = (MyApplication) this.getApplication();
 
