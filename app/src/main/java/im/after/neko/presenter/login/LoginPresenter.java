@@ -3,7 +3,6 @@ package im.after.neko.presenter.login;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.io.IOException;
 
@@ -15,7 +14,6 @@ import im.after.neko.contract.login.LoginContract;
 import im.after.neko.data.api.auth.bean.AuthBean;
 import im.after.neko.data.api.auth.bean.AuthErrorBean;
 import im.after.neko.data.db.model.TokenModel;
-import im.after.neko.data.db.model.TokenModel_Table;
 import im.after.neko.model.login.LoginModel;
 import im.after.neko.view.login.LoginActivity;
 import retrofit2.adapter.rxjava.HttpException;
@@ -65,24 +63,18 @@ public class LoginPresenter extends BasePresenter implements LoginContract {
         Log.d(TAG, "=> token: " + authBean.getToken());
 
         // Find previous token
-        TokenModel tokenModel = SQLite.select()
-                .from(TokenModel.class)
-                .where(TokenModel_Table.id.is(1))
-                .querySingle();
+        TokenModel tokenModel = this.mLoginModel.findTokenById(1);
 
         if (tokenModel == null) {
             Log.d(TAG, "=> create new token");
 
-            // Store token if token not exists in database
-            TokenModel model = new TokenModel();
-            model.setToken(authBean.getToken());
-            model.save();
+            // Create token if token not exists in database
+            this.mLoginModel.createToken(authBean.getToken());
         } else {
             Log.d(TAG, "=> update exists token");
 
             // Update token if token is exists in database
-            tokenModel.setToken(authBean.getToken());
-            tokenModel.update();
+            this.mLoginModel.updateTokenByTokenModel(tokenModel, authBean.getToken());
         }
     }
 
