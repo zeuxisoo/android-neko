@@ -1,4 +1,4 @@
-package im.after.neko.api.auth.bean;
+package im.after.neko.data.api.auth.bean;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

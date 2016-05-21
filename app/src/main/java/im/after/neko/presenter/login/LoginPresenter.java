@@ -9,13 +9,13 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
-import im.after.neko.api.auth.AuthApi;
+import im.after.neko.data.api.auth.AuthApi;
 import im.after.neko.base.BasePresenter;
 import im.after.neko.base.BaseView;
-import im.after.neko.model.TokenModel;
-import im.after.neko.model.TokenModel_Table;
-import im.after.neko.api.auth.bean.AuthBean;
-import im.after.neko.api.auth.bean.AuthErrorBean;
+import im.after.neko.data.db.model.TokenModel;
+import im.after.neko.data.db.model.TokenModel_Table;
+import im.after.neko.data.api.auth.bean.AuthBean;
+import im.after.neko.data.api.auth.bean.AuthErrorBean;
 import im.after.neko.contract.login.LoginContract;
 import im.after.neko.view.login.LoginActivity;
 import retrofit2.adapter.rxjava.HttpException;

@@ -1,11 +1,11 @@
-package im.after.neko.model;
+package im.after.neko.data.db.model;
 
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 
-import im.after.neko.ApplicationDatabase;
+import im.after.neko.data.db.ApplicationDatabase;
 
 @Table(database = ApplicationDatabase.class)
 public class TokenModel extends BaseModel {

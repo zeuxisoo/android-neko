@@ -1,6 +1,6 @@
-package im.after.neko.api.auth;
+package im.after.neko.data.api.auth;
 
-import im.after.neko.api.auth.bean.AuthBean;
+import im.after.neko.data.api.auth.bean.AuthBean;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
