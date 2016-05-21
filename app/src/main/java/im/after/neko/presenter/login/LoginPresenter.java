@@ -12,6 +12,7 @@ import im.after.neko.base.BaseView;
 import im.after.neko.contract.login.LoginContract;
 import im.after.neko.data.api.auth.bean.AuthBean;
 import im.after.neko.data.api.auth.bean.AuthErrorBean;
+import im.after.neko.data.db.model.AccountModel;
 import im.after.neko.data.db.model.TokenModel;
 import im.after.neko.model.login.LoginModel;
 import im.after.neko.view.login.LoginActivity;
@@ -52,7 +53,34 @@ public class LoginPresenter extends BasePresenter implements LoginContract {
 
     // Implementation for LoginContract
     @Override
-    public void doLogin(String account, String password) {
+    public void loadAccountAndPasswordByRememberMe() {
+        AccountModel accountModel = this.mLoginModel.findAccountById(1);
+
+        if (accountModel != null && !accountModel.getAccount().isEmpty() && !accountModel.getPassword().isEmpty()) {
+            this.mLoginActivity.setAccountAndPassword(accountModel.getAccount(), accountModel.getPassword());
+        }
+    }
+
+    @Override
+    public void doLogin(String account, String password, boolean isRememberMe) {
+        AccountModel accountModel = this.mLoginModel.findAccountById(1);
+
+        // Remember account when remember me is checked
+        if (isRememberMe) {
+            if (accountModel == null) {
+                // Create account if not any records
+                this.mLoginModel.createAccount(account, password);
+            } else {
+                // Update account information if account is exists
+                this.mLoginModel.updateAccountAndPasswordByAccountModel(accountModel, account, password);
+            }
+        }
+
+        // Clear exists remembered account if remember me is not checked, account and password is not empty
+        if (!isRememberMe && accountModel != null && !accountModel.getAccount().isEmpty() && !accountModel.getPassword().isEmpty()) {
+            this.mLoginModel.clearAccountByAccountModel(accountModel);
+        }
+
         this.mSubscription = this.mLoginModel.doLogin(account, password, this::handleLoginSuccess, this::handleLoginError);
     }
 

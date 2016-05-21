@@ -5,6 +5,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -27,6 +28,9 @@ public class LoginActivity extends BaseActivity {
 
     @BindView(R.id.editTextPassword)
     EditText mEditTextPassword;
+
+    @BindView(R.id.checkboxRememberMe)
+    CheckBox mCheckBoxRememberMe;
 
     @Inject
     LoginPresenter mLoginPresenter;
@@ -55,6 +59,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void initViewAndListener() {
+        this.mLoginPresenter.loadAccountAndPasswordByRememberMe();
     }
 
     @Override
@@ -66,13 +71,14 @@ public class LoginActivity extends BaseActivity {
     public void doLogin() {
         String account = mEditTextAccount.getText().toString().trim();
         String password = mEditTextPassword.getText().toString().trim();
+        boolean rememberMe = mCheckBoxRememberMe.isChecked();
 
         if (TextUtils.isEmpty(account)) {
             this.showSnackbar(this.getString(R.string.error_empty_account));
         }else if (TextUtils.isEmpty(password)) {
             this.showSnackbar(this.getString(R.string.error_empty_password));
         }else {
-            this.mLoginPresenter.doLogin(account, password);
+            this.mLoginPresenter.doLogin(account, password, rememberMe);
         }
     }
 
@@ -88,5 +94,10 @@ public class LoginActivity extends BaseActivity {
         snackbar.show();
     }
 
+    public void setAccountAndPassword(String account, String password) {
+        this.mEditTextAccount.setText(account);
+        this.mEditTextPassword.setText(password);
+        this.mCheckBoxRememberMe.setChecked(true);
+    }
 
 }

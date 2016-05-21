@@ -7,15 +7,18 @@ import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import im.after.neko.data.db.ApplicationDatabase;
 
-@Table(database = ApplicationDatabase.class, name = "token")
-public class TokenModel extends BaseModel {
+@Table(database = ApplicationDatabase.class, name="account")
+public class AccountModel extends BaseModel {
 
     @PrimaryKey(autoincrement = true)
     @Column(name = "id")
     private long id;
 
-    @Column(name = "token")
-    private String token;
+    @Column(name = "account")
+    private String account;
+
+    @Column(name = "password")
+    private String password;
 
     public long getId() {
         return id;
@@ -25,12 +28,20 @@ public class TokenModel extends BaseModel {
         this.id = id;
     }
 
-    public String getToken() {
-        return token;
+    public String getAccount() {
+        return account;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }

@@ -3,6 +3,7 @@
 
     <string name="edit_text_hint_account">Account</string>
     <string name="edit_text_hint_password">Password</string>
+    <string name="check_box_remember_me">Remember me</string>
     <string name="button_text_login">Login</string>
 
     <string name="error_empty_account">Please enter account</string>
