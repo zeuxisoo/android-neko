@@ -12,9 +12,25 @@ public class TokenModel extends BaseModel {
 
     @PrimaryKey(autoincrement = true)
     @Column(name = "id")
-    public long id;
+    private long id;
 
     @Column(name = "token")
-    public String token;
+    private String token;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
 }

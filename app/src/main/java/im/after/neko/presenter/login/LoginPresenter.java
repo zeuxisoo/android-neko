@@ -80,13 +80,13 @@ public class LoginPresenter extends BasePresenter implements LoginContract {
 
             // Store token if token not exists in database
             TokenModel model = new TokenModel();
-            model.token = authBean.getToken();
+            model.setToken(authBean.getToken());
             model.save();
         } else {
             Log.d(TAG, "=> update exists token");
 
             // Update token if token is exists in database
-            tokenModel.token = authBean.getToken();
+            tokenModel.setToken(authBean.getToken());
             tokenModel.update();
         }
     }
