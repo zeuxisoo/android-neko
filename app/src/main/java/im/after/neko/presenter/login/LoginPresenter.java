@@ -86,20 +86,15 @@ public class LoginPresenter extends BasePresenter implements LoginContract {
 
     // Subscribe handler for doLogin method
     private void handleLoginSuccess(AuthBean authBean) {
-        Logger.t(TAG).d("handleLoginSuccess");
         Logger.t(TAG).d("=> token: %s", authBean.getToken());
 
         // Find previous token
         TokenModel tokenModel = this.mLoginModel.findTokenById(1);
 
         if (tokenModel == null) {
-            Logger.t(TAG).d("=> create new token");
-
             // Create token if token not exists in database
             this.mLoginModel.createToken(authBean.getToken());
         } else {
-            Logger.t(TAG).d("=> update exists token");
-
             // Update token if token is exists in database
             this.mLoginModel.updateTokenByTokenModel(tokenModel, authBean.getToken());
         }
