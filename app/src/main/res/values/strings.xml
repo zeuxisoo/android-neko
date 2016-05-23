@@ -8,4 +8,6 @@
 
     <string name="error_empty_account">Please enter account</string>
     <string name="error_empty_password">Please enter password</string>
+
+    <string name="toolbar_dashboard_title">Dashboard</string>
 </resources>

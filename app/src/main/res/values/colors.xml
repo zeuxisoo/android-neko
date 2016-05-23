@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <!-- App base color -->
+    <color name="colorPrimary">#2a3038</color>
+    <color name="colorPrimaryDark">#6042b3</color>
+    <color name="colorAccent">#a1a3d7</color>
 
-    <color name="colorDefaultBackground">#323a45</color>
+    <!-- Global theme color, like TextInputLayout color, toolbar background -->
+    <color name="colorThemeDark">#353c42</color>
 
+    <!-- Activity background color :: global -->
+    <color name="colorWindowBackgroundDark">#272c30</color>
+
+    <!-- Activity background color -->
+    <color name="colorDashboardBackgroundDark">#272c30</color>
+
+    <!-- Widget background color -->
+    <color name="colorToolbarBackgroundDark">#353c42</color>
+
+    <!-- Snack bar style -->
     <color name="colorSnackbarBackground">#404f63</color>
-    <color name="colorSnackbarText">#FFFFFFFF</color>
+    <color name="colorSnackbarText">@color/colorWhite</color>
+
+    <!-- Simply system color -->
+    <color name="colorWhite">@android:color/white</color>
 </resources>

@@ -34,6 +34,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         this.initButterKnife();
         this.initInjector();
         this.initPresenter();
+        this.initToolbar();
         this.initViewAndListener();
 
         this.setStatusBarTranslucency();
@@ -90,6 +91,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     abstract public void initContentView();
     abstract public void initViewAndListener();
     abstract public void initPresenter();
+    abstract public void initToolbar();
 
     abstract public boolean isApplyStatusBarTranslucency();
 

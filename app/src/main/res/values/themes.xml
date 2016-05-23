@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BaseAppThemeDark" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">?attr/themeColor</item>
+        <item name="colorPrimaryDark">?attr/themeColor</item>
+        <item name="colorAccent">?attr/themeColor</item>
+
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">@color/colorWindowBackgroundDark</item>
+
+        <item name="android:windowIsTranslucent">true</item>
+
+        <item name="widgetToolbarBackgroundDark">@color/colorToolbarBackgroundDark</item>
+        <item name="activityDashboardBackgroundDark">@color/colorDashboardBackgroundDark</item>
+    </style>
+
+    <style name="AppThemeDark" parent="BaseAppThemeDark">
+        <item name="themeColor">@color/colorThemeDark</item>
+    </style>
+
+</resources>

@@ -52,6 +52,11 @@ public class SplashActivity extends BaseActivity {
     }
 
     @Override
+    public void initToolbar() {
+
+    }
+
+    @Override
     public boolean isApplyStatusBarTranslucency() {
         return true;
     }

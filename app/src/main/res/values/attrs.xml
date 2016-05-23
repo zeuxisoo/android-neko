@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="themeColor" format="color|reference" />
+
+    <attr name="activityDashboardBackgroundDark" format="color|reference" />
+
+    <attr name="widgetToolbarBackgroundDark" format="color|reference" />
+
+</resources>

@@ -1,14 +1,20 @@
 package im.after.neko.view.dashboard;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import im.after.neko.R;
 import im.after.neko.base.BaseActivity;
 import im.after.neko.presenter.dashboard.DashboardPresenter;
 
 public class DashboardActivity extends BaseActivity {
+
+    @BindView(R.id.toolbarWidget)
+    Toolbar mToolbar;
 
     @Inject
     DashboardPresenter mDashboardPresenter;
@@ -41,13 +47,25 @@ public class DashboardActivity extends BaseActivity {
     }
 
     @Override
-    public boolean isApplyStatusBarTranslucency() {
-        return true;
+    public void initPresenter() {
+        this.mDashboardPresenter.attachView(this);
     }
 
     @Override
-    public void initPresenter() {
-        this.mDashboardPresenter.attachView(this);
+    public void initToolbar() {
+        this.setSupportActionBar(this.mToolbar);
+
+        ActionBar actionBar = this.getSupportActionBar();
+
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setDisplayShowHomeEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean isApplyStatusBarTranslucency() {
+        return false;
     }
 
 }
