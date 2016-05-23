@@ -5,6 +5,7 @@ import android.app.Activity;
 import dagger.Component;
 import im.after.neko.di.module.ActivityModule;
 import im.after.neko.di.scope.ActivityScope;
+import im.after.neko.view.dashboard.DashboardActivity;
 import im.after.neko.view.login.LoginActivity;
 import im.after.neko.view.splash.SplashActivity;
 
@@ -17,5 +18,7 @@ public interface ActivityComponent {
     void inject(SplashActivity activity);
 
     void inject(LoginActivity activity);
+
+    void inject(DashboardActivity activity);
 
 }

@@ -1,5 +1,6 @@
 package im.after.neko.view.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -17,6 +18,7 @@ import butterknife.OnClick;
 import im.after.neko.R;
 import im.after.neko.base.BaseActivity;
 import im.after.neko.presenter.login.LoginPresenter;
+import im.after.neko.view.dashboard.DashboardActivity;
 
 public class LoginActivity extends BaseActivity {
 
@@ -98,6 +100,12 @@ public class LoginActivity extends BaseActivity {
         this.mEditTextAccount.setText(account);
         this.mEditTextPassword.setText(password);
         this.mCheckBoxRememberMe.setChecked(true);
+    }
+
+    public void redirectToDashboardActivity() {
+        Intent intent = new Intent(this, DashboardActivity.class);
+        this.startActivity(intent);
+        this.finish();
     }
 
 }

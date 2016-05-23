@@ -98,6 +98,8 @@ public class LoginPresenter extends BasePresenter implements LoginContract {
             // Update token if token is exists in database
             this.mLoginModel.updateTokenByTokenModel(tokenModel, authBean.getToken());
         }
+
+        this.mLoginActivity.redirectToDashboardActivity();
     }
 
     private void handleLoginError(Throwable throwable) {
