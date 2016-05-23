@@ -51,6 +51,11 @@ public class SplashActivity extends BaseActivity {
         this.mSplashPresenter.attachView(this);
     }
 
+    @Override
+    public boolean isApplyStatusBarTranslucency() {
+        return true;
+    }
+
     public void redirectToLoginActivity() {
         Intent intent = new Intent(this, LoginActivity.class);
         this.startActivity(intent);

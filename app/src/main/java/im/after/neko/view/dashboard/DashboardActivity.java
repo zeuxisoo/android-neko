@@ -41,6 +41,11 @@ public class DashboardActivity extends BaseActivity {
     }
 
     @Override
+    public boolean isApplyStatusBarTranslucency() {
+        return true;
+    }
+
+    @Override
     public void initPresenter() {
         this.mDashboardPresenter.attachView(this);
     }

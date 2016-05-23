@@ -69,6 +69,11 @@ public class LoginActivity extends BaseActivity {
         this.mLoginPresenter.attachView(this);
     }
 
+    @Override
+    public boolean isApplyStatusBarTranslucency() {
+        return true;
+    }
+
     @OnClick(R.id.rippleLayoutLoginButton)
     public void doLogin() {
         String account = mEditTextAccount.getText().toString().trim();
