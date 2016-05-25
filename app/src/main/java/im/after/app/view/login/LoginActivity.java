@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -34,6 +35,9 @@ public class LoginActivity extends BaseActivity {
 
     @BindView(R.id.checkboxRememberMe)
     CheckBox mCheckBoxRememberMe;
+
+    @BindView(R.id.buttonLogin)
+    Button mButtonLogin;
 
     @BindView(R.id.circularProgressBarLogin)
     CircularProgressBar mCircularProgressBar;
@@ -112,8 +116,10 @@ public class LoginActivity extends BaseActivity {
 
     public void showCircularProgressBar(boolean show) {
         if (show) {
+            this.mButtonLogin.setEnabled(false);
             this.mCircularProgressBar.setVisibility(View.VISIBLE);
         }else{
+            this.mButtonLogin.setEnabled(true);
             this.mCircularProgressBar.setVisibility(View.INVISIBLE);
         }
     }
