@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Smooth Progress Bar (circular) color -->
+    <integer-array name="colorCircularProgressBarDark">
+        <item>@color/colorRed</item>
+        <item>@color/colorGreen</item>
+        <item>@color/colorBlue</item>
+        <item>@color/colorPink</item>
+        <item>@color/colorWhite</item>
+    </integer-array>
+
     <!-- App base color -->
     <color name="colorPrimary">#2a3038</color>
     <color name="colorPrimaryDark">#6042b3</color>
@@ -23,4 +32,9 @@
 
     <!-- Simply system color -->
     <color name="colorWhite">@android:color/white</color>
+
+    <color name="colorRed">#FF0000</color>
+    <color name="colorGreen">#00FF00</color>
+    <color name="colorBlue">#0000FF</color>
+    <color name="colorPink">#FF00FF</color>
 </resources>

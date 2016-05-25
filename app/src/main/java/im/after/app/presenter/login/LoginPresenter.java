@@ -81,6 +81,9 @@ public class LoginPresenter extends BasePresenter implements LoginContract {
             this.mLoginModel.clearAccountByAccountModel(accountModel);
         }
 
+        // Show loading animation
+        this.mLoginActivity.showCircularProgressBar(true);
+
         this.mSubscription = this.mLoginModel.doLogin(account, password, this::handleLoginSuccess, this::handleLoginError);
     }
 
@@ -99,10 +102,13 @@ public class LoginPresenter extends BasePresenter implements LoginContract {
             this.mLoginModel.updateTokenByTokenModel(tokenModel, authBean.getToken());
         }
 
+        this.mLoginActivity.showCircularProgressBar(false);
         this.mLoginActivity.redirectToDashboardActivity();
     }
 
     private void handleLoginError(Throwable throwable) {
+        this.mLoginActivity.showCircularProgressBar(false);
+
         if (throwable instanceof HttpException) {
             HttpException httpException = (HttpException) throwable;
 

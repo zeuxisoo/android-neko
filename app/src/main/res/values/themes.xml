@@ -19,4 +19,15 @@
         <item name="themeColor">@color/colorThemeDark</item>
     </style>
 
+    <!--  -->
+    <style name="AppThemeDark.CircularProgressBar" parent="CircularProgressBar">
+        <item name="cpb_color">@color/colorPrimary</item>
+        <item name="cpb_colors">@array/colorCircularProgressBarDark</item>
+        <item name="cpb_stroke_width">3dp</item>
+        <item name="cpb_min_sweep_angle">50</item>
+        <item name="cpb_max_sweep_angle">300</item>
+        <item name="cpb_sweep_speed">1.0</item>
+        <item name="cpb_rotation_speed">1.0</item>
+    </style>
+
 </resources>

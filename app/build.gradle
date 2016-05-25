@@ -65,4 +65,7 @@ dependencies {
 
     // Logger
     compile "com.github.orhanobut:logger:1.12"
+
+    // Smooth Progress Bar (circular)
+    compile "com.github.castorflex.smoothprogressbar:library-circular:1.2.0"
 }

@@ -15,6 +15,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 import im.after.app.R;
 import im.after.app.base.BaseActivity;
 import im.after.app.presenter.login.LoginPresenter;
@@ -33,6 +34,9 @@ public class LoginActivity extends BaseActivity {
 
     @BindView(R.id.checkboxRememberMe)
     CheckBox mCheckBoxRememberMe;
+
+    @BindView(R.id.circularProgressBarLogin)
+    CircularProgressBar mCircularProgressBar;
 
     @Inject
     LoginPresenter mLoginPresenter;
@@ -104,6 +108,14 @@ public class LoginActivity extends BaseActivity {
         textView.setTextColor(ContextCompat.getColor(this, R.color.colorSnackbarText));
 
         snackbar.show();
+    }
+
+    public void showCircularProgressBar(boolean show) {
+        if (show) {
+            this.mCircularProgressBar.setVisibility(View.VISIBLE);
+        }else{
+            this.mCircularProgressBar.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void setAccountAndPassword(String account, String password) {

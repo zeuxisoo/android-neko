@@ -74,6 +74,16 @@
             android:layout_gravity="center"
             android:text="@string/button_text_login" />
 
+        <fr.castorflex.android.circularprogressbar.CircularProgressBar
+            android:id="@+id/circularProgressBarLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dip"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            android:indeterminate="true"
+            style="@style/AppThemeDark.CircularProgressBar" />
+
     </LinearLayout>
 
 </RelativeLayout>
