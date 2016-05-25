@@ -46,9 +46,6 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.0.1'
     compile 'com.jakewharton:butterknife:8.0.1'
 
-    // Material ripple
-    compile 'com.balysv:material-ripple:1.0.2'
-
     // OkHttp & Retrofit (with converter factory, call adapter)
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'

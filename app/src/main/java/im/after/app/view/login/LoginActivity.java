@@ -79,7 +79,7 @@ public class LoginActivity extends BaseActivity {
         return true;
     }
 
-    @OnClick(R.id.rippleLayoutLoginButton)
+    @OnClick(R.id.buttonLogin)
     public void doLogin() {
         String account = mEditTextAccount.getText().toString().trim();
         String password = mEditTextPassword.getText().toString().trim();
