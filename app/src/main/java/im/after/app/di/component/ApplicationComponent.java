@@ -1,0 +1,33 @@
+package im.after.app.di.component;
+
+import android.content.Context;
+
+import com.google.gson.Gson;
+
+import javax.inject.Singleton;
+
+import dagger.Component;
+import im.after.app.data.api.auth.AuthApi;
+import im.after.app.di.module.ApiModule;
+import im.after.app.di.module.ApplicationModule;
+import im.after.app.model.login.LoginModel;
+import okhttp3.OkHttpClient;
+
+@Singleton
+@Component(modules = { ApplicationModule.class, ApiModule.class })
+public interface ApplicationComponent {
+
+    // ApplicationModule
+    Context context();
+
+    OkHttpClient getOKHttpClient();
+
+    Gson getGson();
+
+    // ApiModule
+    AuthApi getAuthApi();
+
+    // ModelModule
+    LoginModel getLoginModel();
+
+}

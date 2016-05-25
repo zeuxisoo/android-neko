@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="im.after.neko">
+    package="im.after.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".MyApplication"
+        android:name="im.after.app.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppThemeDark">
         <activity
-            android:name=".view.splash.SplashActivity"
+            android:name="im.after.app.view.splash.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark">
             <intent-filter>
@@ -22,12 +22,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.login.LoginActivity"
+            android:name="im.after.app.view.login.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark">
         </activity>
         <activity
-            android:name=".view.dashboard.DashboardActivity"
+            android:name="im.after.app.view.dashboard.DashboardActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark">
         </activity>
