@@ -22,7 +22,7 @@ public interface ApplicationComponent {
     // ApplicationModule
     Context context();
 
-    OkHttpClient getOKHttpClient();
+    OkHttpClient.Builder getOKHttpClientBuilder();
 
     Gson getGson();
 

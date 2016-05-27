@@ -30,7 +30,7 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    public OkHttpClient provideOkHttpClient() {
+    public OkHttpClient.Builder provideOkHttpClientBuilder() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -39,7 +39,7 @@ public class ApplicationModule {
                 .readTimeout(30, TimeUnit.SECONDS)
                 .addInterceptor(httpLoggingInterceptor);
 
-        return builder.build();
+        return builder;
     }
 
     @Provides

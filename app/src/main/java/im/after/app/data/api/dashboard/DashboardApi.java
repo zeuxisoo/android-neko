@@ -1,31 +1,37 @@
 package im.after.app.data.api.dashboard;
 
+import im.after.app.base.BaseApi;
+import im.after.app.data.api.AuthorizationInterceptor;
 import im.after.app.data.api.dashboard.bean.DashboardsBean;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 
-public class DashboardApi {
+public class DashboardApi extends BaseApi<DashboardService> {
 
-    private static final String BASE_URL = "https://www.after.im/api/v1/dashboard/";
+    public DashboardApi(OkHttpClient.Builder okHttpClientBuilder) {
+        super(okHttpClientBuilder);
+    }
 
-    private DashboardService mDashboardService;
+    @Override
+    public String getBaseUrl() {
+        return "https://www.after.im/api/v1/dashboard/";
+    }
 
-    public DashboardApi(OkHttpClient okHttpClient) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .client(okHttpClient)
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build();
+    @Override
+    public OkHttpClient getClient(OkHttpClient.Builder okHttpClientBuilder) {
+        okHttpClientBuilder.interceptors().add(new AuthorizationInterceptor());
 
-        this.mDashboardService = retrofit.create(DashboardService.class);
+        return okHttpClientBuilder.build();
+    }
+
+    @Override
+    public DashboardService getApiService(Retrofit retrofit) {
+        return retrofit.create(DashboardService.class);
     }
 
     public Observable<DashboardsBean> all(int page) {
-        return this.mDashboardService.all(page);
+        return this.getService().all(page);
     }
 
 }

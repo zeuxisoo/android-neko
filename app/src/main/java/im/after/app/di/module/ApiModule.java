@@ -13,14 +13,14 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    public AuthApi provideAuthApi(OkHttpClient okHttpClient) {
-        return new AuthApi(okHttpClient);
+    public AuthApi provideAuthApi(OkHttpClient.Builder okHttpClientBuilder) {
+        return new AuthApi(okHttpClientBuilder);
     }
 
     @Provides
     @Singleton
-    public DashboardApi provideDashboardApi(OkHttpClient okHttpClient) {
-        return new DashboardApi(okHttpClient);
+    public DashboardApi provideDashboardApi(OkHttpClient.Builder okHttpClientBuilder) {
+        return new DashboardApi(okHttpClientBuilder);
     }
 
 }
