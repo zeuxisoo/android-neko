@@ -3,14 +3,12 @@ package im.after.app.view.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import javax.inject.Inject;
 
@@ -103,15 +101,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     public void showSnackbar(String message) {
-        Snackbar snackbar = Snackbar.make(this.mRelativeLayoutLogin, message, Snackbar.LENGTH_SHORT);
-
-        View view = snackbar.getView();
-        view.setBackgroundColor(ContextCompat.getColor(this, R.color.colorSnackbarBackground));
-
-        TextView textView = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(ContextCompat.getColor(this, R.color.colorSnackbarText));
-
-        snackbar.show();
+        super.showSnackbar(this.mRelativeLayoutLogin, message, Snackbar.LENGTH_SHORT);
     }
 
     public void showCircularProgressBar(boolean show) {

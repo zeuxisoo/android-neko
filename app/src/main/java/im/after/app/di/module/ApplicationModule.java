@@ -38,7 +38,7 @@ public class ApplicationModule {
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
                 .addInterceptor(httpLoggingInterceptor);
-        
+
         return builder.build();
     }
 

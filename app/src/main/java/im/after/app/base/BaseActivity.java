@@ -3,9 +3,13 @@ package im.after.app.base;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.orhanobut.logger.Logger;
 
@@ -13,6 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import im.after.app.ApplicationManager;
 import im.after.app.MyApplication;
+import im.after.app.R;
 import im.after.app.di.component.ActivityComponent;
 import im.after.app.di.component.DaggerActivityComponent;
 import im.after.app.di.module.ActivityModule;
@@ -69,7 +74,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         this.mUnbinder = ButterKnife.bind(this);
     }
 
-    //
+    // Shared methods
     protected void setStatusBarTranslucency() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window window = this.getWindow();
@@ -85,6 +90,18 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
             window.setAttributes(layoutParams);
         }
+    }
+
+    protected void showSnackbar(View view, String message, int duration) {
+        Snackbar snackbar = Snackbar.make(view, message, duration);
+
+        View snackbarView = snackbar.getView();
+        snackbarView.setBackgroundColor(ContextCompat.getColor(this, R.color.colorSnackbarBackground));
+
+        TextView textView = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(ContextCompat.getColor(this, R.color.colorSnackbarText));
+
+        snackbar.show();
     }
 
     abstract public void initInjector();

@@ -8,8 +8,10 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import im.after.app.data.api.auth.AuthApi;
+import im.after.app.data.api.dashboard.DashboardApi;
 import im.after.app.di.module.ApiModule;
 import im.after.app.di.module.ApplicationModule;
+import im.after.app.model.dashboard.DashboardModel;
 import im.after.app.model.login.LoginModel;
 import okhttp3.OkHttpClient;
 
@@ -27,7 +29,11 @@ public interface ApplicationComponent {
     // ApiModule
     AuthApi getAuthApi();
 
+    DashboardApi getDashboardApi();
+
     // ModelModule
     LoginModel getLoginModel();
+
+    DashboardModel getDashboardModel();
 
 }

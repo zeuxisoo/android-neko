@@ -1,8 +1,10 @@
 package im.after.app.view.dashboard;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.widget.LinearLayout;
 
 import javax.inject.Inject;
 
@@ -12,6 +14,9 @@ import im.after.app.base.BaseActivity;
 import im.after.app.presenter.dashboard.DashboardPresenter;
 
 public class DashboardActivity extends BaseActivity {
+
+    @BindView(R.id.linearLayoutDashboards)
+    LinearLayout mLinearLayoutDashboards;
 
     @BindView(R.id.toolbarWidget)
     Toolbar mToolbar;
@@ -43,7 +48,7 @@ public class DashboardActivity extends BaseActivity {
 
     @Override
     public void initViewAndListener() {
-
+        this.mDashboardPresenter.loadDashboards(1);
     }
 
     @Override
@@ -66,6 +71,10 @@ public class DashboardActivity extends BaseActivity {
     @Override
     public boolean isApplyStatusBarTranslucency() {
         return false;
+    }
+
+    public void showSnackbar(String message) {
+        super.showSnackbar(this.mLinearLayoutDashboards, message, Snackbar.LENGTH_LONG);
     }
 
 }

@@ -11,7 +11,7 @@ import im.after.app.base.BasePresenter;
 import im.after.app.base.BaseView;
 import im.after.app.contract.login.LoginContract;
 import im.after.app.data.api.auth.bean.AuthBean;
-import im.after.app.data.api.auth.bean.AuthErrorBean;
+import im.after.app.data.api.ErrorBean;
 import im.after.app.data.db.model.AccountModel;
 import im.after.app.data.db.model.TokenModel;
 import im.after.app.model.login.LoginModel;
@@ -113,7 +113,7 @@ public class LoginPresenter extends BasePresenter implements LoginContract {
             HttpException httpException = (HttpException) throwable;
 
             try {
-                AuthErrorBean authErrorBean = this.mGson.fromJson(httpException.response().errorBody().string(), AuthErrorBean.class);
+                ErrorBean authErrorBean = this.mGson.fromJson(httpException.response().errorBody().string(), ErrorBean.class);
 
                 this.mLoginActivity.showSnackbar(
                     String.format("%s - %s", authErrorBean.getStatusCode(), authErrorBean.getMessage())

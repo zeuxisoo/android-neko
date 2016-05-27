@@ -1,9 +1,9 @@
-package im.after.app.data.api.auth.bean;
+package im.after.app.data.api;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AuthErrorBean {
+public class ErrorBean {
 
     @SerializedName("message")
     @Expose
@@ -13,10 +13,10 @@ public class AuthErrorBean {
     @Expose
     private Integer statusCode;
 
-    public AuthErrorBean() {
+    public ErrorBean() {
     }
 
-    public AuthErrorBean(String message, Integer statusCode) {
+    public ErrorBean(String message, Integer statusCode) {
         this.message = message;
         this.statusCode = statusCode;
     }

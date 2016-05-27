@@ -68,4 +68,7 @@ dependencies {
 
     // Smooth Progress Bar (circular)
     compile "com.github.castorflex.smoothprogressbar:library-circular:1.2.0"
+
+    // Ultimate Recycler View
+    compile 'com.hkm.ui:ultimaterecyclerview:0.5.8'
 }
