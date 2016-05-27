@@ -3,14 +3,20 @@ package im.after.app.view.dashboard;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.widget.LinearLayout;
+
+import com.malinskiy.superrecyclerview.SuperRecyclerView;
+
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import im.after.app.R;
 import im.after.app.base.BaseActivity;
+import im.after.app.data.api.dashboard.bean.DashboardBean;
 import im.after.app.presenter.dashboard.DashboardPresenter;
 
 public class DashboardActivity extends BaseActivity {
@@ -21,8 +27,14 @@ public class DashboardActivity extends BaseActivity {
     @BindView(R.id.toolbarWidget)
     Toolbar mToolbar;
 
+    @BindView(R.id.superRecyclerViewBoards)
+    SuperRecyclerView mSuperRecyclerViewBoards;
+
     @Inject
     DashboardPresenter mDashboardPresenter;
+
+    @Inject
+    DashboardAdapter mDashboardAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +60,12 @@ public class DashboardActivity extends BaseActivity {
 
     @Override
     public void initViewAndListener() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayout.VERTICAL);
+
+        this.mSuperRecyclerViewBoards.setLayoutManager(linearLayoutManager);
+        this.mSuperRecyclerViewBoards.setAdapter(this.mDashboardAdapter);
+
         this.mDashboardPresenter.loadDashboards(1);
     }
 
@@ -75,6 +93,10 @@ public class DashboardActivity extends BaseActivity {
 
     public void showSnackbar(String message) {
         super.showSnackbar(this.mLinearLayoutDashboards, message, Snackbar.LENGTH_LONG);
+    }
+
+    public void renderDashBoardList(ArrayList<DashboardBean> dashboardBeanArrayList) {
+        this.mDashboardAdapter.bind(dashboardBeanArrayList);
     }
 
 }

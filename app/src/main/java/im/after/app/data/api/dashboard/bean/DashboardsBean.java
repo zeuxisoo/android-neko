@@ -9,10 +9,27 @@ public class DashboardsBean {
 
     @SerializedName("data")
     @Expose
-    private ArrayList<DashboardBean> dashboard;
+    private ArrayList<DashboardBean> dashboardList;
 
     @SerializedName("meta")
     @Expose
     private PaginationBean meta;
+
+
+    public ArrayList<DashboardBean> getDashboardList() {
+        return dashboardList;
+    }
+
+    public void setDashboardList(ArrayList<DashboardBean> dashboardList) {
+        this.dashboardList = dashboardList;
+    }
+
+    public PaginationBean getMeta() {
+        return meta;
+    }
+
+    public void setMeta(PaginationBean meta) {
+        this.meta = meta;
+    }
 
 }

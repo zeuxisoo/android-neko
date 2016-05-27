@@ -10,4 +10,7 @@
     <string name="error_empty_password">Please enter password</string>
 
     <string name="toolbar_dashboard_title">Dashboard</string>
+
+    <string name="view_super_recycler_view_empty">No any dashboards :(</string>
+    <string name="text_view_dashboard_subject_default">N/A</string>
 </resources>

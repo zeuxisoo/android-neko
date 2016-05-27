@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/linearLayoutDashboards"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,9 +10,15 @@
 
     <include layout="@layout/include_widget_toolbar" />
 
-    <com.marshalchen.ultimaterecyclerview.UltimateRecyclerView
+    <com.malinskiy.superrecyclerview.SuperRecyclerView
+        android:id="@+id/superRecyclerViewBoards"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/ultimateRecyclerViewBoards"  />
+        app:layout_empty="@layout/view_super_recycler_view_empty"
+        app:layout_moreProgress="@layout/view_super_recycler_view_more_progress"
+        app:mainLayoutId="@layout/layout_recyclerview_verticalscroll"
+        app:recyclerClipToPadding="false"
+        app:recyclerPadding="16dp"
+        app:scrollbarStyle="insideInset" />
 
 </LinearLayout>

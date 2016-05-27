@@ -1,7 +1,6 @@
 package im.after.app.presenter.dashboard;
 
 import com.google.gson.Gson;
-import com.orhanobut.logger.Logger;
 
 import java.io.IOException;
 
@@ -49,7 +48,7 @@ public class DashboardPresenter extends BasePresenter implements DashboardContra
 
     // Subscribe handler for doLogin method
     private void handleLoadDashboardsSuccess(DashboardsBean dashboardsBean) {
-        Logger.d("Success");
+        this.mDashboardActivity.renderDashBoardList(dashboardsBean.getDashboardList());
     }
 
     private void handleLoadDashboardsError(Throwable throwable) {
