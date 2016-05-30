@@ -20,16 +20,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:background="@color/colorDashboardPanelHeadingBackgroundDark"
-            android:textColor="@color/colorDashboardPanelHeadingTextDark" />
+            android:background="@drawable/panel_heading"
+            android:textColor="@color/colorPanelHeadingTextDark" />
 
         <TextView
             android:id="@+id/textViewDashboardContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:background="@color/colorDashboardPanelBodyBackgroundDark"
-            android:textColor="@color/colorDashboardPanelBodyTextDark" />
+            android:background="@color/colorPanelBodyBackgroundDark"
+            android:textColor="@color/colorPanelBodyTextDark" />
 
     </LinearLayout>
 
