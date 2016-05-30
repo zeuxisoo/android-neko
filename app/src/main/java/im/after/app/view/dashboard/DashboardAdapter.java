@@ -56,6 +56,11 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
         }
     }
 
+    public void clear() {
+        this.dashboardBeanArrayList.clear();
+        this.notifyDataSetChanged();
+    }
+
     // View holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.textViewDashboardSubject)

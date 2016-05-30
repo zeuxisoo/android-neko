@@ -49,17 +49,21 @@ public class DashboardPresenter extends BasePresenter implements DashboardContra
 
     @Override
     public void onRefresh() {
-        Logger.d("onRefresh");
+        this.mDashboardModel.loadDashboards(1, this::handleOnRefreshSuccess, this::handleOnRefreshError);
+
+        this.mDashboardActivity.stopRefreshAnimation();
     }
 
     @Override
     public void onMore(int overallItemsCount, int itemsBeforeMore, int maxLastVisiblePosition) {
         Logger.d("onMore");
+
+        this.mDashboardActivity.stopMoreAnimation();
     }
 
-    // Subscribe handler for doLogin method
+    // Subscribe handler for loadDashboards method
     private void handleLoadDashboardsSuccess(DashboardsBean dashboardsBean) {
-        this.mDashboardActivity.renderDashBoardList(dashboardsBean.getDashboardList());
+        this.mDashboardActivity.renderDashboardList(dashboardsBean.getDashboardList());
     }
 
     private void handleLoadDashboardsError(Throwable throwable) {
@@ -78,6 +82,16 @@ public class DashboardPresenter extends BasePresenter implements DashboardContra
         }else{
             throwable.printStackTrace();
         }
+    }
+
+    // Subscribe handler for onRefresh method
+    private void handleOnRefreshSuccess(DashboardsBean dashboardsBean) {
+        this.mDashboardActivity.clearDashboardList();
+        this.mDashboardActivity.renderDashboardList(dashboardsBean.getDashboardList());
+    }
+
+    private void handleOnRefreshError(Throwable throwable) {
+        this.handleLoadDashboardsError(throwable);
     }
 
 }

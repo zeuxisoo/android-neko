@@ -71,7 +71,7 @@ public class DashboardActivity extends BaseActivity {
 
         this.mSuperRecyclerViewBoards.setRefreshingColorResources(android.R.color.holo_orange_light, android.R.color.holo_blue_light, android.R.color.holo_green_light, android.R.color.holo_red_light);
         this.mSuperRecyclerViewBoards.setRefreshListener(this.mDashboardPresenter::onRefresh);
-        this.mSuperRecyclerViewBoards.setupMoreListener(this.mDashboardPresenter::onMore, 1);
+        this.mSuperRecyclerViewBoards.setupMoreListener(this.mDashboardPresenter::onMore, 2);
 
         this.mDashboardPresenter.loadDashboards(1);
     }
@@ -102,8 +102,20 @@ public class DashboardActivity extends BaseActivity {
         super.showSnackbar(this.mLinearLayoutDashboards, message, Snackbar.LENGTH_LONG);
     }
 
-    public void renderDashBoardList(ArrayList<DashboardBean> dashboardBeanArrayList) {
+    public void clearDashboardList() {
+        this.mDashboardAdapter.clear();
+    }
+
+    public void renderDashboardList(ArrayList<DashboardBean> dashboardBeanArrayList) {
         this.mDashboardAdapter.bind(dashboardBeanArrayList);
+    }
+
+    public void stopRefreshAnimation() {
+        this.mSuperRecyclerViewBoards.setRefreshing(false);
+    }
+
+    public void stopMoreAnimation() {
+        this.mSuperRecyclerViewBoards.hideMoreProgress();
     }
 
 }
