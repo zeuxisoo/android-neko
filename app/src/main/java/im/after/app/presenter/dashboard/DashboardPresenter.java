@@ -50,7 +50,11 @@ public class DashboardPresenter extends BasePresenter implements DashboardContra
 
     @Override
     public void onRefresh() {
-        this.mDashboardModel.loadDashboards(1, this::handleOnRefreshSuccess, this::handleOnRefreshError);
+        // Reset the current page no to 1
+        this.currentPageNo = 1;
+
+        // Load the target page for re-render
+        this.mDashboardModel.loadDashboards(this.currentPageNo, this::handleOnRefreshSuccess, this::handleOnRefreshError);
     }
 
     @Override
@@ -58,6 +62,7 @@ public class DashboardPresenter extends BasePresenter implements DashboardContra
         // Calculate next page no
         this.currentPageNo = this.currentPageNo + 1;
 
+        // Load the target page for append
         this.mDashboardModel.loadDashboards(this.currentPageNo, this::handleOnMoreSuccess, this::handleOnMoreError);
     }
 

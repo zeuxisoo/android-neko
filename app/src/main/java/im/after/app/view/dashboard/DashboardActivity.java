@@ -18,7 +18,7 @@ import im.after.app.R;
 import im.after.app.base.BaseActivity;
 import im.after.app.data.api.dashboard.bean.DashboardBean;
 import im.after.app.presenter.dashboard.DashboardPresenter;
-import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
+import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
 
 public class DashboardActivity extends BaseActivity {
 
@@ -65,13 +65,13 @@ public class DashboardActivity extends BaseActivity {
         linearLayoutManager.setOrientation(LinearLayout.VERTICAL);
 
         this.mSuperRecyclerViewBoards.getRecyclerView().setHasFixedSize(false);
-        this.mSuperRecyclerViewBoards.getRecyclerView().setItemAnimator(new SlideInUpAnimator());
+        this.mSuperRecyclerViewBoards.getRecyclerView().setItemAnimator(new SlideInLeftAnimator());
         this.mSuperRecyclerViewBoards.setLayoutManager(linearLayoutManager);
         this.mSuperRecyclerViewBoards.setAdapter(this.mDashboardAdapter);
 
         this.mSuperRecyclerViewBoards.setRefreshingColorResources(android.R.color.holo_orange_light, android.R.color.holo_blue_light, android.R.color.holo_green_light, android.R.color.holo_red_light);
         this.mSuperRecyclerViewBoards.setRefreshListener(this.mDashboardPresenter::onRefresh);
-        this.mSuperRecyclerViewBoards.setupMoreListener(this.mDashboardPresenter::onMore, 2);
+        this.mSuperRecyclerViewBoards.setupMoreListener(this.mDashboardPresenter::onMore, 8);
 
         this.mDashboardPresenter.loadDashboards(1);
     }
