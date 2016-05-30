@@ -5,6 +5,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.view.animation.OvershootInterpolator;
 import android.widget.LinearLayout;
 
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
@@ -18,7 +19,7 @@ import im.after.app.R;
 import im.after.app.base.BaseActivity;
 import im.after.app.data.api.dashboard.bean.DashboardBean;
 import im.after.app.presenter.dashboard.DashboardPresenter;
-import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 public class DashboardActivity extends BaseActivity {
 
@@ -65,7 +66,7 @@ public class DashboardActivity extends BaseActivity {
         linearLayoutManager.setOrientation(LinearLayout.VERTICAL);
 
         this.mSuperRecyclerViewBoards.getRecyclerView().setHasFixedSize(false);
-        this.mSuperRecyclerViewBoards.getRecyclerView().setItemAnimator(new SlideInLeftAnimator());
+        this.mSuperRecyclerViewBoards.getRecyclerView().setItemAnimator(new SlideInUpAnimator(new OvershootInterpolator(1f)));
         this.mSuperRecyclerViewBoards.setLayoutManager(linearLayoutManager);
         this.mSuperRecyclerViewBoards.setAdapter(this.mDashboardAdapter);
 

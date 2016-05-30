@@ -52,13 +52,13 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
     public void bind(ArrayList<DashboardBean> dashboardBeanArrayList) {
         for(int i=0; i<dashboardBeanArrayList.size(); i++) {
             this.dashboardBeanArrayList.add(dashboardBeanArrayList.get(i));
-            this.notifyItemChanged(i);
+            this.notifyItemInserted(i);
         }
     }
 
     public void clear() {
+        this.notifyItemRangeRemoved(0, this.dashboardBeanArrayList.size());
         this.dashboardBeanArrayList.clear();
-        this.notifyDataSetChanged();
     }
 
     public void append(ArrayList<DashboardBean> dashboardBeanArrayList) {
@@ -66,7 +66,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
 
         for(int i=0; i<dashboardBeanArrayList.size(); i++) {
             this.dashboardBeanArrayList.add(dashboardBeanArrayList.get(i));
-            this.notifyItemChanged(currentListSize + 1);
+            this.notifyItemInserted(currentListSize + 1);
         }
     }
 
