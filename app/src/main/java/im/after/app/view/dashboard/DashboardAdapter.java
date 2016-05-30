@@ -61,6 +61,15 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
         this.notifyDataSetChanged();
     }
 
+    public void append(ArrayList<DashboardBean> dashboardBeanArrayList) {
+        int currentListSize = this.dashboardBeanArrayList.size();
+
+        for(int i=0; i<dashboardBeanArrayList.size(); i++) {
+            this.dashboardBeanArrayList.add(dashboardBeanArrayList.get(i));
+            this.notifyItemChanged(currentListSize + 1);
+        }
+    }
+
     // View holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.textViewDashboardSubject)

@@ -1,7 +1,6 @@
 package im.after.app.presenter.dashboard;
 
 import com.google.gson.Gson;
-import com.orhanobut.logger.Logger;
 
 import java.io.IOException;
 
@@ -17,6 +16,8 @@ import im.after.app.view.dashboard.DashboardActivity;
 import retrofit2.adapter.rxjava.HttpException;
 
 public class DashboardPresenter extends BasePresenter implements DashboardContract {
+
+    private int currentPageNo = 1;
 
     private DashboardActivity mDashboardActivity;
 
@@ -50,15 +51,14 @@ public class DashboardPresenter extends BasePresenter implements DashboardContra
     @Override
     public void onRefresh() {
         this.mDashboardModel.loadDashboards(1, this::handleOnRefreshSuccess, this::handleOnRefreshError);
-
-        this.mDashboardActivity.stopRefreshAnimation();
     }
 
     @Override
     public void onMore(int overallItemsCount, int itemsBeforeMore, int maxLastVisiblePosition) {
-        Logger.d("onMore");
+        // Calculate next page no
+        this.currentPageNo = this.currentPageNo + 1;
 
-        this.mDashboardActivity.stopMoreAnimation();
+        this.mDashboardModel.loadDashboards(this.currentPageNo, this::handleOnMoreSuccess, this::handleOnMoreError);
     }
 
     // Subscribe handler for loadDashboards method
@@ -86,11 +86,22 @@ public class DashboardPresenter extends BasePresenter implements DashboardContra
 
     // Subscribe handler for onRefresh method
     private void handleOnRefreshSuccess(DashboardsBean dashboardsBean) {
+        this.mDashboardActivity.stopRefreshAnimation();
         this.mDashboardActivity.clearDashboardList();
         this.mDashboardActivity.renderDashboardList(dashboardsBean.getDashboardList());
     }
 
     private void handleOnRefreshError(Throwable throwable) {
+        this.handleLoadDashboardsError(throwable);
+    }
+
+    // Subscribe handler for onMore method
+    private void handleOnMoreSuccess(DashboardsBean dashboardsBean) {
+        this.mDashboardActivity.stopMoreAnimation();
+        this.mDashboardActivity.renderMoreDashboardList(dashboardsBean.getDashboardList());
+    }
+
+    private void handleOnMoreError(Throwable throwable) {
         this.handleLoadDashboardsError(throwable);
     }
 

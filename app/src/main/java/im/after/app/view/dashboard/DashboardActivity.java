@@ -110,6 +110,10 @@ public class DashboardActivity extends BaseActivity {
         this.mDashboardAdapter.bind(dashboardBeanArrayList);
     }
 
+    public void renderMoreDashboardList(ArrayList<DashboardBean> dashboardBeanArrayList) {
+        this.mDashboardAdapter.append(dashboardBeanArrayList);
+    }
+
     public void stopRefreshAnimation() {
         this.mSuperRecyclerViewBoards.setRefreshing(false);
     }
