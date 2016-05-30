@@ -1,6 +1,7 @@
 package im.after.app.presenter.dashboard;
 
 import com.google.gson.Gson;
+import com.orhanobut.logger.Logger;
 
 import java.io.IOException;
 
@@ -44,6 +45,16 @@ public class DashboardPresenter extends BasePresenter implements DashboardContra
     @Override
     public void loadDashboards(int page) {
         this.mDashboardModel.loadDashboards(1, this::handleLoadDashboardsSuccess, this::handleLoadDashboardsError);
+    }
+
+    @Override
+    public void onRefresh() {
+        Logger.d("onRefresh");
+    }
+
+    @Override
+    public void onMore(int overallItemsCount, int itemsBeforeMore, int maxLastVisiblePosition) {
+        Logger.d("onMore");
     }
 
     // Subscribe handler for doLogin method

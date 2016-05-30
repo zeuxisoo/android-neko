@@ -18,7 +18,7 @@
         app:layout_moreProgress="@layout/view_super_recycler_view_more_progress"
         app:mainLayoutId="@layout/layout_recyclerview_verticalscroll"
         app:recyclerClipToPadding="false"
-        app:recyclerPadding="16dp"
-        app:scrollbarStyle="insideInset" />
+        app:recyclerPadding="0dp"
+        app:scrollbarStyle="insideOverlay" />
 
 </LinearLayout>

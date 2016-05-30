@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="0dp"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardElevation="4dp"
+    card_view:contentPadding="0dp"
+    card_view:cardUseCompatPadding="true"
+    card_view:cardPreventCornerOverlap="true">
 
-    <TextView
-        android:id="@+id/textViewDashboardSubject"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textViewDashboardContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/textViewDashboardSubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:background="@color/colorDashboardPanelHeadingBackgroundDark"
+            android:textColor="@color/colorDashboardPanelHeadingTextDark" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textViewDashboardContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:background="@color/colorDashboardPanelBodyBackgroundDark"
+            android:textColor="@color/colorDashboardPanelBodyTextDark" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

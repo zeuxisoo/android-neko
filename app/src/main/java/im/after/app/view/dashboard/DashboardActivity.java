@@ -69,6 +69,10 @@ public class DashboardActivity extends BaseActivity {
         this.mSuperRecyclerViewBoards.setLayoutManager(linearLayoutManager);
         this.mSuperRecyclerViewBoards.setAdapter(this.mDashboardAdapter);
 
+        this.mSuperRecyclerViewBoards.setRefreshingColorResources(android.R.color.holo_orange_light, android.R.color.holo_blue_light, android.R.color.holo_green_light, android.R.color.holo_red_light);
+        this.mSuperRecyclerViewBoards.setRefreshListener(this.mDashboardPresenter::onRefresh);
+        this.mSuperRecyclerViewBoards.setupMoreListener(this.mDashboardPresenter::onMore, 1);
+
         this.mDashboardPresenter.loadDashboards(1);
     }
 

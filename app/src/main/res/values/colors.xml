@@ -22,6 +22,10 @@
 
     <!-- Activity background color -->
     <color name="colorDashboardBackgroundDark">#272c30</color>
+    <color name="colorDashboardPanelHeadingBackgroundDark">#364144</color>
+    <color name="colorDashboardPanelHeadingTextDark">#FFFFFF</color>
+    <color name="colorDashboardPanelBodyBackgroundDark">#485460</color>
+    <color name="colorDashboardPanelBodyTextDark">#88939c</color>
 
     <!-- Widget background color -->
     <color name="colorToolbarBackgroundDark">#353c42</color>

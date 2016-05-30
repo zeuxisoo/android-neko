@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/toolbarWidget"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:minHeight="?attr/actionBarSize"
-    android:background="?attr/widgetToolbarBackgroundDark"
-    android:title="@string/toolbar_dashboard_title"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    tools:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    tools:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
- </android.support.v7.widget.Toolbar>
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarWidget"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/widgetToolbarBackgroundDark"
+        android:title="@string/toolbar_dashboard_title"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        tools:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        tools:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
+     </android.support.v7.widget.Toolbar>
+
+</android.support.design.widget.AppBarLayout>
