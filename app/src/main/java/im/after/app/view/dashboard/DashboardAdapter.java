@@ -50,8 +50,10 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
 
     // Expose for lazy render
     public void bind(ArrayList<DashboardBean> dashboardBeanArrayList) {
-        this.dashboardBeanArrayList = dashboardBeanArrayList;
-        this.notifyDataSetChanged();
+        for(int i=0; i<dashboardBeanArrayList.size(); i++) {
+            this.dashboardBeanArrayList.add(dashboardBeanArrayList.get(i));
+            this.notifyItemChanged(i);
+        }
     }
 
     // View holder

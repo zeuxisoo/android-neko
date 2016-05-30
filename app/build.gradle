@@ -71,4 +71,7 @@ dependencies {
 
     // Super Recycler View
     compile 'com.malinskiy:superrecyclerview:1.1.4'
+
+    // Recycler View Animators
+    compile 'jp.wasabeef:recyclerview-animators:2.2.3'
 }

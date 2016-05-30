@@ -18,6 +18,7 @@ import im.after.app.R;
 import im.after.app.base.BaseActivity;
 import im.after.app.data.api.dashboard.bean.DashboardBean;
 import im.after.app.presenter.dashboard.DashboardPresenter;
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 public class DashboardActivity extends BaseActivity {
 
@@ -63,6 +64,8 @@ public class DashboardActivity extends BaseActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayout.VERTICAL);
 
+        this.mSuperRecyclerViewBoards.getRecyclerView().setHasFixedSize(false);
+        this.mSuperRecyclerViewBoards.getRecyclerView().setItemAnimator(new SlideInUpAnimator());
         this.mSuperRecyclerViewBoards.setLayoutManager(linearLayoutManager);
         this.mSuperRecyclerViewBoards.setAdapter(this.mDashboardAdapter);
 
