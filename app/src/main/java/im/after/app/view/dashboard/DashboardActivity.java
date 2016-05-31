@@ -1,6 +1,7 @@
 package im.after.app.view.dashboard;
 
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,8 +24,8 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 public class DashboardActivity extends BaseActivity {
 
-    @BindView(R.id.linearLayoutDashboards)
-    LinearLayout mLinearLayoutDashboards;
+    @BindView(R.id.coordinatorLayoutDashboards)
+    CoordinatorLayout mCoordinatorLayoutDashboards;
 
     @BindView(R.id.toolbarWidget)
     Toolbar mToolbar;
@@ -100,7 +101,7 @@ public class DashboardActivity extends BaseActivity {
     }
 
     public void showSnackbar(String message) {
-        super.showSnackbar(this.mLinearLayoutDashboards, message, Snackbar.LENGTH_LONG);
+        super.showSnackbar(this.mCoordinatorLayoutDashboards, message, Snackbar.LENGTH_LONG);
     }
 
     public void clearDashboardList() {
