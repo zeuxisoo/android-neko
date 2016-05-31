@@ -1,5 +1,6 @@
 package im.after.app.view.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import im.after.app.R;
 import im.after.app.base.BaseActivity;
 import im.after.app.data.api.dashboard.bean.DashboardItemBean;
@@ -98,6 +100,13 @@ public class DashboardActivity extends BaseActivity {
     @Override
     public boolean isApplyStatusBarTranslucency() {
         return false;
+    }
+
+    @OnClick(R.id.floatingActionButtonCreateBoard)
+    public void createBoard() {
+        Intent intent = new Intent(this, DashboardCreateActivity.class);
+
+        this.startActivity(intent);
     }
 
     public void showSnackbar(String message) {
