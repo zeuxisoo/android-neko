@@ -3,54 +3,33 @@ package im.after.app.data.api.dashboard.bean;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 public class DashboardBean {
 
-    @SerializedName("id")
+    @SerializedName("data")
     @Expose
-    private long id;
+    private ArrayList<DashboardItemBean> dashboardItems;
 
-    @SerializedName("subject")
+    @SerializedName("meta")
     @Expose
-    private String subject;
+    private PaginationBean meta;
 
-    @SerializedName("content")
-    @Expose
-    private String content;
 
-    @SerializedName("user")
-    @Expose
-    private UserBean user;
-
-    public long getId() {
-        return id;
+    public ArrayList<DashboardItemBean> getDashboardItems() {
+        return dashboardItems;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setDashboardItems(ArrayList<DashboardItemBean> dashboardItems) {
+        this.dashboardItems = dashboardItems;
     }
 
-    public String getSubject() {
-        return subject;
+    public PaginationBean getMeta() {
+        return meta;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public UserBean getUser() {
-        return user;
-    }
-
-    public void setUser(UserBean user) {
-        this.user = user;
+    public void setMeta(PaginationBean meta) {
+        this.meta = meta;
     }
 
 }

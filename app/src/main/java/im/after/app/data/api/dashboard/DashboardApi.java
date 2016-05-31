@@ -2,7 +2,7 @@ package im.after.app.data.api.dashboard;
 
 import im.after.app.base.BaseApi;
 import im.after.app.data.api.AuthorizationInterceptor;
-import im.after.app.data.api.dashboard.bean.DashboardsBean;
+import im.after.app.data.api.dashboard.bean.DashboardBean;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import rx.Observable;
@@ -30,7 +30,7 @@ public class DashboardApi extends BaseApi<DashboardService> {
         return retrofit.create(DashboardService.class);
     }
 
-    public Observable<DashboardsBean> all(int page) {
+    public Observable<DashboardBean> all(int page) {
         return this.getService().all(page);
     }
 

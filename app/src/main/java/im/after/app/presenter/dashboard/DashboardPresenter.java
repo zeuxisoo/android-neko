@@ -10,7 +10,7 @@ import im.after.app.base.BasePresenter;
 import im.after.app.base.BaseView;
 import im.after.app.contract.dashboard.DashboardContract;
 import im.after.app.data.api.ErrorBean;
-import im.after.app.data.api.dashboard.bean.DashboardsBean;
+import im.after.app.data.api.dashboard.bean.DashboardBean;
 import im.after.app.model.dashboard.DashboardModel;
 import im.after.app.view.dashboard.DashboardActivity;
 import retrofit2.adapter.rxjava.HttpException;
@@ -67,8 +67,8 @@ public class DashboardPresenter extends BasePresenter implements DashboardContra
     }
 
     // Subscribe handler for loadDashboards method
-    private void handleLoadDashboardsSuccess(DashboardsBean dashboardsBean) {
-        this.mDashboardActivity.renderDashboardList(dashboardsBean.getDashboardList());
+    private void handleLoadDashboardsSuccess(DashboardBean dashboardsBean) {
+        this.mDashboardActivity.renderDashboardList(dashboardsBean.getDashboardItems());
     }
 
     private void handleLoadDashboardsError(Throwable throwable) {
@@ -90,10 +90,10 @@ public class DashboardPresenter extends BasePresenter implements DashboardContra
     }
 
     // Subscribe handler for onRefresh method
-    private void handleOnRefreshSuccess(DashboardsBean dashboardsBean) {
+    private void handleOnRefreshSuccess(DashboardBean dashboardsBean) {
         this.mDashboardActivity.stopRefreshAnimation();
         this.mDashboardActivity.clearDashboardList();
-        this.mDashboardActivity.renderDashboardList(dashboardsBean.getDashboardList());
+        this.mDashboardActivity.renderDashboardList(dashboardsBean.getDashboardItems());
     }
 
     private void handleOnRefreshError(Throwable throwable) {
@@ -101,9 +101,9 @@ public class DashboardPresenter extends BasePresenter implements DashboardContra
     }
 
     // Subscribe handler for onMore method
-    private void handleOnMoreSuccess(DashboardsBean dashboardsBean) {
+    private void handleOnMoreSuccess(DashboardBean dashboardsBean) {
         this.mDashboardActivity.stopMoreAnimation();
-        this.mDashboardActivity.renderMoreDashboardList(dashboardsBean.getDashboardList());
+        this.mDashboardActivity.renderMoreDashboardList(dashboardsBean.getDashboardItems());
     }
 
     private void handleOnMoreError(Throwable throwable) {

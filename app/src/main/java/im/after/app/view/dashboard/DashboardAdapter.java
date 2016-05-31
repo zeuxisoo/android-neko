@@ -13,11 +13,11 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import im.after.app.R;
-import im.after.app.data.api.dashboard.bean.DashboardBean;
+import im.after.app.data.api.dashboard.bean.DashboardItemBean;
 
 public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.ViewHolder> {
 
-    private ArrayList<DashboardBean> dashboardBeanArrayList;
+    private ArrayList<DashboardItemBean> dashboardBeanArrayList;
 
     @Inject
     public DashboardAdapter() {
@@ -33,7 +33,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        DashboardBean dashboardBean = this.dashboardBeanArrayList.get(position);
+        DashboardItemBean dashboardBean = this.dashboardBeanArrayList.get(position);
 
         // Handle default value
         String subject = dashboardBean.getSubject() == null ? "N/A" : dashboardBean.getSubject();
@@ -49,7 +49,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
     }
 
     // Expose for lazy render
-    public void bind(ArrayList<DashboardBean> dashboardBeanArrayList) {
+    public void bind(ArrayList<DashboardItemBean> dashboardBeanArrayList) {
         for(int i=0; i<dashboardBeanArrayList.size(); i++) {
             this.dashboardBeanArrayList.add(dashboardBeanArrayList.get(i));
             this.notifyItemInserted(i);
@@ -61,7 +61,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
         this.dashboardBeanArrayList.clear();
     }
 
-    public void append(ArrayList<DashboardBean> dashboardBeanArrayList) {
+    public void append(ArrayList<DashboardItemBean> dashboardBeanArrayList) {
         int currentListSize = this.dashboardBeanArrayList.size();
 
         for(int i=0; i<dashboardBeanArrayList.size(); i++) {

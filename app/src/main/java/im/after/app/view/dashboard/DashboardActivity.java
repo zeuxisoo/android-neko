@@ -17,7 +17,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import im.after.app.R;
 import im.after.app.base.BaseActivity;
-import im.after.app.data.api.dashboard.bean.DashboardBean;
+import im.after.app.data.api.dashboard.bean.DashboardItemBean;
 import im.after.app.presenter.dashboard.DashboardPresenter;
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
@@ -107,11 +107,11 @@ public class DashboardActivity extends BaseActivity {
         this.mDashboardAdapter.clear();
     }
 
-    public void renderDashboardList(ArrayList<DashboardBean> dashboardBeanArrayList) {
+    public void renderDashboardList(ArrayList<DashboardItemBean> dashboardBeanArrayList) {
         this.mDashboardAdapter.bind(dashboardBeanArrayList);
     }
 
-    public void renderMoreDashboardList(ArrayList<DashboardBean> dashboardBeanArrayList) {
+    public void renderMoreDashboardList(ArrayList<DashboardItemBean> dashboardBeanArrayList) {
         this.mDashboardAdapter.append(dashboardBeanArrayList);
     }
 
