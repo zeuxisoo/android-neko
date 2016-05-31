@@ -1,12 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/coordinatorLayoutDashboards"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:background="?attr/activityDashboardBackgroundDark">
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="8dp"
+    android:background="@android:color/transparent">
 
-    <include layout="@layout/include_widget_toolbar" />
+    <!-- header -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/dashboard_create_top_bar">
 
-</android.support.design.widget.CoordinatorLayout>
+        <ImageView
+            android:id="@+id/imageViewComposeUserAvatar"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:cropToPadding="true"
+            android:background="@drawable/ic_avatar_white"
+            android:scaleType="fitCenter" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_toEndOf="@id/imageViewComposeUserAvatar">
+
+            <TextView
+                android:id="@+id/textViewDashboardCreateUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="start|center"
+                android:minWidth="60dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textColor="@color/colorDashboardCreateUsernameTextDark"
+                android:background="@null"
+                android:text="@string/text_view_dashboard_create_username" />
+
+            <TextView
+                android:id="@+id/textViewDashboardCreateLongerText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:paddingBottom="4dp"
+                android:visibility="gone"
+                android:textSize="12sp"
+                android:textColor="#FFFFFF"
+                android:background="@null"
+                android:text="longerText" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/imageButtonComposeTalk"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_dashboard_white"
+            android:background="@drawable/dashboard_create_image_button"
+            android:scaleType="fitCenter" />
+
+    </RelativeLayout>
+
+    <!-- input -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextDashboardCreateSubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:inputType="textCapSentences|textAutoCorrect|textMultiLine"
+            android:textCursorDrawable="@null"
+            android:hint="@string/edit_text_hint_subject"
+            android:textColorHint="@color/colorDashboardCreateInputTextHintDark"
+            android:textColor="@color/colorDashboardCreateInputTextDark"
+            android:background="@drawable/dashboard_create_edit_text_dotted" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbarStyle="outsideOverlay"
+            android:id="@+id/scrollViewTextContainer">
+
+            <EditText
+                android:id="@+id/editTextDashboardCreateContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:padding="16dp"
+                android:inputType="textCapSentences|textAutoCorrect|textMultiLine"
+                android:textCursorDrawable="@null"
+                android:hint="@string/edit_text_hint_content"
+                android:textColorHint="@color/colorDashboardCreateInputTextHintDark"
+                android:textColor="@color/colorDashboardCreateInputTextDark"
+                android:background="@color/colorDashboardCreateInputTextBackgroundDark" />
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <!-- footer -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:background="@drawable/dashboard_create_bottom_bar">
+
+        <ImageButton
+            android:id="@+id/imageButtonDashboardCreateCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_cancel_white"
+            android:background="@drawable/dashboard_create_image_button"
+            android:scaleType="fitCenter" />
+
+        <ImageButton
+            android:id="@+id/imageButtonDashboardCreateClear"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_clear_white"
+            android:background="@drawable/dashboard_create_image_button"
+            android:scaleType="fitCenter" />
+
+        <ImageButton
+            android:id="@+id/imageButtonDashboardCreateCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_copy_white"
+            android:background="@drawable/dashboard_create_image_button"
+            android:scaleType="fitCenter" />
+
+        <ImageButton
+            android:id="@+id/imageButtonDashboardCreateSend"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/dashboard_create_image_button"
+            android:src="@drawable/ic_send_white"
+            android:scaleType="fitCenter" />
+
+    </LinearLayout>
+
+</LinearLayout>

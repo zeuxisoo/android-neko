@@ -29,7 +29,10 @@
             android:name=".view.dashboard.DashboardActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark"></activity>
-        <activity android:name=".view.dashboard.DashboardCreateActivity"></activity>
+        <activity
+            android:name=".view.dashboard.DashboardCreateActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeDark.DashboardCreateActivity"></activity>
     </application>
 
 </manifest>

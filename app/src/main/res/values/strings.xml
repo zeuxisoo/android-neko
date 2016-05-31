@@ -13,4 +13,9 @@
 
     <string name="view_super_recycler_view_empty">No any dashboards :(</string>
     <string name="text_view_dashboard_subject_default">N/A</string>
+
+    <string name="edit_text_hint_subject">Subject</string>
+    <string name="edit_text_hint_content">Content</string>
+    <string name="button_text_create">Create</string>
+    <string name="text_view_dashboard_create_username">Hello</string>
 </resources>

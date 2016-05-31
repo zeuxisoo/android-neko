@@ -20,8 +20,17 @@
     <!-- Activity background color :: global -->
     <color name="colorWindowBackgroundDark">#272c30</color>
 
-    <!-- Activity background color -->
+    <!-- Activity Dashboard -->
     <color name="colorDashboardBackgroundDark">#272c30</color>
+
+    <!-- Activity Dashboard Create -->
+    <color name="colorDashboardCreateTopBarBackgroundDark">#FF27394E</color>
+    <color name="colorDashboardCreateBottomBarBackgroundDark">#FF27394E</color>
+    <color name="colorDashboardCreateImageButtonPressedStateBackgroundDark">#55AAAAAA</color>
+    <color name="colorDashboardCreateUsernameTextDark">#FFAAAAAA</color>
+    <color name="colorDashboardCreateInputTextHintDark">#DD555555</color>
+    <color name="colorDashboardCreateInputTextDark">#FF455262</color>
+    <color name="colorDashboardCreateInputTextBackgroundDark">#FFCCCCCC</color>
 
     <!-- Panel style -->
     <color name="colorPanelHeadingBackgroundDark">#364144</color>
