@@ -1,5 +1,7 @@
 package im.after.app.view.dashboard;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.EditText;
@@ -15,9 +17,12 @@ import butterknife.OnClick;
 import im.after.app.R;
 import im.after.app.base.BaseActivity;
 import im.after.app.helper.MaterialDialogHelper;
+import im.after.app.helper.ToastHelper;
 import im.after.app.presenter.dashboard.DashboardCreatePresenter;
 
 public class DashboardCreateActivity extends BaseActivity {
+
+    private final static String TAG = DashboardCreateActivity.class.getSimpleName();
 
     @BindView(R.id.editTextDashboardCreateSubject)
     EditText mEditTextDashboardCreateSubject;
@@ -30,6 +35,9 @@ public class DashboardCreateActivity extends BaseActivity {
 
     @Inject
     MaterialDialogHelper mMaterialDialogHelper;
+
+    @Inject
+    ToastHelper mToastHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -118,7 +126,12 @@ public class DashboardCreateActivity extends BaseActivity {
 
     @OnClick(R.id.imageButtonDashboardCreateCopy)
     public void onCopy() {
-        Logger.d("Copy");
+        ClipData clipData = ClipData.newPlainText(TAG, this.mEditTextDashboardCreateContent.getText());
+
+        ClipboardManager clipboardManager = (ClipboardManager) this.getSystemService(CLIPBOARD_SERVICE);
+        clipboardManager.setPrimaryClip(clipData);
+
+        this.mToastHelper.showShortly(this, this.getString(R.string.toast_dashboard_create_copy_success));
     }
 
     @OnClick(R.id.imageButtonDashboardCreateSend)
