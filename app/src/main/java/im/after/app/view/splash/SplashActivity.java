@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import im.after.app.R;
 import im.after.app.base.BaseActivity;
 import im.after.app.presenter.splash.SplashPresenter;
+import im.after.app.service.network.NetworkStateService;
 import im.after.app.view.login.LoginActivity;
 
 public class SplashActivity extends BaseActivity {
@@ -43,6 +44,11 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void initViewAndListener() {
+        // Service
+        Intent intent = new Intent(this, NetworkStateService.class);
+        this.startService(intent);
+
+        // Animation
         this.mSplashPresenter.beginAnimation(this.mView);
     }
 

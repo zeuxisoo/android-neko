@@ -3,6 +3,7 @@
     package="im.after.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".MyApplication"
@@ -11,28 +12,37 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppThemeDark">
+
+        <service android:enabled="true" android:name=".service.network.NetworkStateService" />
+
         <activity
             android:name=".view.splash.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".view.login.LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeDark"></activity>
+            android:theme="@style/AppThemeDark">
+        </activity>
         <activity
             android:name=".view.dashboard.DashboardActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeDark"></activity>
+            android:theme="@style/AppThemeDark">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".view.dashboard.DashboardCreateActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeDark.DashboardCreateActivity"></activity>
+            android:theme="@style/AppThemeDark.DashboardCreateActivity">
+        </activity>
+
     </application>
 
 </manifest>

@@ -33,4 +33,6 @@
     <string name="toast_dashboard_create_copy_success">Content was Copied</string>
     <string name="toast_dashboard_create_send_success">Sent was success</string>
     <string name="toast_dashboard_create_send_response_fail">Can not got correct response from server after sent</string>
+
+    <string name="toast_service_network_state_not_connected">No network connected</string>
 </resources>

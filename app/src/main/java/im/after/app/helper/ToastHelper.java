@@ -9,4 +9,16 @@ public class ToastHelper {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
+    public void showShortly(Context context, int message) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void showLongly(Context context, String message) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+    }
+
+    public void showLongly(Context context, int message) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+    }
+
 }
