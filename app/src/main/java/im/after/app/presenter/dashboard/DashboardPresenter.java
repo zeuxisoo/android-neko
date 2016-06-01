@@ -10,7 +10,7 @@ import im.after.app.base.BasePresenter;
 import im.after.app.base.BaseView;
 import im.after.app.contract.dashboard.DashboardContract;
 import im.after.app.data.api.ErrorBean;
-import im.after.app.data.api.dashboard.bean.DashboardBean;
+import im.after.app.data.api.dashboard.bean.all.DashboardAllBean;
 import im.after.app.model.dashboard.DashboardModel;
 import im.after.app.view.dashboard.DashboardActivity;
 import retrofit2.adapter.rxjava.HttpException;
@@ -67,7 +67,7 @@ public class DashboardPresenter extends BasePresenter implements DashboardContra
     }
 
     // Subscribe handler for loadDashboards method
-    private void handleLoadDashboardsSuccess(DashboardBean dashboardsBean) {
+    private void handleLoadDashboardsSuccess(DashboardAllBean dashboardsBean) {
         this.mDashboardActivity.renderDashboardList(dashboardsBean.getDashboardItems());
     }
 
@@ -90,7 +90,7 @@ public class DashboardPresenter extends BasePresenter implements DashboardContra
     }
 
     // Subscribe handler for onRefresh method
-    private void handleOnRefreshSuccess(DashboardBean dashboardsBean) {
+    private void handleOnRefreshSuccess(DashboardAllBean dashboardsBean) {
         this.mDashboardActivity.stopRefreshAnimation();
         this.mDashboardActivity.clearDashboardList();
         this.mDashboardActivity.renderDashboardList(dashboardsBean.getDashboardItems());
@@ -101,7 +101,7 @@ public class DashboardPresenter extends BasePresenter implements DashboardContra
     }
 
     // Subscribe handler for onMore method
-    private void handleOnMoreSuccess(DashboardBean dashboardsBean) {
+    private void handleOnMoreSuccess(DashboardAllBean dashboardsBean) {
         this.mDashboardActivity.stopMoreAnimation();
         this.mDashboardActivity.renderMoreDashboardList(dashboardsBean.getDashboardItems());
     }

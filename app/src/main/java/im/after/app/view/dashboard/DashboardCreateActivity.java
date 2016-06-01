@@ -141,6 +141,10 @@ public class DashboardCreateActivity extends BaseActivity {
         this.mToastHelper.showShortly(this, this.getString(messageResource));
     }
 
+    public void showShortlyToast(String message) {
+        this.mToastHelper.showShortly(this, message);
+    }
+
     public void close() {
         this.finish();
     }

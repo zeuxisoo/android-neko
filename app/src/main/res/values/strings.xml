@@ -31,4 +31,6 @@
     <string name="dialog_alert_dashboard_create_empty_content">Please enter content first !</string>
 
     <string name="toast_dashboard_create_copy_success">Content was Copied</string>
+    <string name="toast_dashboard_create_send_success">Sent was success</string>
+    <string name="toast_dashboard_create_send_response_fail">Can not got correct response from server after sent</string>
 </resources>

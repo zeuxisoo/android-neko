@@ -1,11 +1,13 @@
-package im.after.app.data.api.dashboard.bean;
+package im.after.app.data.api.dashboard.bean.all;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class DashboardBean {
+import im.after.app.data.api.dashboard.bean.DashboardItemBean;
+
+public class DashboardAllBean {
 
     @SerializedName("data")
     @Expose
@@ -14,7 +16,6 @@ public class DashboardBean {
     @SerializedName("meta")
     @Expose
     private PaginationBean meta;
-
 
     public ArrayList<DashboardItemBean> getDashboardItems() {
         return dashboardItems;

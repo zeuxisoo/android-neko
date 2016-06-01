@@ -6,6 +6,7 @@ import dagger.Module;
 import dagger.Provides;
 import im.after.app.data.api.auth.AuthApi;
 import im.after.app.data.api.dashboard.DashboardApi;
+import im.after.app.model.dashboard.DashboardCreateModel;
 import im.after.app.model.dashboard.DashboardModel;
 import im.after.app.model.login.LoginModel;
 
@@ -22,6 +23,12 @@ public class ModelModule {
     @Singleton
     public DashboardModel provideDashboardModel(DashboardApi dashboardApi) {
         return new DashboardModel(dashboardApi);
+    }
+
+    @Provides
+    @Singleton
+    public DashboardCreateModel provideDashboardCreateModel(DashboardApi dashboardApi) {
+        return new DashboardCreateModel(dashboardApi);
     }
 
 }

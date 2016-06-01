@@ -5,7 +5,9 @@ import android.content.ClipboardManager;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.orhanobut.logger.Logger;
+import com.google.gson.Gson;
+
+import java.io.IOException;
 
 import javax.inject.Inject;
 
@@ -13,14 +15,26 @@ import im.after.app.R;
 import im.after.app.base.BasePresenter;
 import im.after.app.base.BaseView;
 import im.after.app.contract.dashboard.DashboardCreateContract;
+import im.after.app.data.api.ErrorBean;
+import im.after.app.data.api.dashboard.bean.DashboardItemBean;
+import im.after.app.data.api.dashboard.bean.UserBean;
+import im.after.app.data.api.dashboard.bean.create.DashboardCreateBean;
+import im.after.app.model.dashboard.DashboardCreateModel;
 import im.after.app.view.dashboard.DashboardCreateActivity;
+import retrofit2.adapter.rxjava.HttpException;
 
 public class DashboardCreatePresenter extends BasePresenter implements DashboardCreateContract {
 
     private DashboardCreateActivity mDashboardCreateActivity;
 
+    private DashboardCreateModel mDashboardCreateModel;
+
+    private Gson mGson;
+
     @Inject
-    public DashboardCreatePresenter() {
+    public DashboardCreatePresenter(DashboardCreateModel dashboardCreateModel, Gson gson) {
+        this.mDashboardCreateModel = dashboardCreateModel;
+        this.mGson                 = gson;
     }
 
     // Implementation for BasePresenter
@@ -94,7 +108,39 @@ public class DashboardCreatePresenter extends BasePresenter implements Dashboard
                 (MaterialDialog dialog, DialogAction which) -> dialog.dismiss()
             );
         }else{
-            Logger.d("%s => %s", subject, content);
+            this.mDashboardCreateModel.createDashboard("text", subject, content, this::handleDoSendSuccess, this::handleDoSendError);
+        }
+    }
+
+    // Subscribe handler for onRefresh method
+    private void handleDoSendSuccess(DashboardCreateBean dashboardCreateBean) {
+        DashboardItemBean dashboardItemBean = dashboardCreateBean.getDashboardItem();
+        UserBean userBean = dashboardItemBean.getUser();
+
+        if (!userBean.getName().isEmpty() && !dashboardItemBean.getContent().isEmpty()) {
+            this.mDashboardCreateActivity.showShortlyToast(R.string.toast_dashboard_create_send_success);
+        }else{
+            this.mDashboardCreateActivity.showShortlyToast(R.string.toast_dashboard_create_send_response_fail);
+        }
+
+        this.mDashboardCreateActivity.close();
+    }
+
+    private void handleDoSendError(Throwable throwable) {
+        if (throwable instanceof HttpException) {
+            HttpException httpException = (HttpException) throwable;
+
+            try {
+                ErrorBean errorBean = this.mGson.fromJson(httpException.response().errorBody().string(), ErrorBean.class);
+
+                this.mDashboardCreateActivity.showShortlyToast(
+                    String.format("%s - %s", errorBean.getStatusCode(), errorBean.getMessage())
+                );
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else{
+            throwable.printStackTrace();
         }
     }
 

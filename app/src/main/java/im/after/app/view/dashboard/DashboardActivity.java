@@ -11,6 +11,7 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.LinearLayout;
 
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 
@@ -44,6 +45,13 @@ public class DashboardActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Logger.d("Hello");
     }
 
     @Override

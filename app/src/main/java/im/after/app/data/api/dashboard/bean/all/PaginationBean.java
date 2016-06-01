@@ -1,4 +1,4 @@
-package im.after.app.data.api.dashboard.bean;
+package im.after.app.data.api.dashboard.bean.all;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

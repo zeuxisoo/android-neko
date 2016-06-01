@@ -14,6 +14,7 @@ import im.after.app.di.module.ApplicationModule;
 import im.after.app.di.module.HelperModule;
 import im.after.app.helper.MaterialDialogHelper;
 import im.after.app.helper.ToastHelper;
+import im.after.app.model.dashboard.DashboardCreateModel;
 import im.after.app.model.dashboard.DashboardModel;
 import im.after.app.model.login.LoginModel;
 import okhttp3.OkHttpClient;
@@ -38,6 +39,8 @@ public interface ApplicationComponent {
     LoginModel getLoginModel();
 
     DashboardModel getDashboardModel();
+
+    DashboardCreateModel getDashboardCreateModel();
 
     // HelperModule
     MaterialDialogHelper getMaterialDialogHelper();
