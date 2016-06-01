@@ -2,20 +2,34 @@ package im.after.app.view.dashboard;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.EditText;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.orhanobut.logger.Logger;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 import im.after.app.R;
 import im.after.app.base.BaseActivity;
+import im.after.app.helper.MaterialDialogHelper;
 import im.after.app.presenter.dashboard.DashboardCreatePresenter;
 
 public class DashboardCreateActivity extends BaseActivity {
 
+    @BindView(R.id.editTextDashboardCreateSubject)
+    EditText mEditTextDashboardCreateSubject;
+
+    @BindView(R.id.editTextDashboardCreateContent)
+    EditText mEditTextDashboardCreateContent;
+
     @Inject
     DashboardCreatePresenter mDashboardCreatePresenter;
+
+    @Inject
+    MaterialDialogHelper mMaterialDialogHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,7 +75,25 @@ public class DashboardCreateActivity extends BaseActivity {
 
     @OnClick(R.id.imageButtonDashboardCreateCancel)
     public void onCancel() {
-        Logger.d("Cancel");
+        if (this.mEditTextDashboardCreateContent.length() > 0) {
+            this.mMaterialDialogHelper.confirm(
+                this,
+                this.getString(R.string.dialog_confirm_shared_cancel_title),
+                this.getString(R.string.dialog_confirm_dashboard_create_cancel_content),
+                this.getString(R.string.dialog_confirm_shared_cancel_yes),
+                this.getString(R.string.dialog_confirm_shared_cancel_no),
+                (MaterialDialog dialog, DialogAction which) -> {
+                    dialog.dismiss();
+
+                    this.close();
+                },
+                (MaterialDialog dialog, DialogAction which) -> {
+                    dialog.dismiss();
+                }
+            );
+        }else{
+            this.close();
+        }
     }
 
     @OnClick(R.id.imageButtonDashboardCreateClear)
@@ -77,6 +109,10 @@ public class DashboardCreateActivity extends BaseActivity {
     @OnClick(R.id.imageButtonDashboardCreateSend)
     public void onSend() {
         Logger.d("Send");
+    }
+
+    private void close() {
+        this.finish();
     }
 
 }

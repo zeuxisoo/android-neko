@@ -18,4 +18,10 @@
     <string name="edit_text_hint_content">Content</string>
     <string name="button_text_create">Create</string>
     <string name="text_view_dashboard_create_username">Hello</string>
+
+    <string name="dialog_confirm_shared_cancel_title">Confirm</string>
+    <string name="dialog_confirm_shared_cancel_yes">Yes</string>
+    <string name="dialog_confirm_shared_cancel_no">No</string>
+
+    <string name="dialog_confirm_dashboard_create_cancel_content">Are you sure cancel this draft ?</string>
 </resources>

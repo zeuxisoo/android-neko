@@ -17,6 +17,10 @@
 
     <style name="AppThemeDark" parent="BaseAppThemeDark">
         <item name="themeColor">@color/colorThemeDark</item>
+
+        <item name="md_positive_color">#71d6b7</item>
+        <item name="md_negative_color">#c66060</item>
+        <item name="md_neutral_color">#d6aa6e</item>
     </style>
 
     <!-- -->
