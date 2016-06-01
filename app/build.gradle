@@ -60,9 +60,9 @@ dependencies {
     compile 'io.reactivex:rxjava:1.1.5'
 
     // DBFlow
-    apt "com.github.Raizlabs.DBFlow:dbflow-processor:3.0.0-beta6"
-    compile "com.github.Raizlabs.DBFlow:dbflow-core:3.0.0-beta6"
-    compile "com.github.Raizlabs.DBFlow:dbflow:3.0.0-beta6"
+    apt "com.github.Raizlabs.DBFlow:dbflow-processor:3.0.1"
+    compile "com.github.Raizlabs.DBFlow:dbflow-core:3.0.1"
+    compile "com.github.Raizlabs.DBFlow:dbflow:3.0.1"
 
     // Logger
     compile "com.github.orhanobut:logger:1.12"
