@@ -87,9 +87,7 @@ public class DashboardCreateActivity extends BaseActivity {
 
                     this.close();
                 },
-                (MaterialDialog dialog, DialogAction which) -> {
-                    dialog.dismiss();
-                }
+                (MaterialDialog dialog, DialogAction which) -> dialog.dismiss()
             );
         }else{
             this.close();
@@ -98,7 +96,24 @@ public class DashboardCreateActivity extends BaseActivity {
 
     @OnClick(R.id.imageButtonDashboardCreateClear)
     public void onClear() {
-        Logger.d("Clear");
+        if (this.mEditTextDashboardCreateContent.length() > 0) {
+            this.mMaterialDialogHelper.confirm(
+                this,
+                this.getString(R.string.dialog_confirm_shared_cancel_title),
+                this.getString(R.string.dialog_confirm_dashboard_create_clear_content),
+                this.getString(R.string.dialog_confirm_shared_cancel_yes),
+                this.getString(R.string.dialog_confirm_shared_cancel_no),
+                (MaterialDialog dialog, DialogAction which) -> {
+                    dialog.dismiss();
+
+                    this.mEditTextDashboardCreateSubject.setText("");
+                    this.mEditTextDashboardCreateContent.setText("");
+                },
+                (MaterialDialog dialog, DialogAction which) -> dialog.dismiss()
+            );
+        }else{
+            this.close();
+        }
     }
 
     @OnClick(R.id.imageButtonDashboardCreateCopy)

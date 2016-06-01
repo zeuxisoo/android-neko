@@ -24,4 +24,5 @@
     <string name="dialog_confirm_shared_cancel_no">No</string>
 
     <string name="dialog_confirm_dashboard_create_cancel_content">Are you sure cancel this draft ?</string>
+    <string name="dialog_confirm_dashboard_create_clear_content">Are you sure clear this draft ?</string>
 </resources>
