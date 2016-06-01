@@ -3,8 +3,11 @@ package im.after.app.view.dashboard;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.orhanobut.logger.Logger;
+
 import javax.inject.Inject;
 
+import butterknife.OnClick;
 import im.after.app.R;
 import im.after.app.base.BaseActivity;
 import im.after.app.presenter.dashboard.DashboardCreatePresenter;
@@ -54,6 +57,26 @@ public class DashboardCreateActivity extends BaseActivity {
     @Override
     public boolean isApplyStatusBarTranslucency() {
         return false;
+    }
+
+    @OnClick(R.id.imageButtonDashboardCreateCancel)
+    public void onCancel() {
+        Logger.d("Cancel");
+    }
+
+    @OnClick(R.id.imageButtonDashboardCreateClear)
+    public void onClear() {
+        Logger.d("Clear");
+    }
+
+    @OnClick(R.id.imageButtonDashboardCreateCopy)
+    public void onCopy() {
+        Logger.d("Copy");
+    }
+
+    @OnClick(R.id.imageButtonDashboardCreateSend)
+    public void onSend() {
+        Logger.d("Send");
     }
 
 }
