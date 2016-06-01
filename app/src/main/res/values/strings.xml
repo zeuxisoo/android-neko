@@ -22,9 +22,13 @@
     <string name="dialog_confirm_shared_cancel_title">Confirm</string>
     <string name="dialog_confirm_shared_cancel_yes">Yes</string>
     <string name="dialog_confirm_shared_cancel_no">No</string>
+    <string name="dialog_alert_shared_title">Oops</string>
+    <string name="dialog_alert_shared_ok">Ok</string>
 
     <string name="dialog_confirm_dashboard_create_cancel_content">Are you sure cancel this draft ?</string>
     <string name="dialog_confirm_dashboard_create_clear_content">Are you sure clear this draft ?</string>
+
+    <string name="dialog_alert_dashboard_create_empty_content">Please enter content first !</string>
 
     <string name="toast_dashboard_create_copy_success">Content was Copied</string>
 </resources>

@@ -5,6 +5,7 @@ import android.content.ClipboardManager;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.orhanobut.logger.Logger;
 
 import javax.inject.Inject;
 
@@ -81,6 +82,20 @@ public class DashboardCreatePresenter extends BasePresenter implements Dashboard
         clipboardManager.setPrimaryClip(clipData);
 
         this.mDashboardCreateActivity.showShortlyToast(R.string.toast_dashboard_create_copy_success);
+    }
+
+    @Override
+    public void doSend(String subject, String content) {
+        if (content.isEmpty()) {
+            this.mDashboardCreateActivity.showAlertDialog(
+                R.string.dialog_alert_shared_title,
+                R.string.dialog_alert_dashboard_create_empty_content,
+                R.string.dialog_alert_shared_ok,
+                (MaterialDialog dialog, DialogAction which) -> dialog.dismiss()
+            );
+        }else{
+            Logger.d("%s => %s", subject, content);
+        }
     }
 
 }

@@ -17,4 +17,13 @@ public class MaterialDialogHelper {
                 .show();
     }
 
+    public void alert(Context context, String title, String content, String okText, MaterialDialog.SingleButtonCallback okCallback) {
+        new MaterialDialog.Builder(context)
+                .title(title)
+                .content(content)
+                .positiveText(okText)
+                .onPositive(okCallback)
+                .show();
+    }
+
 }

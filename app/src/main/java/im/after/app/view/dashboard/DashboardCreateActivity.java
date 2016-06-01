@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.widget.EditText;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.orhanobut.logger.Logger;
 
 import javax.inject.Inject;
 
@@ -96,7 +95,11 @@ public class DashboardCreateActivity extends BaseActivity {
 
     @OnClick(R.id.imageButtonDashboardCreateSend)
     public void onSend() {
-        Logger.d("Send");
+        this.mDashboardCreatePresenter.doSend(this.getSubject(), this.getContent());
+    }
+
+    public String getSubject() {
+        return this.mEditTextDashboardCreateSubject.getText().toString().trim();
     }
 
     public String getContent() {
@@ -112,6 +115,16 @@ public class DashboardCreateActivity extends BaseActivity {
             this.getString(noResource),
             yesCallback,
             noCallback
+        );
+    }
+
+    public void showAlertDialog(int titleResource, int contentResource, int okResource, MaterialDialog.SingleButtonCallback okCallback) {
+        this.mMaterialDialogHelper.alert(
+            this,
+            this.getString(titleResource),
+            this.getString(contentResource),
+            this.getString(okResource),
+            okCallback
         );
     }
 

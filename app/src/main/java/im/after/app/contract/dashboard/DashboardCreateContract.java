@@ -8,4 +8,6 @@ public interface DashboardCreateContract {
 
     void doCopy(String tag, String content);
 
+    void doSend(String subject, String content);
+
 }
