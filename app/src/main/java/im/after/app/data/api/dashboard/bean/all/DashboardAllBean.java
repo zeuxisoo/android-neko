@@ -5,9 +5,10 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
+import im.after.app.base.BaseBean;
 import im.after.app.data.api.dashboard.bean.DashboardItemBean;
 
-public class DashboardAllBean {
+public class DashboardAllBean extends BaseBean {
 
     @SerializedName("data")
     @Expose

@@ -70,6 +70,11 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
         }
     }
 
+    public void prepend(DashboardItemBean dashboardItemBean) {
+        this.dashboardBeanArrayList.add(0, dashboardItemBean);
+        this.notifyItemInserted(0);
+    }
+
     // View holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.textViewDashboardSubject)

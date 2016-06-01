@@ -1,6 +1,7 @@
 package im.after.app.view.dashboard;
 
 import android.content.ClipboardManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.EditText;
@@ -13,6 +14,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import im.after.app.R;
 import im.after.app.base.BaseActivity;
+import im.after.app.data.api.dashboard.bean.DashboardItemBean;
 import im.after.app.helper.MaterialDialogHelper;
 import im.after.app.helper.ToastHelper;
 import im.after.app.presenter.dashboard.DashboardCreatePresenter;
@@ -20,6 +22,9 @@ import im.after.app.presenter.dashboard.DashboardCreatePresenter;
 public class DashboardCreateActivity extends BaseActivity {
 
     private final static String TAG = DashboardCreateActivity.class.getSimpleName();
+
+    public final static int RESULT_OK = 1;
+    public final static String EXTRA_DATA_DASHBOARD_ITEM = "dashboardItem";
 
     @BindView(R.id.editTextDashboardCreateSubject)
     EditText mEditTextDashboardCreateSubject;
@@ -143,6 +148,13 @@ public class DashboardCreateActivity extends BaseActivity {
 
     public void showShortlyToast(String message) {
         this.mToastHelper.showShortly(this, message);
+    }
+
+    public void backToDashboardActivity(DashboardItemBean dashboardItemBean) {
+        Intent intent = new Intent(this, DashboardActivity.class);
+        intent.putExtra(EXTRA_DATA_DASHBOARD_ITEM, dashboardItemBean);
+
+        this.setResult(RESULT_OK, intent);
     }
 
     public void close() {

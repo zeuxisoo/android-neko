@@ -3,7 +3,9 @@ package im.after.app.data.api.dashboard.bean.all;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PaginationBean {
+import im.after.app.base.BaseBean;
+
+public class PaginationBean extends BaseBean {
 
     @SerializedName("count")
     @Expose

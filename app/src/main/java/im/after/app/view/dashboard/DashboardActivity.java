@@ -11,7 +11,6 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.LinearLayout;
 
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
-import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 
@@ -26,6 +25,8 @@ import im.after.app.presenter.dashboard.DashboardPresenter;
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 public class DashboardActivity extends BaseActivity {
+
+    private static final int REQUEST_CODE_CREATE = 1;
 
     @BindView(R.id.coordinatorLayoutDashboards)
     CoordinatorLayout mCoordinatorLayoutDashboards;
@@ -48,10 +49,20 @@ public class DashboardActivity extends BaseActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        Logger.d("Hello");
+        if (requestCode == DashboardCreateActivity.RESULT_OK) {
+            switch(resultCode) {
+                case REQUEST_CODE_CREATE:
+                    DashboardItemBean dashboardItemBean = (DashboardItemBean) data.getExtras().getSerializable(DashboardCreateActivity.EXTRA_DATA_DASHBOARD_ITEM);
+
+                    if (dashboardItemBean != null) {
+                        this.mDashboardPresenter.appendDashboardItemBean(dashboardItemBean);
+                    }
+                    break;
+            }
+        }
     }
 
     @Override
@@ -114,7 +125,7 @@ public class DashboardActivity extends BaseActivity {
     public void createBoard() {
         Intent intent = new Intent(this, DashboardCreateActivity.class);
 
-        this.startActivity(intent);
+        this.startActivityForResult(intent, REQUEST_CODE_CREATE);
     }
 
     public void showSnackbar(String message) {
@@ -139,6 +150,11 @@ public class DashboardActivity extends BaseActivity {
 
     public void stopMoreAnimation() {
         this.mSuperRecyclerViewBoards.hideMoreProgress();
+    }
+
+    public void appendDashboardItem(DashboardItemBean dashboardItemBean) {
+        this.mDashboardAdapter.prepend(dashboardItemBean);
+        this.mSuperRecyclerViewBoards.getRecyclerView().scrollToPosition(0);
     }
 
 }

@@ -3,7 +3,9 @@ package im.after.app.data.api;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ErrorBean {
+import im.after.app.base.BaseBean;
+
+public class ErrorBean extends BaseBean {
 
     @SerializedName("message")
     @Expose

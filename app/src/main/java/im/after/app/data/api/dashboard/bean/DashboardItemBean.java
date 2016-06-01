@@ -3,7 +3,9 @@ package im.after.app.data.api.dashboard.bean;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DashboardItemBean {
+import im.after.app.base.BaseBean;
+
+public class DashboardItemBean extends BaseBean {
 
     @SerializedName("id")
     @Expose

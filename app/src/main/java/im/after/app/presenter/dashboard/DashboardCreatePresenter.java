@@ -118,6 +118,7 @@ public class DashboardCreatePresenter extends BasePresenter implements Dashboard
         UserBean userBean = dashboardItemBean.getUser();
 
         if (!userBean.getName().isEmpty() && !dashboardItemBean.getContent().isEmpty()) {
+            this.mDashboardCreateActivity.backToDashboardActivity(dashboardItemBean);
             this.mDashboardCreateActivity.showShortlyToast(R.string.toast_dashboard_create_send_success);
         }else{
             this.mDashboardCreateActivity.showShortlyToast(R.string.toast_dashboard_create_send_response_fail);

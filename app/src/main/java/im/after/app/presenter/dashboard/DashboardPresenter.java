@@ -10,6 +10,7 @@ import im.after.app.base.BasePresenter;
 import im.after.app.base.BaseView;
 import im.after.app.contract.dashboard.DashboardContract;
 import im.after.app.data.api.ErrorBean;
+import im.after.app.data.api.dashboard.bean.DashboardItemBean;
 import im.after.app.data.api.dashboard.bean.all.DashboardAllBean;
 import im.after.app.model.dashboard.DashboardModel;
 import im.after.app.view.dashboard.DashboardActivity;
@@ -64,6 +65,13 @@ public class DashboardPresenter extends BasePresenter implements DashboardContra
 
         // Load the target page for append
         this.mDashboardModel.loadDashboards(this.currentPageNo, this::handleOnMoreSuccess, this::handleOnMoreError);
+    }
+
+    @Override
+    public void appendDashboardItemBean(DashboardItemBean dashboardItemBean) {
+        if (!dashboardItemBean.getContent().isEmpty()) {
+            this.mDashboardActivity.appendDashboardItem(dashboardItemBean);
+        }
     }
 
     // Subscribe handler for loadDashboards method

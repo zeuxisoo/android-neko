@@ -3,7 +3,9 @@ package im.after.app.data.api.auth.bean;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AuthBean {
+import im.after.app.base.BaseBean;
+
+public class AuthBean extends BaseBean {
 
     @SerializedName("token")
     @Expose
