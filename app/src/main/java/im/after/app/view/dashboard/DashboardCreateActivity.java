@@ -1,12 +1,10 @@
 package im.after.app.view.dashboard;
 
-import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.EditText;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.orhanobut.logger.Logger;
 
@@ -83,55 +81,17 @@ public class DashboardCreateActivity extends BaseActivity {
 
     @OnClick(R.id.imageButtonDashboardCreateCancel)
     public void onCancel() {
-        if (this.mEditTextDashboardCreateContent.length() > 0) {
-            this.mMaterialDialogHelper.confirm(
-                this,
-                this.getString(R.string.dialog_confirm_shared_cancel_title),
-                this.getString(R.string.dialog_confirm_dashboard_create_cancel_content),
-                this.getString(R.string.dialog_confirm_shared_cancel_yes),
-                this.getString(R.string.dialog_confirm_shared_cancel_no),
-                (MaterialDialog dialog, DialogAction which) -> {
-                    dialog.dismiss();
-
-                    this.close();
-                },
-                (MaterialDialog dialog, DialogAction which) -> dialog.dismiss()
-            );
-        }else{
-            this.close();
-        }
+        this.mDashboardCreatePresenter.doCancel(this.getContent());
     }
 
     @OnClick(R.id.imageButtonDashboardCreateClear)
     public void onClear() {
-        if (this.mEditTextDashboardCreateContent.length() > 0) {
-            this.mMaterialDialogHelper.confirm(
-                this,
-                this.getString(R.string.dialog_confirm_shared_cancel_title),
-                this.getString(R.string.dialog_confirm_dashboard_create_clear_content),
-                this.getString(R.string.dialog_confirm_shared_cancel_yes),
-                this.getString(R.string.dialog_confirm_shared_cancel_no),
-                (MaterialDialog dialog, DialogAction which) -> {
-                    dialog.dismiss();
-
-                    this.mEditTextDashboardCreateSubject.setText("");
-                    this.mEditTextDashboardCreateContent.setText("");
-                },
-                (MaterialDialog dialog, DialogAction which) -> dialog.dismiss()
-            );
-        }else{
-            this.close();
-        }
+        this.mDashboardCreatePresenter.doClear(this.getContent());
     }
 
     @OnClick(R.id.imageButtonDashboardCreateCopy)
     public void onCopy() {
-        ClipData clipData = ClipData.newPlainText(TAG, this.mEditTextDashboardCreateContent.getText());
-
-        ClipboardManager clipboardManager = (ClipboardManager) this.getSystemService(CLIPBOARD_SERVICE);
-        clipboardManager.setPrimaryClip(clipData);
-
-        this.mToastHelper.showShortly(this, this.getString(R.string.toast_dashboard_create_copy_success));
+        this.mDashboardCreatePresenter.doCopy(TAG, this.getContent());
     }
 
     @OnClick(R.id.imageButtonDashboardCreateSend)
@@ -139,7 +99,36 @@ public class DashboardCreateActivity extends BaseActivity {
         Logger.d("Send");
     }
 
-    private void close() {
+    public String getContent() {
+        return this.mEditTextDashboardCreateContent.getText().toString().trim();
+    }
+
+    public void showConfirmDialog(int titleResource, int contentResource, int yesResource, int noResource, MaterialDialog.SingleButtonCallback yesCallback, MaterialDialog.SingleButtonCallback noCallback) {
+        this.mMaterialDialogHelper.confirm(
+            this,
+            this.getString(titleResource),
+            this.getString(contentResource),
+            this.getString(yesResource),
+            this.getString(noResource),
+            yesCallback,
+            noCallback
+        );
+    }
+
+    public void clearSubjectAndContent() {
+        this.mEditTextDashboardCreateSubject.setText("");
+        this.mEditTextDashboardCreateContent.setText("");
+    }
+
+    public ClipboardManager getClipboardManager() {
+        return (ClipboardManager) this.getSystemService(CLIPBOARD_SERVICE);
+    }
+
+    public void showShortlyToast(int messageResource) {
+        this.mToastHelper.showShortly(this, this.getString(messageResource));
+    }
+
+    public void close() {
         this.finish();
     }
 
