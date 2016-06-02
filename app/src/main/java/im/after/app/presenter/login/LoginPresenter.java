@@ -1,7 +1,6 @@
 package im.after.app.presenter.login;
 
 import com.google.gson.Gson;
-import com.orhanobut.logger.Logger;
 
 import java.io.IOException;
 
@@ -10,8 +9,8 @@ import javax.inject.Inject;
 import im.after.app.base.BasePresenter;
 import im.after.app.base.BaseView;
 import im.after.app.contract.login.LoginContract;
-import im.after.app.data.api.auth.bean.AuthBean;
 import im.after.app.data.api.ErrorBean;
+import im.after.app.data.api.auth.bean.AuthBean;
 import im.after.app.data.db.model.AccountModel;
 import im.after.app.data.db.model.TokenModel;
 import im.after.app.model.login.LoginModel;
@@ -89,8 +88,6 @@ public class LoginPresenter extends BasePresenter implements LoginContract {
 
     // Subscribe handler for doLogin method
     private void handleLoginSuccess(AuthBean authBean) {
-        Logger.t(TAG).d("=> token: %s", authBean.getToken());
-
         // Find previous token
         TokenModel tokenModel = this.mLoginModel.findTokenById(1);
 
