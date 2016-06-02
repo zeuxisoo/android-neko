@@ -10,5 +10,6 @@
 /app/src/main/assets/crashlytics-build.properties
 /app/manifest-merger-release-report.txt
 
+/app/*.apk
 /app/signing-configs.properties
 /KeyStore.jks
