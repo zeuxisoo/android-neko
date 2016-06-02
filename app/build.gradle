@@ -7,16 +7,53 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "im.after.neko"
+        applicationId "im.after.app"
         minSdkVersion 19
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 5
+        versionName "2.0.0"
+    }
+    signingConfigs {
+        debug {
+            def signFile     = file("./signing-configs.properties")
+            def signingProps = new Properties()
+
+            signingProps.load(new FileInputStream(signFile))
+
+            storeFile file("../KeyStore.jks")
+            storePassword signingProps['store_password']
+            keyAlias signingProps['key_alias']
+            keyPassword signingProps['key_password']
+        }
+        release {
+            def signFile     = file("./signing-configs.properties")
+            def signingProps = new Properties()
+
+            signingProps.load(new FileInputStream(signFile))
+
+            storeFile file("../KeyStore.jks")
+            storePassword signingProps['store_password']
+            keyAlias signingProps['key_alias']
+            keyPassword signingProps['key_password']
+        }
     }
     buildTypes {
+        debug {
+            debuggable true
+            jniDebuggable true
+            signingConfig signingConfigs.debug
+        }
         release {
+            debuggable false
+            jniDebuggable false
+            signingConfig signingConfigs.release
+
+            zipAlignEnabled true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        applicationVariants.all { variant ->
+            appendVersionNameVersionCode(variant, defaultConfig)
         }
     }
     lintOptions {
@@ -28,6 +65,20 @@ android {
 
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+def appendVersionNameVersionCode(variant, defaultConfig) {
+    def apk = variant.outputs[0].outputFile;
+    def newName = "";
+
+    newName = apk.name.replace(project.name, project.name + "-v" + android.defaultConfig.versionName);
+    newName = newName.replace("-" + variant.buildType.name, "");
+    newName = newName.replace(".apk", "-" + variant.buildType.name.toLowerCase() + ".apk");
+
+    variant.outputs[0].outputFile = new File(apk.parentFile, newName);
+    if (variant.outputs[0].zipAlign) {
+        variant.outputs[0].zipAlign.outputFile = new File(apk.parentFile, newName.replace("-unaligned", ""));
     }
 }
 
